@@ -22,7 +22,14 @@ Three rounds ran. Round 3 was needed only for the auditor, who had one must-fix 
 **Plain-language checker (round 2): "NOTHING IMPORTANT LEFT."**
 No em dashes or en dashes. No WCAG criterion numbers on home. On the guide, WCAG, EN 301 549 and level AA are each explained once in plain words. The three optional polish notes were applied anyway.
 
-**Accessibility auditor (round 3): AUDITOR_R3**
+**Accessibility auditor (round 3): "NOTHING IMPORTANT LEFT."**
+"The round-2 must-fix is resolved and no WCAG A/AA problems remain on the 8 pages." Clipping was checked on every card at 320 and 640 px, axe was run after scrolling each page, and focus showed a visible 4 px outline on every element reached by Tab. Its earlier rounds also confirmed:
+- Both animations pause and play.
+- Reduced motion gives a static version.
+- Alt text is in the page language.
+- The 61% ring is decorative.
+- Breadcrumb names are translated.
+- Nothing overflows at 320 px or 200% zoom.
 
 ## What changed between rounds
 
@@ -57,6 +64,9 @@ No em dashes or en dashes. No WCAG criterion numbers on home. On the guide, WCAG
   - The accessibility statement is explained in a few words on home.
 - Designer nice-to-have: the customer-card grid is narrower on desktop, so the images no longer outweigh the captions. The owner tile got a soft edge.
 - Auditor must-fix: at 320 px on /nl/, the long word "Toegankelijkheidsverklaring" was cut off inside its card. The fix adds `min-width: 0` on the text column and `overflow-wrap: anywhere` on card text. QA now has a clipped-text check that would have caught this (verified against the old build).
+
+**Round 3**
+- The auditor found a cosmetic French-only bug: the French typography pass had put a non-breaking space inside the hero SVG's `viewBox`, so the French hero picture did not scale at 320 px. The typography pass now touches text nodes only, never tags or attributes.
 
 ## Requests deliberately not applied
 

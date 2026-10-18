@@ -657,8 +657,9 @@ SCRIPT = r'''<script>
 
 
 def fr_typo(doc):
-    """French typography: non-breaking space before ? ! : ; and » after «, and inside amounts. Skips script/style/pre."""
-    parts = re.split(r"(<script.*?</script>|<style.*?</style>|<pre.*?</pre>)", doc, flags=re.S)
+    """French typography: non-breaking space before ? ! : ; and » after «, and inside amounts. Text nodes only:
+    skips script/style/pre and every tag, so attributes such as an SVG viewBox are never touched."""
+    parts = re.split(r"(<script.*?</script>|<style.*?</style>|<pre.*?</pre>|<[^>]+>)", doc, flags=re.S)
     for i in range(0, len(parts), 2):
         parts[i] = re.sub(r" ([?!:;»])", "\u00a0\\1", parts[i])
         parts[i] = re.sub(r"« ", "«\u00a0", parts[i])
