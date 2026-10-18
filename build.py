@@ -280,7 +280,8 @@ def page(lang):
 </div>
 <div class="auditor">
 <img src="/ivan-sm.jpg" width="72" height="72" alt="{esc(t["photo_alt"])}">
-<div><p class="auditor-name">Ivan Raylyan <span>· {esc(t["auditor_role"])}</span></p>
+<div><p class="auditor-kicker">{esc(t["auditor_role"])}</p>
+<p class="auditor-name">Ivan Raylyan<span>, Engineering &amp; Delivery Manager</span></p>
 <p class="auditor-line">{esc(t["auditor_line"])}</p>
 <p class="auditor-link"><a href="#sample">{esc(t["cta2"])}</a></p></div>
 </div>
@@ -366,7 +367,7 @@ def page(lang):
 <div class="final-copy">
 <h2 id="fin-h">{esc(t["final_h"])}</h2>
 <p>{esc(t["final_p"])}</p>
-<div class="final-auditor"><img src="/ivan-sm.jpg" width="48" height="48" alt=""><span>Ivan Raylyan · {esc(t["auditor_role"])}</span></div>
+<div class="final-auditor"><img src="/ivan-sm.jpg" width="48" height="48" alt=""><span>{esc(t["auditor_role"])}{" :" if lang == "fr" else ":"} Ivan Raylyan, Engineering &amp; Delivery Manager</span></div>
 </div>
 {check_form(t, "final", dark=True)}
 </div></div></section>

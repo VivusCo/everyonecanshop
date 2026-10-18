@@ -32,8 +32,8 @@ T["en"] = {
     "mail_body": "Hello Ivan,\n\nPlease run a free mini check for my shop:\n{url}\n\nThank you!",
     "or_email": "Prefer to write yourself?",
     "cta2": "See a sample report",
-    "auditor_role": "Your auditor",
-    "auditor_line": "I review every finding myself before the report reaches you.",
+    "auditor_role": "Your contact",
+    "auditor_line": "We test every page with AI support. Ivan personally reviews every finding before the report reaches you.",
     "peek_caption": "Example: summary of a mini check",
     "peek_kicker": "Mini check · example",
     "peek_title": "3 barriers on the purchase path",
@@ -173,12 +173,12 @@ T["en"] = {
 
     # About
     "photo_alt": "Portrait of Ivan Raylyan",
-    "who_h": "Your auditor: Ivan Raylyan",
+    "who_h": "Your contact: Ivan Raylyan",
     "who_role": "Engineering & Delivery Manager · Bucharest, Romania",
     "who_p": [
         "I lead engineering and delivery across several IT projects, from product development to outsourcing. I started in QA: manual testing first, then test automation with Selenium, Cypress and Pytest.",
-        "For more than 6 years I have worked on SaaS products in compliance-heavy fields: legal, regulatory and financial tech. There, every finding needs evidence and every release has to hold up. I bring the same discipline to your shop.",
-        "AI agents are a normal part of my work: they automate the repetitive tasks. For your audit that means AI-assisted testing covers every page quickly, and I personally review every finding and every report before it reaches you.",
+        "For more than 6 years I have worked on SaaS products in compliance-heavy fields: legal, regulatory and financial tech. There, every finding needs evidence and every release has to hold up. We bring the same discipline to your shop.",
+        "At EveryoneCanShop we use AI agents for the repetitive work. For your audit that means AI-assisted testing covers every page quickly, we walk the purchase path step by step with the keyboard and check it with a screen reader, and I personally review every finding and every report before it goes out.",
     ],
     "who_facts_label": "In short",
     "who_facts": [
@@ -243,8 +243,8 @@ T["nl"] = {
     "mail_body": "Hoi Ivan,\n\nGraag een gratis mini-check voor mijn webshop:\n{url}\n\nBedankt!",
     "or_email": "Liever zelf mailen?",
     "cta2": "Bekijk een voorbeeldrapport",
-    "auditor_role": "Jouw auditor",
-    "auditor_line": "Ik controleer zelf elke bevinding voordat het rapport bij jou is.",
+    "auditor_role": "Je contactpersoon",
+    "auditor_line": "We testen elke pagina met AI-ondersteuning. Ivan controleert persoonlijk elke bevinding voordat het rapport bij je is.",
     "peek_caption": "Voorbeeld: samenvatting van een mini-check",
     "peek_kicker": "Mini-check · voorbeeld",
     "peek_title": "3 drempels in de bestelroute",
@@ -378,12 +378,12 @@ T["nl"] = {
     ],
 
     "photo_alt": "Portret van Ivan Raylyan",
-    "who_h": "Jouw auditor: Ivan Raylyan",
+    "who_h": "Je contactpersoon: Ivan Raylyan",
     "who_role": "Engineering & Delivery Manager · Boekarest, Roemenië",
     "who_p": [
         "Ik leid engineering en delivery in meerdere IT-projecten, van productontwikkeling tot outsourcing. Ik ben begonnen in QA: eerst handmatig testen, daarna testautomatisering met Selenium, Cypress en Pytest.",
-        "Al meer dan 6 jaar werk ik aan SaaS-producten in sectoren waar compliance centraal staat: legal, regulatory en financial tech. Daar moet elke bevinding onderbouwd zijn en moet elke release kloppen. Diezelfde discipline breng ik mee naar jouw webshop.",
-        "AI-agents zijn een vast onderdeel van mijn werk: ze automatiseren het terugkerende werk. Voor jouw audit betekent dat: AI-ondersteund testen dekt snel elke pagina af, en ik controleer persoonlijk elke bevinding en elk rapport voordat het bij jou is.",
+        "Al meer dan 6 jaar werk ik aan SaaS-producten in sectoren waar compliance centraal staat: legal, regulatory en financial tech. Daar moet elke bevinding onderbouwd zijn en moet elke release kloppen. Diezelfde discipline brengen we mee naar jouw webshop.",
+        "Bij EveryoneCanShop zetten we AI-agents in voor het terugkerende werk. Voor jouw audit betekent dat: AI-ondersteund testen dekt snel elke pagina af, we lopen de bestelroute stap voor stap door met het toetsenbord en controleren hem met een schermlezer, en ik controleer persoonlijk elke bevinding en elk rapport voordat het de deur uitgaat.",
     ],
     "who_facts_label": "In het kort",
     "who_facts": [
@@ -444,8 +444,8 @@ T["fr"] = {
     "mail_body": "Bonjour Ivan,\n\nPourriez-vous réaliser un mini-audit gratuit de ma boutique :\n{url}\n\nMerci !",
     "or_email": "Vous préférez écrire vous-même ?",
     "cta2": "Voir un exemple de rapport",
-    "auditor_role": "Votre auditeur",
-    "auditor_line": "Je vérifie moi-même chaque constat avant que le rapport ne vous parvienne.",
+    "auditor_role": "Votre interlocuteur",
+    "auditor_line": "Nous testons chaque page avec l'aide de l'IA. Ivan vérifie personnellement chaque constat avant que le rapport ne vous parvienne.",
     "peek_caption": "Exemple : synthèse d'un mini-audit",
     "peek_kicker": "Mini-audit · exemple",
     "peek_title": "3 obstacles sur le parcours d'achat",
@@ -579,12 +579,12 @@ T["fr"] = {
     ],
 
     "photo_alt": "Portrait d'Ivan Raylyan",
-    "who_h": "Votre auditeur : Ivan Raylyan",
+    "who_h": "Votre interlocuteur : Ivan Raylyan",
     "who_role": "Engineering & Delivery Manager · Bucarest, Roumanie",
     "who_p": [
         "Je dirige l'ingénierie et la livraison de plusieurs projets informatiques, du développement produit à l'externalisation. J'ai commencé dans la QA : d'abord les tests manuels, puis l'automatisation des tests avec Selenium, Cypress et Pytest.",
-        "Depuis plus de 6 ans, je travaille sur des produits SaaS dans des domaines très réglementés : juridique, conformité réglementaire et technologies financières. Là, chaque constat doit être prouvé et chaque mise en production doit tenir. J'applique la même rigueur à votre boutique.",
-        "Les agents d'IA font partie de mon travail au quotidien : ils automatisent les tâches répétitives. Pour votre audit, cela signifie que des tests assistés par l'IA couvrent rapidement chaque page, et que je vérifie personnellement chaque constat et chaque rapport avant qu'il ne vous parvienne.",
+        "Depuis plus de 6 ans, je travaille sur des produits SaaS dans des domaines très réglementés : juridique, conformité réglementaire et technologies financières. Là, chaque constat doit être prouvé et chaque mise en production doit tenir. Nous appliquons la même rigueur à votre boutique.",
+        "Chez EveryoneCanShop, nous confions les tâches répétitives à des agents d'IA. Pour votre audit, cela signifie que des tests assistés par l'IA couvrent rapidement chaque page, que nous parcourons le parcours d'achat étape par étape au clavier et avec un lecteur d'écran, et que je vérifie personnellement chaque constat et chaque rapport avant son envoi.",
     ],
     "who_facts_label": "En bref",
     "who_facts": [
@@ -645,8 +645,8 @@ T["de"] = {
     "mail_body": "Hallo Ivan,\n\nbitte führen Sie einen kostenlosen Mini-Check für meinen Shop durch:\n{url}\n\nVielen Dank!",
     "or_email": "Lieber selbst schreiben?",
     "cta2": "Beispielbericht ansehen",
-    "auditor_role": "Ihr Prüfer",
-    "auditor_line": "Ich prüfe jeden Befund selbst, bevor der Bericht bei Ihnen ankommt.",
+    "auditor_role": "Ihr Ansprechpartner",
+    "auditor_line": "Wir testen jede Seite KI-gestützt. Ivan prüft jeden Befund persönlich, bevor der Bericht bei Ihnen ankommt.",
     "peek_caption": "Beispiel: Zusammenfassung eines Mini-Checks",
     "peek_kicker": "Mini-Check · Beispiel",
     "peek_title": "3 Barrieren im Kaufprozess",
@@ -780,12 +780,12 @@ T["de"] = {
     ],
 
     "photo_alt": "Porträt von Ivan Raylyan",
-    "who_h": "Ihr Prüfer: Ivan Raylyan",
+    "who_h": "Ihr Ansprechpartner: Ivan Raylyan",
     "who_role": "Engineering & Delivery Manager · Bukarest, Rumänien",
     "who_p": [
         "Ich leite Engineering und Delivery in mehreren IT-Projekten, von Produktentwicklung bis Outsourcing. Angefangen habe ich in der Qualitätssicherung: zuerst manuelles Testen, dann Testautomatisierung mit Selenium, Cypress und Pytest.",
-        "Seit über 6 Jahren arbeite ich an SaaS-Produkten in Bereichen mit hohen Compliance-Anforderungen: Legal, Regulatory und Financial Tech. Dort muss jeder Befund belegt sein und jedes Release halten. Dieselbe Sorgfalt bringe ich in Ihren Shop.",
-        "KI-Agenten sind ein fester Teil meiner Arbeit: Sie automatisieren wiederkehrende Aufgaben. Für Ihr Audit heißt das: KI-gestützte Tests decken schnell jede Seite ab, und ich prüfe persönlich jeden Befund und jeden Bericht, bevor er bei Ihnen ankommt.",
+        "Seit über 6 Jahren arbeite ich an SaaS-Produkten in Bereichen mit hohen Compliance-Anforderungen: Legal, Regulatory und Financial Tech. Dort muss jeder Befund belegt sein und jedes Release halten. Dieselbe Sorgfalt bringen wir in Ihren Shop.",
+        "Bei EveryoneCanShop übernehmen KI-Agenten die wiederkehrenden Aufgaben. Für Ihr Audit heißt das: KI-gestützte Tests decken schnell jede Seite ab, wir gehen den Kaufprozess Schritt für Schritt mit der Tastatur und mit Screenreader durch, und ich prüfe persönlich jeden Befund und jeden Bericht, bevor er rausgeht.",
     ],
     "who_facts_label": "Kurz gesagt",
     "who_facts": [
