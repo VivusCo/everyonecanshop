@@ -290,6 +290,8 @@ h1 { font-size: clamp(32px, 3.9vw, 50px); line-height: 1.08; letter-spacing: -0.
 .chk { display: flex; gap: 16px; align-items: flex-start; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
 .chk h3 { margin: 0 0 4px; font-size: 18px; }
 .chk p { margin: 0; color: var(--ink-2); line-height: 1.5; }
+.chk > div { min-width: 0; }
+.chk h3, .chk p, .pt h3, .pt p, .stuck-card p, .mean h3, .country h3 { overflow-wrap: anywhere; }
 
 /* Comparison */
 .cmp-table-wrap { margin-top: 40px; }
@@ -364,7 +366,8 @@ details[open]::details-content { block-size: auto; }
 .faq-a p { margin: 0 0 20px; color: var(--ink-2); }
 
 /* Who gets stuck */
-.stuck { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.stuck-sec h2, .stuck-sec .section-lead { text-align: center; margin-left: auto; margin-right: auto; }
+.stuck { list-style: none; margin: 0 auto; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; max-width: 900px; }
 .stuck-card { background: var(--paper); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; }
 .stuck-card img { display: block; width: 100%; height: auto; aspect-ratio: 1; }
 .stuck-card p { margin: 0; padding: 20px 24px 24px; font-size: 18px; font-weight: 600; line-height: 1.45; }
@@ -384,7 +387,7 @@ details[open]::details-content { block-size: auto; }
 .check { padding-top: 32px; }
 .check-box { background: var(--ink); color: #fff; border-radius: 26px; padding: 56px 48px; box-shadow: var(--shadow-lg); max-width: 1040px; margin: 0 auto; text-align: center; }
 .check-grid { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 44px; align-items: center; }
-.check-ill img { display: block; width: 100%; height: auto; border-radius: 22px; }
+.check-ill img { display: block; width: 100%; height: auto; border-radius: 22px; box-shadow: 0 0 0 6px rgba(255,255,255,.08); }
 .check-box h2 { color: #fff; }
 .check-kicker { margin: 0 0 6px; color: var(--focus); font-weight: 800; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; }
 .check-p { color: #d5dde3; margin: 0 auto 28px; max-width: 34em; font-size: 18px; }
