@@ -190,7 +190,7 @@ SCRIPT = r'''<script>
         err.textContent=f.getAttribute("data-err");input.setAttribute("aria-invalid","true");st.textContent="";input.focus();return;
       }
       err.textContent="";input.removeAttribute("aria-invalid");
-      st.textContent=f.getAttribute("data-sent");
+      st.textContent=f.getAttribute("data-sent")+" ";var ml=document.createElement("a");ml.href="mailto:"+f.getAttribute("data-to")+"?subject="+encodeURIComponent(f.getAttribute("data-subject"))+"&body="+encodeURIComponent(f.getAttribute("data-body").replace("{url}",v));ml.textContent=f.getAttribute("data-to");st.appendChild(ml);
       window.location.href="mailto:"+f.getAttribute("data-to")+"?subject="+encodeURIComponent(f.getAttribute("data-subject"))+"&body="+encodeURIComponent(f.getAttribute("data-body").replace("{url}",v));
     });
     var links=document.querySelectorAll('a[href="#check"]');
@@ -285,15 +285,16 @@ def page(lang):
         badge = {"free": f'<p class="badge badge-free">{esc(t["badge_free"])}</p>',
                  "rec": f'<p class="badge">{esc(t["badge_rec"])}</p>'}.get(kind, "")
         time = f'<p class="pk-time">{icon("clock")}{esc(p["time"])}</p>' if p["time"] else ""
+        extra = f'<p class="pk-extra">{esc(t["audit_note"])}</p>' if kind == "rec" else ""
         cta = ""
         if kind == "free":
             cta = (f'<p class="pk-assure">{icon("shield")}<span>{esc(t["pk_free_note"])}</span></p>'
-                   f'<a class="btn btn-primary btn-block" href="#check">{esc(p["cta"])}</a>')
+                   f'<a class="btn btn-accent btn-block" href="#check">{esc(p["cta"])}</a>')
         elif kind == "rec":
             cta = f'<a class="btn btn-ghost btn-block" href="{mailto(p["subject"])}">{esc(p["cta"])}</a>'
         card = (f'<div class="card pk pk-{kind or "plain"} rv">{badge}<h3>{esc(p["name"])}</h3>'
                 f'<p class="price">{esc(p["price"])} <small>{esc(p["per"])}</small></p>'
-                f'<p class="pk-desc">{esc(p["desc"])}</p>{time}<ul class="ticks">{lis}</ul>{cta}</div>')
+                f'<p class="pk-desc">{esc(p["desc"])}</p>{time}<ul class="ticks">{lis}</ul>{extra}{cta}</div>')
         if kind:
             main_pk += card
         else:
@@ -344,7 +345,7 @@ def page(lang):
 <nav class="primary" aria-label="{esc(t["nav_label"])}"><ul>{nav}</ul></nav>
 <div class="head-right">
 <nav class="lang" aria-label="{esc(t["lang_label"])}"><ul>{langnav}</ul></nav>
-<a class="btn btn-primary btn-sm head-cta" href="#check">{esc(t["header_cta"])}</a>
+<a class="btn btn-accent btn-sm head-cta" href="#check">{esc(t["header_cta"])}</a>
 </div>
 </div></header>
 
@@ -435,6 +436,7 @@ def page(lang):
 
 <section id="check" class="check" aria-labelledby="check-h"><div class="wrap">
 <div class="check-box rv">
+<p class="check-kicker">{esc(t["check_kicker"])}</p>
 <h2 id="check-h">{esc(t["check_h"])}</h2>
 <p class="check-p">{esc(t["check_p"])}</p>
 {check_form(t)}
