@@ -15,8 +15,8 @@ const url = 'http://localhost:8765' + (lang === 'en' ? '/' : `/${lang}/`);
   await peek.screenshot({ path: path.join(out, `${lang}-hero-fixed.png`) });
   const report = page.locator('.report');
   await report.scrollIntoViewIfNeeded();
-  // timeline: 5 steps x 1.5s, verdict 2.6s, then the same after the fix
-  const shots = [[700, 'before-1-image'], [3100, 'before-3-swatch'], [6100, 'before-5-button'], [8300, 'before-stuck'], [11000, 'after-2-colour'], [15800, 'after-5-button'], [18000, 'after-done']];
+  // timeline (ms after the demo starts), see the steps in build.py
+  const shots = [[1200, '1-intro'], [5300, '2-before-swatch'], [10900, '3-customer-leaves'], [15600, '4-report'], [22100, '5-after-colour'], [27600, '6-order-placed'], [29900, '7-end']];
   let t0 = Date.now();
   for (const [at, name] of shots) {
     const wait = at - (Date.now() - t0); if (wait > 0) await page.waitForTimeout(wait);

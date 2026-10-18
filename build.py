@@ -110,7 +110,7 @@ def hero_mock(t):
 <rect class="m-good" x="239" y="215" width="224" height="48" rx="24" fill="none" stroke="#ffbf47" stroke-width="4"/>
 <rect x="243" y="219" width="216" height="40" rx="20" fill="#d9611c"/>
 <text x="351" y="244" text-anchor="middle" class="m-btn">{esc(t["mock_btn"])}</text>
-{mark(1, 217, 166)}{mark(2, 217, 239)}{mark(3, 217, 134)}
+{mark(1, 217, 134)}{mark(2, 217, 166)}{mark(3, 217, 239)}
 </svg>'''
     lis = "".join(
         f'<li><span class="c-num" aria-hidden="true">{i + 1}</span><span class="c-txt c-bad"><strong>{esc(b[0])}</strong> {esc(b[1])}</span>'
@@ -128,23 +128,25 @@ def hero_mock(t):
 
 
 def demo(t):
+    """Scene-based screen reader story. The animated stage is decorative (aria-hidden); the same texts are in the
+    static before/after block, which is what assistive tech, no-JS and reduced-motion users get."""
     before, after = t["demo_items_before"], t["demo_items_after"]
     sw = "".join(f'<span class="st-sw" data-i="{i + 1}" style="background:{c}"></span>' for i, c in enumerate(SWATCHES))
+    checks = "".join(f'<li data-c="{i}">{icon("check")}<span>{esc(x)}</span></li>' for i, x in enumerate(t["demo_checks"]))
     static = "".join(
         f'<div class="ds-col ds-{k}"><p class="ds-h">{icon("cross" if k == "before" else "check")}{esc(t["demo_" + k])}</p>'
         f'<p class="ds-says">{esc(t["demo_says"])}:</p><ol>{"".join(f"<li>“{esc(x)}”</li>" for x in items)}</ol>'
-        f'<p class="ds-verdict">{esc(t["demo_stuck"] if k == "before" else t["demo_ok"])}</p></div>'
-        for k, items in (("before", before), ("after", after)))
-    data = esc(json.dumps({"before": before, "after": after, "lb": t["demo_before"], "la": t["demo_after"],
-                           "stuck": t["demo_stuck"], "ok": t["demo_ok"], "pause": t["demo_pause"], "play": t["demo_play"]},
-                          ensure_ascii=False))
+        f'<p class="ds-verdict">{esc(verdict)}</p></div>'
+        for k, items, verdict in (("before", before, t["demo_question"] + " " + t["demo_leaves"] + "."),
+                                  ("after", after, t["demo_ordered"] + ".")))
+    data = esc(json.dumps({"before": before, "after": after, "chip": t["demo_chip"], "la": t["demo_after"],
+                           "pause": t["demo_pause"], "play": t["demo_play"]}, ensure_ascii=False))
     return f'''<div class="demo" data-demo="{data}">
-<div class="demo-bar">
-<p class="demo-phase"><span class="demo-dot" aria-hidden="true"></span><span class="demo-phase-t">{esc(t["demo_before"])}</span></p>
-<button type="button" class="demo-toggle">{icon("pause", "ico ico-pause")}{icon("play", "ico ico-play")}<span class="demo-toggle-t">{esc(t["demo_pause"])}</span></button>
-</div>
-<div class="demo-live" aria-hidden="true">
-<div class="stage">
+<div class="demo-bar"><button type="button" class="demo-toggle">{icon("pause", "ico ico-pause")}{icon("play", "ico ico-play")}<span class="demo-toggle-t">{esc(t["demo_pause"])}</span></button></div>
+<div class="stage" aria-hidden="true" data-scene="shop">
+<div class="sc sc-shop">
+<p class="chip">{icon("voice")}<span class="chip-t">{esc(t["demo_chip"])}</span></p>
+<div class="shop">
 <div class="st-img" data-i="0"><span class="st-cushion"></span></div>
 <div class="st-info">
 <p class="st-title">{esc(t["mock_product"])}</p><p class="st-price">{esc(t["mock_price"])}</p>
@@ -152,8 +154,22 @@ def demo(t):
 <span class="st-buy" data-i="4">{icon("cart")}<span class="st-buy-t">{esc(t["mock_btn"])}</span></span>
 </div>
 </div>
-<div class="caption">{icon("voice")}<span class="cap-l">{esc(t["demo_says"])}</span><span class="cap-t">“{esc(before[0])}”</span></div>
-<p class="verdict"></p>
+<div class="caption">{icon("voice")}<span class="cap-t"></span><span class="caret"></span></div>
+<div class="outcome"><span class="oc-q">{esc(t["demo_question"])}</span><span class="oc-badge oc-bad">{icon("cross")}{esc(t["demo_leaves"])}</span><span class="oc-badge oc-ok">{icon("check")}{esc(t["demo_ordered"])}</span></div>
+</div>
+<div class="sc sc-report">
+<div class="rc">
+<p class="rc-k">{LOGO}<span>{esc(t["report_title"])}</span></p>
+<p class="rc-t">{esc(t["f_title"])}</p>
+<ul class="rc-list">{checks}</ul>
+<pre class="rc-code" data-c="3"><code>alt="{esc(after[1].split(",")[0])}"</code></pre>
+</div>
+</div>
+<div class="sc sc-end">
+<p class="end-logo">{LOGO}<span>EveryoneCanShop</span></p>
+<p class="end-t">{esc(t["demo_end"])}</p>
+<p class="end-s">{esc(t["cta_note"][2])}</p>
+</div>
 </div>
 <div class="demo-static">{static}</div>
 </div>'''
@@ -195,27 +211,33 @@ SCRIPT = r'''<script>
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{rootMargin:"0px 0px -8% 0px"});
     for(var r=0;r<rv.length;r++){io.observe(rv[r]);}
   }else{for(var r2=0;r2<rv.length;r2++){rv[r2].classList.add("in");}}
-  // Screen reader demo (static before/after stays for reduced motion and as text for assistive tech)
+  // Screen reader demo: a short story in scenes (static before/after stays for reduced motion and assistive tech)
   var d=document.querySelector("[data-demo]");
   if(d&&!reduce){
-    var cfg=JSON.parse(d.getAttribute("data-demo")),steps=[],phase=d.querySelector(".demo-phase-t"),
-        cap=d.querySelector(".cap-t"),verdict=d.querySelector(".verdict"),btn=d.querySelector(".demo-toggle"),
-        bt=d.querySelector(".demo-toggle-t"),els=d.querySelectorAll("[data-i]"),pos=0,timer=null,playing=false;
-    ["before","after"].forEach(function(p){
-      for(var i=0;i<5;i++){steps.push({p:p,i:i,t:1500});}
-      steps.push({p:p,i:-1,t:2600});
-    });
-    function show(s){
-      d.classList.toggle("phase-after",s.p==="after");
-      phase.textContent=s.p==="after"?cfg.la:cfg.lb;
-      for(var k=0;k<els.length;k++){els[k].classList.toggle("sr-on",+els[k].getAttribute("data-i")===s.i);}
-      if(s.i>=0){cap.textContent="\u201c"+cfg[s.p][s.i]+"\u201d";verdict.textContent="";verdict.className="verdict";}
-      else{verdict.textContent=s.p==="after"?cfg.ok:cfg.stuck;verdict.className="verdict "+(s.p==="after"?"ok":"bad");}
-    }
-    function tick(){show(steps[pos]);timer=setTimeout(function(){pos=(pos+1)%steps.length;tick();},steps[pos].t);}
+    var cfg=JSON.parse(d.getAttribute("data-demo")),stage=d.querySelector(".stage"),cap=d.querySelector(".cap-t"),
+        chip=d.querySelector(".chip-t"),btn=d.querySelector(".demo-toggle"),bt=d.querySelector(".demo-toggle-t"),
+        els=d.querySelectorAll("[data-i]"),cs=d.querySelectorAll("[data-c]"),pos=0,timer=null,typer=null,playing=false,steps=[];
+    function focus(i){for(var k=0;k<els.length;k++){els[k].classList.toggle("sr-on",+els[k].getAttribute("data-i")===i);}}
+    function type(txt){clearInterval(typer);var n=0;cap.textContent="";if(!txt)return;txt="\u201c"+txt+"\u201d";
+      typer=setInterval(function(){n++;cap.textContent=txt.slice(0,n);if(n>=txt.length)clearInterval(typer);},42);}
+    function outcome(o){stage.setAttribute("data-outcome",o||"");}
+    function checks(n){for(var k=0;k<cs.length;k++){cs[k].classList.toggle("on",+cs[k].getAttribute("data-c")<n);}}
+    function scene(sc,after){stage.setAttribute("data-scene",sc);stage.classList.toggle("after",!!after);chip.textContent=after?cfg.la:cfg.chip;}
+    function pass(items){items.forEach(function(x,i){steps.push({f:function(){focus(i);type(x);},t:650+x.length*42+500});});}
+    steps.push({f:function(){scene("shop",false);focus(-1);type("");outcome("");checks(0);},t:1700});
+    pass(cfg.before);
+    steps.push({f:function(){focus(-1);outcome("q");},t:1400});
+    steps.push({f:function(){outcome("bad");},t:2000});
+    steps.push({f:function(){scene("report",false);checks(0);},t:800});
+    for(var c=1;c<=4;c++){(function(c){steps.push({f:function(){checks(c);},t:c<4?850:2400});})(c);}
+    steps.push({f:function(){scene("shop",true);focus(-1);type("");outcome("");},t:1400});
+    pass(cfg.after);
+    steps.push({f:function(){focus(-1);outcome("ok");},t:2200});
+    steps.push({f:function(){scene("end",true);},t:2800});
+    function tick(){steps[pos].f();timer=setTimeout(function(){pos=(pos+1)%steps.length;tick();},steps[pos].t);}
     function play(){if(playing)return;playing=true;d.classList.remove("paused");bt.textContent=cfg.pause;tick();}
-    function pause(){playing=false;clearTimeout(timer);d.classList.add("paused");bt.textContent=cfg.play;}
-    d.classList.add("animating");show(steps[0]);
+    function pause(){playing=false;clearTimeout(timer);clearInterval(typer);d.classList.add("paused");bt.textContent=cfg.play;}
+    d.classList.add("animating");steps[0].f();
     btn.addEventListener("click",function(){playing?pause():play();});
     if("IntersectionObserver" in window){
       var started=false,dio=new IntersectionObserver(function(es){if(es[0].isIntersecting&&!started){started=true;play();}},{threshold:0.35});
@@ -330,6 +352,7 @@ def page(lang):
 <section class="hero" aria-labelledby="h1"><div class="wrap">
 <div class="hero-grid">
 <div class="hero-copy">
+<p class="law-chip">{icon("scale")}{esc(t["law_chip"])}</p>
 <h1 id="h1">{esc(t["h1"])}</h1>
 <p class="lead">{esc(t["lead"])}</p>
 <div class="stats">{stats}</div>

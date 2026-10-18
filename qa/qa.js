@@ -14,7 +14,7 @@ const shotLangs = (process.argv[3] || 'en,nl').split(',');
       const page = await browser.newPage({ viewport: { width: w, height: h } });
       await page.goto(BASE + p, { waitUntil: 'networkidle' });
       // trigger reveal-on-scroll so every section is visible before scanning
-      await page.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 400) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 40)); } window.scrollTo(0, 0); });
+      await page.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 400) { window.scrollTo({ top: y, behavior: 'instant' }); await new Promise(r => setTimeout(r, 40)); } window.scrollTo({ top: 0, behavior: 'instant' }); });
       await page.waitForTimeout(900);
       // open all details so their content is checked too
       await page.evaluate(() => document.querySelectorAll('details').forEach(d => d.open = true));
