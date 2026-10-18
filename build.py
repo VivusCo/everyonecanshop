@@ -409,7 +409,7 @@ def main():
         if f.suffix in (".svg", ".jpg", ".png"):
             shutil.copy(f, OUT / f.name)
     images()
-    (OUT / "CNAME").write_text("everyonecanshop.com\n")
+    (OUT / "CNAME").write_text("everyonecanshop.com")
     (OUT / ".nojekyll").write_text("")
     (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n")
     urls = "".join(f"<url><loc>{BASE}{path_for(l)}</loc></url>" for l in LANGS)
