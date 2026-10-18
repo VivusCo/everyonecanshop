@@ -20,7 +20,12 @@
 <meta property="og:image" content="https://everyonecanshop.com/ivan.jpg">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/style.css">
-<script>document.documentElement.className+=" js";</script>
+<script>document.documentElement.className+=" js";
+(function(){try{var p=location.pathname;if(p!=="/"&&p!=="/index.html")return;
+if(/bot|crawl|spider|slurp|bingpreview|facebookexternalhit|linkedinbot|embedly|lighthouse|headless/i.test(navigator.userAgent))return;
+if(localStorage.getItem("ecs-lang"))return;var map={nl:"/nl/",fr:"/fr/",de:"/de/"};
+var ls=navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||""];
+for(var i=0;i<ls.length;i++){var l=String(ls[i]).slice(0,2).toLowerCase();if(l==="en")return;if(map[l]){location.replace(map[l]+location.search+location.hash);return;}}}catch(e){}})();</script>
 </head><body>
 <a class="skip" href="#main">Naar de inhoud</a>
 <header class="site"><div class="wrap">
@@ -88,7 +93,7 @@
 <div class="foot-brand"><a class="logo" href="/nl/"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="1" y="1" width="30" height="30" rx="9" fill="#13212c"/><path d="M8 11h3l2.2 9h7.6l1.7-6.5H12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="24" r="1.6" fill="#ffbf47"/><circle cx="20" cy="24" r="1.6" fill="#ffbf47"/></svg><span>EveryoneCanShop</span></a><p>Opgericht door Ivan Raylyan · Boekarest, Roemenië</p></div>
 <div><h2 class="foot-h">Contact</h2>
 <ul class="foot-list"><li><a href="mailto:ivan@everyonecanshop.com">ivan@everyonecanshop.com</a></li><li><a href="https://www.linkedin.com/in/ivan-raylyan-672204320" rel="noopener">LinkedIn</a></li><li><a href="/nl/eaa/">De wet in gewone taal</a></li></ul></div>
-<div class="foot-small"><p>Geen cookies, geen tracking.</p><p>Deze site volgt dezelfde toegankelijkheidschecklist. Een drempel gevonden? Mail ons.</p></div>
+<div class="foot-small"><p>Geen cookies. Alleen anonieme bezoekersstatistieken.</p><p>Deze site volgt dezelfde toegankelijkheidschecklist. Een drempel gevonden? Mail ons.</p></div>
 </div></footer>
 <script>
 (function(){
@@ -202,5 +207,7 @@
   }
 })();
 </script>
+<script>document.querySelectorAll("nav.lang a[hreflang]").forEach(function(a){a.addEventListener("click",function(){try{localStorage.setItem("ecs-lang",a.getAttribute("hreflang"))}catch(e){}})});</script>
+<!-- Cloudflare Web Analytics: cookieless, anonymous page view counts --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "b0ac84c02ceb4c808aa0121524f7fd65"}'></script>
 </body>
 </html>

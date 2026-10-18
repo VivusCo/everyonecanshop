@@ -108,7 +108,12 @@ def head(lang, title, desc, page):
 <meta property="og:image" content="{BASE}/ivan.jpg">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/style.css">
-<script>document.documentElement.className+=" js";</script>
+<script>document.documentElement.className+=" js";
+(function(){{try{{var p=location.pathname;if(p!=="/"&&p!=="/index.html")return;
+if(/bot|crawl|spider|slurp|bingpreview|facebookexternalhit|linkedinbot|embedly|lighthouse|headless/i.test(navigator.userAgent))return;
+if(localStorage.getItem("ecs-lang"))return;var map={{nl:"/nl/",fr:"/fr/",de:"/de/"}};
+var ls=navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||""];
+for(var i=0;i<ls.length;i++){{var l=String(ls[i]).slice(0,2).toLowerCase();if(l==="en")return;if(map[l]){{location.replace(map[l]+location.search+location.hash);return;}}}}}}catch(e){{}}}})();</script>
 </head>'''
 
 
@@ -139,6 +144,8 @@ def footer(lang, t):
 <div class="foot-small"><p>{esc(t["footer_privacy"])}</p><p>{esc(t["footer_a11y"])}</p></div>
 </div></footer>
 @@SCRIPT@@
+<script>document.querySelectorAll("nav.lang a[hreflang]").forEach(function(a){{a.addEventListener("click",function(){{try{{localStorage.setItem("ecs-lang",a.getAttribute("hreflang"))}}catch(e){{}}}})}});</script>
+<!-- Cloudflare Web Analytics: cookieless, anonymous page view counts --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{"token": "b0ac84c02ceb4c808aa0121524f7fd65"}}'></script>
 </body>
 </html>
 '''
