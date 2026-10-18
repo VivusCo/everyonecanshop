@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://everyonecanshop.com/sitemap.xml
