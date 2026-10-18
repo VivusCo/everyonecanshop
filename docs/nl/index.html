@@ -4,7 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EveryoneCanShop · Toegankelijkheidsaudits voor webshops (EAA, WCAG 2.1 AA)</title>
-<meta name="description" content="Wij testen je webshop zoals klanten met een beperking hem gebruiken en geven je ontwikkelaars een duidelijke lijst met verbeteringen. European Accessibility Act, WCAG 2.1 AA.">
+<meta name="description" content="Gratis mini-check binnen 48 uur: wij testen je webshop zoals klanten met een beperking hem gebruiken en sturen je echte drempels met screenshots en oplossingen. European Accessibility Act, WCAG 2.1 AA.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#fbf9f4">
 <link rel="canonical" href="https://everyonecanshop.com/nl/">
 <link rel="alternate" hreflang="en" href="https://everyonecanshop.com/">
 <link rel="alternate" hreflang="nl" href="https://everyonecanshop.com/nl/">
@@ -12,93 +14,283 @@
 <link rel="alternate" hreflang="de" href="https://everyonecanshop.com/de/">
 <link rel="alternate" hreflang="x-default" href="https://everyonecanshop.com/">
 <meta property="og:title" content="EveryoneCanShop · Toegankelijkheidsaudits voor webshops (EAA, WCAG 2.1 AA)">
-<meta property="og:description" content="Wij testen je webshop zoals klanten met een beperking hem gebruiken en geven je ontwikkelaars een duidelijke lijst met verbeteringen. European Accessibility Act, WCAG 2.1 AA.">
+<meta property="og:description" content="Gratis mini-check binnen 48 uur: wij testen je webshop zoals klanten met een beperking hem gebruiken en sturen je echte drempels met screenshots en oplossingen. European Accessibility Act, WCAG 2.1 AA.">
 <meta property="og:url" content="https://everyonecanshop.com/nl/">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://everyonecanshop.com/ivan.jpg">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/style.css">
-<style>.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}</style>
 </head>
 <body>
 <a class="skip" href="#main">Naar de inhoud</a>
 <header class="site"><div class="wrap">
 <a class="logo" href="/nl/"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="1" y="1" width="30" height="30" rx="9" fill="#13212c"/><path d="M8 11h3l2.2 9h7.6l1.7-6.5H12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="24" r="1.6" fill="#ffbf47"/><circle cx="20" cy="24" r="1.6" fill="#ffbf47"/></svg><span>EveryoneCanShop</span></a>
+<nav class="primary" aria-label="Hoofdmenu"><ul><li><a href="#sample">Voorbeeldrapport</a></li><li><a href="#packages">Prijzen</a></li><li><a href="#about">Over ons</a></li><li><a href="#faq">Vragen</a></li></ul></nav>
+<div class="head-right">
 <nav class="lang" aria-label="Taal"><ul><li><a href="/" hreflang="en" lang="en"><span aria-hidden="true">EN</span><span class="sr">English</span></a></li><li><a href="/nl/" hreflang="nl" lang="nl" aria-current="page"><span aria-hidden="true">NL</span><span class="sr">Nederlands</span></a></li><li><a href="/fr/" hreflang="fr" lang="fr"><span aria-hidden="true">FR</span><span class="sr">Français</span></a></li><li><a href="/de/" hreflang="de" lang="de"><span aria-hidden="true">DE</span><span class="sr">Deutsch</span></a></li></ul></nav>
+<a class="btn btn-primary btn-sm head-cta" href="#check">Gratis mini-check</a>
+</div>
 </div></header>
+
 <main id="main">
 <section class="hero" aria-labelledby="h1"><div class="wrap">
-<div>
-<span class="eyebrow">European Accessibility Act · WCAG 2.1 AA</span>
-<h1 id="h1">Kan elke klant jouw kassa bereiken?</h1>
-<p class="lead">Wij testen je webshop zoals klanten met een beperking hem gebruiken: alleen met het toetsenbord, met een schermlezer, ingezoomd. Je krijgt een helder rapport waar je ontwikkelaars meteen mee aan de slag kunnen.</p>
-<div class="cta-row"><a class="btn btn-primary" href="mailto:ivan@everyonecanshop.com?subject=Gratis mini-check voor mijn webshop">Gratis mini-check aanvragen</a><a class="btn btn-ghost" href="#packages">Bekijk de pakketten</a></div>
-<p class="note">Stuur alleen de URL van je webshop. Binnen 48 uur krijg je 2-3 concrete drempels met screenshots.</p>
+<div class="hero-grid">
+<div class="hero-copy">
+<p class="eyebrow">European Accessibility Act · WCAG 2.1 AA</p>
+<h1 id="h1">Weet binnen 48 uur of elke klant bij jou kan bestellen.</h1>
+<p class="lead">Wij testen je webshop zoals mensen met een beperking hem gebruiken: alleen met het toetsenbord, met een schermlezer, ingezoomd. Je krijgt de echte drempels met screenshots en per drempel een duidelijke oplossing.</p>
+<div class="form-card" id="check">
+<form class="check-form" action="mailto:ivan@everyonecanshop.com" method="get"
+ data-to="ivan@everyonecanshop.com" data-subject="Gratis mini-check voor mijn webshop" data-body="Hoi Ivan,
+
+Graag een gratis mini-check voor mijn webshop:
+{url}
+
+Bedankt!"
+ data-err="Vul het adres van je webshop in, bijvoorbeeld www.jouwwebshop.nl." data-sent="Je e-mailprogramma opent nu met een kant-en-klaar bericht. Gebeurt er niets? Mail dan naar ivan@everyonecanshop.com.">
+<input type="hidden" name="subject" value="Gratis mini-check voor mijn webshop">
+<label for="url-hero">URL van je webshop</label>
+<div class="field-row">
+<input id="url-hero" name="body" type="text" inputmode="url" autocomplete="url" spellcheck="false" autocapitalize="off" required placeholder="www.jouwwebshop.nl" aria-describedby="hint-hero err-hero">
+<button type="submit" class="btn btn-primary">Vraag mijn gratis mini-check aan<svg class="ico btn-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 </div>
-<div><svg viewBox="0 0 440 380" role="img" aria-labelledby="hero-title">
-<title id="hero-title">Een productpagina waar de knop In winkelwagen een duidelijk zichtbare toetsenbordfocus heeft.</title>
-<rect x="20" y="20" width="400" height="340" rx="22" fill="#fff" stroke="#e3ded2" stroke-width="2"/>
-<rect x="44" y="44" width="160" height="190" rx="14" fill="#eef5f3"/>
-<path d="M92 200h64l-8 26h-48z" fill="#0b5f5f"/><path d="M124 196c-24-30-30-62-10-92 4 30 18 54 10 92z" fill="#4c9a7a"/>
-<path d="M124 196c20-24 36-40 46-70-20 14-38 34-46 70z" fill="#6bb391"/>
-<rect x="228" y="56" width="168" height="16" rx="8" fill="#13212c"/>
-<rect x="228" y="84" width="120" height="12" rx="6" fill="#c9c3b6"/>
-<text x="228" y="140" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="30" font-weight="800" fill="#13212c">€ 24,90</text>
-<rect x="228" y="160" width="40" height="40" rx="10" fill="#fff" stroke="#c9c3b6" stroke-width="2"/>
-<text x="248" y="186" text-anchor="middle" font-family="-apple-system,Arial,sans-serif" font-size="18" fill="#13212c">1</text>
-<rect x="276" y="152" width="128" height="56" rx="16" fill="none" stroke="#13212c" stroke-width="5"/>
-<rect x="281" y="157" width="118" height="46" rx="12" fill="none" stroke="#ffbf47" stroke-width="6"/>
-<rect x="286" y="162" width="108" height="36" rx="9" fill="#0b5f5f"/>
-<text x="340" y="186" text-anchor="middle" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#fff">In winkelwagen</text>
-<rect x="44" y="262" width="352" height="74" rx="14" fill="#fbf9f4" stroke="#e3ded2" stroke-width="2"/>
-<rect x="62" y="280" width="64" height="38" rx="8" fill="#fff" stroke="#13212c" stroke-width="2.5"/>
-<text x="94" y="305" text-anchor="middle" font-family="-apple-system,Arial,sans-serif" font-size="16" font-weight="800" fill="#13212c">Tab</text>
-<text x="142" y="296" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="15" font-weight="700" fill="#13212c">Toetsenbordfocus is zichtbaar</text>
-<text x="142" y="318" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="14" fill="#3c4b57">Elke klant weet waar hij is</text>
-</svg></div>
+<p class="form-hint" id="hint-hero"><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Gratis en vrijblijvend. Geen inloggegevens, geen betaalgegevens.</p>
+<p class="form-error" id="err-hero" aria-live="assertive"></p>
+<p class="form-status" role="status"></p>
+<p class="form-alt">Liever zelf mailen? <a href="mailto:ivan@everyonecanshop.com?subject=Gratis%20mini-check%20voor%20mijn%20webshop">ivan@everyonecanshop.com</a></p>
+</form>
+</div>
+<div class="auditor">
+<img src="/ivan-sm.jpg" width="72" height="72" alt="Portret van Ivan Raylyan">
+<div><p class="auditor-name">Ivan Raylyan <span>· Jouw auditor</span></p>
+<p class="auditor-line">Ik controleer zelf elke bevinding voordat het rapport bij jou is.</p>
+<p class="auditor-link"><a href="#sample">Bekijk een voorbeeldrapport</a></p></div>
+</div>
+</div>
+<div class="hero-visual"><figure class="peek" aria-labelledby="peek-cap">
+<div class="peek-doc">
+<div class="peek-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+<p class="kicker">Mini-check · voorbeeld</p>
+<p class="peek-title">3 drempels in de bestelroute</p>
+<ol class="peek-list"><li><span class="sev sev-high">Hoog</span><span class="peek-text">In winkelwagen: toetsenbordfocus niet zichtbaar</span><span class="peek-ref">WCAG 2.4.7</span></li><li><span class="sev sev-high">Hoog</span><span class="peek-text">Kleuropties: afbeeldingen zonder tekst</span><span class="peek-ref">WCAG 1.1.1</span></li><li><span class="sev sev-medium">Gemiddeld</span><span class="peek-text">Aantalveld heeft geen label</span><span class="peek-ref">WCAG 1.3.1</span></li></ol>
+<div class="peek-foot">
+<span><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Gecontroleerd door Ivan Raylyan</span>
+<span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Binnen 48 uur geleverd</span>
+</div>
+</div>
+<figcaption id="peek-cap">Voorbeeld: samenvatting van een mini-check</figcaption>
+</figure></div>
+</div>
+<ul class="trust" aria-label="Waar je op kunt rekenen"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v16M7 20h10M5 7h14M5 7l-2.5 6a3 3 0 0 0 5 0zM19 7l-2.5 6a3 3 0 0 0 5 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>WCAG 2.1 AA · EN 301 549 · EAA</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Geen inloggegevens of toegang tot code</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8.5" r="3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 20c1-3.5 3.8-5.5 7-5.5s6 2 7 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Elk rapport gecontroleerd door een mens</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 12.5V4.5h8l9 9-8 8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="9" r="1.3" fill="currentColor"/></svg><span>Vaste prijzen, vanaf € 490</span></li></ul>
 </div></section>
 
-<section class="alt" aria-labelledby="why"><div class="wrap">
-<h2 id="why">Waarom nu</h2>
+<section class="alt" id="why" aria-labelledby="why-h"><div class="wrap">
+<h2 id="why-h">Waarom dit nu belangrijk is</h2>
 <p class="section-lead">Sinds 28 juni 2025 geldt de European Accessibility Act voor webshops die aan consumenten in de EU verkopen. De toezichthouders zijn begonnen met controleren, en de meeste webshops hebben nog drempels op weg naar de kassa.</p>
-<div class="grid-3"><div class="card"><div class="stat">9 / 10</div><p>Europese homepages zakken voor geautomatiseerde toegankelijkheidstests. Retail scoort het slechtst van 15 sectoren.</p><p class="src"><a href="https://www.digitaltrustindex.eu/">Digital Trust Index 2026</a></p></div><div class="card"><div class="stat">61%</div><p>van de grootste Nederlandse webshops die de ACM testte, liet een klant met hulpmiddelen geen bestelling plaatsen.</p><p class="src"><a href="https://www.acm.nl/nl/publicaties/acm-klant-met-beperking-kan-bij-merendeel-grote-webwinkels-niet-terecht">ACM, maart 2026</a></p></div><div class="card"><div class="stat">28.06.2025</div><p>De EAA geldt voor e-commerce. Nationale toezichthouders kunnen aanpassingen eisen en sancties opleggen.</p><p class="src"><a href="https://eur-lex.europa.eu/eli/dir/2019/882/oj">Richtlijn (EU) 2019/882</a></p></div></div>
+<div class="grid-3"><div class="card stat-card"><p class="stat">9 / 10</p><p>Europese homepages zakken voor geautomatiseerde toegankelijkheidstests. Retail scoort het slechtst van 15 sectoren.</p><p class="src">Bron: <a href="https://www.digitaltrustindex.eu/" rel="noopener">Digital Trust Index 2026</a></p></div><div class="card stat-card"><p class="stat">61%</p><p>van de grootste Nederlandse webshops die de ACM testte, liet een klant met hulpmiddelen geen bestelling plaatsen.</p><p class="src">Bron: <a href="https://www.acm.nl/nl/publicaties/acm-klant-met-beperking-kan-bij-merendeel-grote-webwinkels-niet-terecht" rel="noopener">ACM, maart 2026</a></p></div><div class="card stat-card"><p class="stat">28.06.2025</p><p>De EAA geldt voor e-commerce. Nationale toezichthouders kunnen aanpassingen eisen en sancties opleggen.</p><p class="src">Bron: <a href="https://eur-lex.europa.eu/eli/dir/2019/882/oj" rel="noopener">Richtlijn (EU) 2019/882</a></p></div></div>
+<div class="costs">
+<h3 class="costs-h">Wat wachten je kost</h3>
+<ul><li><svg class="ico cost-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="9" r="3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 19c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5M15.5 6.2a3 3 0 0 1 0 5.6M17 14.8c1.8.5 3 1.9 3.5 4.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><h3>Klanten die stilletjes afhaken</h3><p>Als een knop niet met het toetsenbord te bereiken is of een veld geen naam heeft, kan een klant met hulpmiddelen de bestelling niet afronden. De meesten klagen niet. Ze kopen ergens anders.</p></div></li><li><svg class="ico cost-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5.5" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 7l8.5 6 8.5-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><h3>Post van de toezichthouder</h3><p>Nationale toezichthouders kunnen je webshop controleren, aanpassingen binnen een termijn eisen en sancties opleggen. De ACM heeft al grote webshops getest en de resultaten gepubliceerd.</p></div></li><li><svg class="ico cost-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><h3>Waarschuwingsbrieven in Duitsland</h3><p>Verkoop je aan Duitse klanten? Ontbrekende toegankelijkheid onder de BFSG kan daar ook via het mededingingsrecht worden aangevochten, bijvoorbeeld met een formele waarschuwingsbrief (Abmahnung).</p></div></li></ul>
+<p class="costs-note">Het goede nieuws: de meeste drempels zijn kleine aanpassingen in de code, zodra je weet waar ze zitten.</p>
+</div>
 </div></section>
 
-<section aria-labelledby="what"><div class="wrap">
-<h2 id="what">Wat we controleren</h2>
+<section id="sample" aria-labelledby="sample-h"><div class="wrap">
+<h2 id="sample-h">Dit krijg je van ons</h2>
+<p class="section-lead">Bij elke bevinding staan de plek, een screenshot, wie er last van heeft en precies hoe je het oplost. Je ontwikkelaars kunnen meteen aan de slag, zonder eerst zelf uit te zoeken wat er moet gebeuren.</p>
+<div class="report">
+<div class="report-head">
+<div><p class="kicker">Toegankelijkheidsrapport · fragment</p><p class="report-title">Bestelroute: productpagina</p></div>
+<span class="report-mark" aria-hidden="true"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="1" y="1" width="30" height="30" rx="9" fill="#13212c"/><path d="M8 11h3l2.2 9h7.6l1.7-6.5H12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="24" r="1.6" fill="#ffbf47"/><circle cx="20" cy="24" r="1.6" fill="#ffbf47"/></svg></span>
+</div>
+<dl class="report-meta"><div><dt>Webshop</dt><dd>Nederlandse webshop (geanonimiseerd)</dd></div><div><dt>Norm</dt><dd>WCAG 2.1 AA / EN 301 549</dd></div><div><dt>Getest met</dt><dd>Toetsenbord, schermlezer, 200% zoom</dd></div><div><dt>Gecontroleerd door</dt><dd>Ivan Raylyan</dd></div></dl>
+<article class="finding" aria-labelledby="f1">
+<header class="finding-head">
+<p class="finding-num">Bevinding 1</p>
+<h3 id="f1">Knop In winkelwagen: toetsenbordfocus is niet zichtbaar</h3>
+<dl class="finding-meta">
+<div><dt class="sr">Ernst</dt><dd><span class="sev sev-high">Hoog</span></dd></div>
+<div><dt>WCAG</dt><dd>2.4.7 Focus zichtbaar (AA)</dd></div>
+<div><dt>Waar</dt><dd>Productpagina, hoofdknop om te kopen</dd></div>
+</dl>
+</header>
+<div class="finding-body">
+<div class="finding-col">
+<h4>Wat we zagen</h4><p>We liepen met de Tab-toets door de pagina. De knop krijgt de focus, maar ziet er precies hetzelfde uit.</p>
+<figure class="shot">
+<div class="shot-frame"><img src="/sample-nofocus.jpg" width="612" height="115" alt="Deel van een productpagina met een aantalveld en een oranje knop In winkelwagen. De knop heeft de toetsenbordfocus, maar niets laat dat zien." decoding="async">
+<span class="shot-ring" aria-hidden="true"></span><span class="shot-tag" aria-hidden="true">Hier staat de focus, onzichtbaar</span></div>
+</figure>
+<h4>Wie heeft er last van</h4><p>Klanten die een toetsenbord gebruiken in plaats van een muis, bijvoorbeeld door een motorische beperking of een blessure aan de hand. Ze zien niet welk element actief is en kunnen het product niet met zekerheid in de winkelwagen leggen.</p>
+</div>
+<div class="finding-col fix">
+<h4>Zo los je het op</h4><p>Voeg een duidelijk zichtbare focusstijl toe voor toetsenbordgebruikers. Met :focus-visible blijft het uiterlijk voor muisgebruikers hetzelfde.</p>
+<pre><code>.add-to-cart:focus-visible {
+  outline: 3px solid #13212c;
+  outline-offset: 3px;
+}</code></pre>
+</div>
+</div>
+</article><article class="finding" aria-labelledby="f2">
+<header class="finding-head">
+<p class="finding-num">Bevinding 2</p>
+<h3 id="f2">Kleuropties zijn afbeeldingen zonder tekstalternatief</h3>
+<dl class="finding-meta">
+<div><dt class="sr">Ernst</dt><dd><span class="sev sev-high">Hoog</span></dd></div>
+<div><dt>WCAG</dt><dd>1.1.1 Niet-tekstuele content (A)</dd></div>
+<div><dt>Waar</dt><dd>Productpagina, kleurkeuze</dd></div>
+</dl>
+</header>
+<div class="finding-body">
+<div class="finding-col">
+<h4>Wat we zagen</h4><p>De kleurstalen zijn afbeeldingen zonder alt-attribuut.</p>
+<div class="sr-demo"><div class="mock" aria-hidden="true"><span class="sw" style="background:#5b6b3a"></span><span class="sw sw-on" style="background:#2c5d86"></span><span class="sw" style="background:#d8c6a3"></span></div>
+<dl class="sr-out">
+<div><dt>Schermlezer zegt</dt><dd class="bad"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>&quot;afbeelding&quot;, &quot;afbeelding&quot;, &quot;afbeelding&quot;</span></dd></div>
+<div><dt>Na de oplossing</dt><dd class="good"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>&quot;Mosgroen&quot;, &quot;Oceaanblauw&quot;, &quot;Zand&quot;</span></dd></div>
+</dl></div>
+<h4>Wie heeft er last van</h4><p>Blinde en slechtziende klanten met een schermlezer. Ze horen drie keer alleen &quot;afbeelding&quot; en kunnen geen kleur kiezen, dus ook niet bestellen.</p>
+</div>
+<div class="finding-col fix">
+<h4>Zo los je het op</h4><p>Geef elke optie-afbeelding een korte alt-tekst met de naam van de kleur.</p>
+<pre><code>&lt;img src=&quot;mos.jpg&quot; alt=&quot;Mosgroen&quot;&gt;</code></pre>
+</div>
+</div>
+</article><article class="finding" aria-labelledby="f3">
+<header class="finding-head">
+<p class="finding-num">Bevinding 3</p>
+<h3 id="f3">Aantalveld en de knoppen ernaast hebben geen naam</h3>
+<dl class="finding-meta">
+<div><dt class="sr">Ernst</dt><dd><span class="sev sev-medium">Gemiddeld</span></dd></div>
+<div><dt>WCAG</dt><dd>1.3.1 Info en relaties (A), 4.1.2 Naam, rol, waarde (A)</dd></div>
+<div><dt>Waar</dt><dd>Productpagina, aantal kiezen</dd></div>
+</dl>
+</header>
+<div class="finding-body">
+<div class="finding-col">
+<h4>Wat we zagen</h4><p>Het veld heeft geen label, en de min- en plusknop bevatten alleen een symbool.</p>
+<div class="sr-demo"><div class="mock" aria-hidden="true"><span class="qty"><span>-</span><span class="qv">1</span><span>+</span></span></div>
+<dl class="sr-out">
+<div><dt>Schermlezer zegt</dt><dd class="bad"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>&quot;knop&quot;, &quot;bewerkbare tekst, 1&quot;, &quot;knop&quot;</span></dd></div>
+<div><dt>Na de oplossing</dt><dd class="good"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>&quot;Aantal verlagen&quot;, &quot;Aantal, 1&quot;, &quot;Aantal verhogen&quot;</span></dd></div>
+</dl></div>
+<h4>Wie heeft er last van</h4><p>Gebruikers van een schermlezer. Ze horen een invoerveld zonder naam en twee knoppen zonder naam, en moeten raden wat die doen.</p>
+</div>
+<div class="finding-col fix">
+<h4>Zo los je het op</h4><p>Koppel een label aan het veld en geef beide knoppen een toegankelijke naam.</p>
+<pre><code>&lt;label for=&quot;aantal&quot;&gt;Aantal&lt;/label&gt;
+&lt;button aria-label=&quot;Aantal verlagen&quot;&gt;-&lt;/button&gt;
+&lt;input id=&quot;aantal&quot; type=&quot;number&quot; value=&quot;1&quot;&gt;
+&lt;button aria-label=&quot;Aantal verhogen&quot;&gt;+&lt;/button&gt;</code></pre>
+</div>
+</div>
+</article>
+</div>
+<p class="note sample-note">Bevinding 1 komt uit een echte check van een Nederlandse webshop, geanonimiseerd. Bevindingen 2 en 3 tonen veelvoorkomende problemen in hetzelfde format. Een volledige audit beslaat tot 8 pagina&#x27;s, met elke bevinding in dit format.</p>
+</div></section>
+
+<section class="alt" aria-labelledby="what-h"><div class="wrap">
+<h2 id="what-h">Wat we controleren</h2>
 <p class="section-lead">We volgen de route van een echte klant: product zoeken, opties kiezen, in de winkelwagen, naar de kassa.</p>
-<div class="grid-3"><div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M3 6h18v12H3z" fill="none" stroke="#0b5f5f" stroke-width="2" rx="2"/><path d="M6 10h2M10 10h2M14 10h2M18 10h0M7 14h10" stroke="#0b5f5f" stroke-width="2" stroke-linecap="round"/></svg></div><h3>Toetsenbordroute naar de kassa</h3><p>Kan elke stap zonder muis, en is altijd te zien waar de focus staat?</p></div><div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M4 9v6h4l5 4V5L8 9z" fill="none" stroke="#0b5f5f" stroke-width="2" stroke-linejoin="round"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11" fill="none" stroke="#0b5f5f" stroke-width="2" stroke-linecap="round"/></svg></div><h3>Namen voor schermlezers</h3><p>Zeggen knoppen, afbeeldingen, productopties en velden wat ze zijn?</p></div><div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="8" fill="none" stroke="#0b5f5f" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16z" fill="#0b5f5f"/></svg></div><h3>Contrast en zoom</h3><p>Is tekst leesbaar voor slechtzienden, en werkt de pagina nog op 200% zoom?</p></div><div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2" fill="none" stroke="#0b5f5f" stroke-width="2"/><path d="M8 9h8M8 13h8M8 17h4" stroke="#0b5f5f" stroke-width="2" stroke-linecap="round"/></svg></div><h3>Formulieren en foutmeldingen</h3><p>Hebben velden een label, en zijn foutmeldingen voor iedereen begrijpelijk?</p></div><div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="7" y="3" width="10" height="18" rx="2" fill="none" stroke="#0b5f5f" stroke-width="2"/><path d="M11 18h2" stroke="#0b5f5f" stroke-width="2" stroke-linecap="round"/></svg></div><h3>Mobiel</h3><p>Werkt de bestelroute op een telefoon, ook met zoom en in liggende stand?</p></div><div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M7 3h7l4 4v14H7z" fill="none" stroke="#0b5f5f" stroke-width="2" stroke-linejoin="round"/><path d="M10 12l2 2 4-4" fill="none" stroke="#0b5f5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Toegankelijkheidsverklaring</h3><p>De EAA vraagt je uit te leggen hoe je dienst aan de eisen voldoet. Wij schrijven een concept voor je.</p></div></div>
+<ul class="grid-3 plain"><li class="card check-card"><span class="icon-tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="6" width="18" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Toetsenbordroute naar de kassa</h3><p>Kan elke stap zonder muis, en is altijd te zien waar de focus staat?</p></li><li class="card check-card"><span class="icon-tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9v6h4l5 4V5L8 9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Namen voor schermlezers</h3><p>Zeggen knoppen, afbeeldingen, productopties en velden wat ze zijn?</p></li><li class="card check-card"><span class="icon-tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg></span><h3>Contrast en zoom</h3><p>Is tekst leesbaar voor slechtzienden, en werkt de pagina nog op 200% zoom?</p></li><li class="card check-card"><span class="icon-tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 9h8M8 13h8M8 17h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Formulieren en foutmeldingen</h3><p>Hebben velden een label, en zijn foutmeldingen voor iedereen begrijpelijk?</p></li><li class="card check-card"><span class="icon-tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="7" y="3" width="10" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 18h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Mobiel</h3><p>Werkt de bestelroute op een telefoon, ook met zoom en in liggende stand?</p></li><li class="card check-card"><span class="icon-tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3h7l4 4v14H7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 13l2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Toegankelijkheidsverklaring</h3><p>De EAA vraagt je uit te leggen hoe je dienst aan de eisen voldoet. Wij schrijven een concept voor je.</p></li></ul>
 </div></section>
 
-<section class="alt" id="packages" aria-labelledby="pk"><div class="wrap">
-<h2 id="pk">Pakketten</h2>
-<p class="section-lead">Begin gratis. Betaal pas als de mini-check laat zien dat het de moeite waard is.</p>
-<div class="grid-4"><div class="card price-card"><h3>Mini-check</h3><p class="price">Gratis <small></small></p><ul><li>2-3 echte drempels in je bestelroute</li><li>Screenshots en korte uitleg</li><li>Klaar binnen 48 uur</li><li>Geen toegang of code nodig</li></ul></div><div class="card price-card featured"><span class="badge">Meest gekozen</span><h3>Volledige audit</h3><p class="price">vanaf € 490 <small>eenmalig</small></p><ul><li>Tot 8 belangrijke pagina&#x27;s: home, categorie, product, winkelwagen, kassa</li><li>Tests met alleen toetsenbord en schermlezerchecks</li><li>Desktop en mobiel</li><li>Geprioriteerde lijst met WCAG-verwijzingen</li><li>Concept toegankelijkheidsverklaring</li></ul></div><div class="card price-card"><h3>Hertest</h3><p class="price">€ 200 <small>eenmalig</small></p><ul><li>Nadat je ontwikkelaars de punten hebben opgelost</li><li>Elke bevinding opnieuw gecontroleerd</li><li>Bijgewerkt rapport om te laten zien</li></ul></div><div class="card price-card"><h3>Monitoring</h3><p class="price">€ 79 <small>/ maand</small></p><ul><li>Maandelijkse check van je belangrijkste pagina&#x27;s</li><li>Melding als een release iets breekt</li><li>Korte samenvatting per kwartaal</li></ul></div></div>
+<section id="packages" aria-labelledby="pk-h"><div class="wrap">
+<h2 id="pk-h">Pakketten en prijzen</h2>
+<p class="section-lead">Begin gratis. Betaal pas als de mini-check laat zien dat het de moeite waard is. Vaste prijzen, geen uurtje-factuurtje.</p>
+<div class="pk-main"><div class="card pk pk-free"><p class="badge badge-free">Begin hier</p><h3>Mini-check</h3><p class="price">Gratis <small>vrijblijvend</small></p><p class="pk-desc">Zie wat je klanten tegenhoudt, voordat je iets uitgeeft.</p><p class="pk-time"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Binnen 48 uur geleverd</p><ul class="ticks"><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>2-3 echte drempels in je bestelroute</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Screenshots, wie er last van heeft, hoe je het oplost</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Persoonlijk gecontroleerd door Ivan</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Geen inloggegevens, geen code, geen betaalgegevens</span></li></ul><a class="btn btn-primary btn-block" href="#check">Vraag mijn gratis mini-check aan</a></div><div class="card pk pk-rec"><p class="badge">Aanbevolen</p><h3>Volledige audit</h3><p class="price">vanaf € 490 <small>eenmalig, vaste prijs</small></p><p class="pk-desc">Het complete beeld en een verbeterlijst waar je ontwikkelaars mee verder kunnen.</p><p class="pk-time"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Binnen 5 werkdagen geleverd</p><ul class="ticks"><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Tot 8 belangrijke pagina&#x27;s: home, categorie, product, winkelwagen, kassa</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Tests met alleen het toetsenbord en met een schermlezer</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Desktop en mobiel</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Geprioriteerde lijst met WCAG-verwijzingen en codevoorbeelden</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Concept toegankelijkheidsverklaring</span></li></ul><a class="btn btn-ghost btn-block" href="mailto:ivan@everyonecanshop.com?subject=Volledige%20audit%20voor%20mijn%20webshop">Vraag een volledige audit aan</a></div></div>
+<div class="pk-side"><div class="card pk pk-plain"><h3>Hertest</h3><p class="price">€ 200 <small>eenmalig</small></p><p class="pk-desc">Bewijs dat de oplossingen werken.</p><ul class="ticks"><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Nadat je ontwikkelaars de punten hebben opgelost</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Elke bevinding opnieuw gecontroleerd</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Bijgewerkt rapport om te laten zien</span></li></ul></div><div class="card pk pk-plain"><h3>Monitoring</h3><p class="price">€ 79 <small>per maand</small></p><p class="pk-desc">Blijf toegankelijk na elke release.</p><ul class="ticks"><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Maandelijkse check van je belangrijkste pagina&#x27;s</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Melding als een release iets breekt</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Korte samenvatting per kwartaal</span></li></ul></div></div>
 <p class="note">Prijzen voor zakelijke klanten, exclusief btw (verlegd binnen de EU).</p>
 </div></section>
 
-<section aria-labelledby="how"><div class="wrap">
-<h2 id="how">Zo werkt het</h2>
-<ol class="steps"><li><h3>Stuur je URL</h3><p>Eén e-mail met het adres van je webshop is genoeg.</p></li><li><h3>Gratis mini-check</h3><p>Binnen 48 uur: de belangrijkste drempels met screenshots.</p></li><li><h3>Volledige audit</h3><p>Binnen 5 werkdagen: het complete rapport en de verbeterlijst.</p></li><li><h3>Oplossen en hertest</h3><p>Je ontwikkelaars passen het aan, wij bevestigen dat het werkt.</p></li></ol>
+<section class="alt" aria-labelledby="how-h"><div class="wrap">
+<h2 id="how-h">Zo werkt het</h2>
+<ol class="steps"><li><h3>Stuur je URL</h3><p>Via het formulier of één e-mail met het adres van je webshop. Meer hebben we niet nodig.</p></li><li><h3>Gratis mini-check</h3><p>Binnen 48 uur: de belangrijkste drempels met screenshots en oplossingen.</p></li><li><h3>Volledige audit, als je wilt</h3><p>Binnen 5 werkdagen: het complete rapport en de verbeterlijst.</p></li><li><h3>Oplossen en hertest</h3><p>Je ontwikkelaars passen het aan, wij bevestigen dat het werkt.</p></li></ol>
 </div></section>
 
-<section class="alt" aria-labelledby="who"><div class="wrap about">
-<img src="/ivan.jpg" alt="Portret van Ivan Raylyan" width="140" height="140">
-<div><h2 id="who">Wie zit erachter</h2><p>Ik ben Ivan Raylyan, QA-engineer met meer dan 6 jaar ervaring in het testen van SaaS-producten in legal, regulatory en financial tech, waar compliance centraal staat. Releases, regressie, echte apparaten, en nu toegankelijkheid.</p><p>Geautomatiseerde tools dekken snel veel af. Daarna wordt de bestelroute stap voor stap getest met het toetsenbord en schermlezerchecks, en ik controleer elk rapport voordat het de deur uitgaat. Gevestigd in Boekarest, werkzaam voor webshops in de hele EU.</p></div>
+<section id="about" aria-labelledby="about-h"><div class="wrap">
+<div class="about">
+<div class="about-photo">
+<img src="/ivan.jpg" width="480" height="480" alt="Portret van Ivan Raylyan" decoding="async">
+<p class="about-li"><a href="https://www.linkedin.com/in/ivan-raylyan-672204320" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.6 4.77 6V21h-4v-5.1c0-1.22-.02-2.8-1.7-2.8-1.72 0-1.98 1.33-1.98 2.7V21h-4z"/></svg><span>Ivan op LinkedIn</span></a></p>
+</div>
+<div class="about-text">
+<h2 id="about-h">Jouw auditor: Ivan Raylyan</h2>
+<p class="about-role">Engineering &amp; Delivery Manager · Boekarest, Roemenië</p>
+<p>Ik leid engineering en delivery in meerdere IT-projecten, van productontwikkeling tot outsourcing. Ik ben begonnen in QA: eerst handmatig testen, daarna testautomatisering met Selenium, Cypress en Pytest.</p><p>Al meer dan 6 jaar werk ik aan SaaS-producten in sectoren waar compliance centraal staat: legal, regulatory en financial tech. Daar moet elke bevinding onderbouwd zijn en moet elke release kloppen. Diezelfde discipline breng ik mee naar jouw webshop.</p><p>AI-agents zijn een vast onderdeel van mijn werk: ze automatiseren het terugkerende werk. Voor jouw audit betekent dat: AI-ondersteund testen dekt snel elke pagina af, en ik controleer persoonlijk elke bevinding en elk rapport voordat het bij jou is.</p>
+<blockquote><p>Je krijgt de snelheid van geautomatiseerd testen en het oordeel van iemand die al jaren releases en kwaliteit bewaakt.</p></blockquote>
+<h3 class="facts-h">In het kort</h3>
+<ul class="ticks facts"><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Engineering &amp; Delivery Manager</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Begonnen in QA: handmatig testen, daarna Selenium, Cypress, Pytest</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>6+ jaar in SaaS met strenge compliance-eisen</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Werkt dagelijks met AI-agents</span></li></ul>
+</div>
+</div>
 </div></section>
 
-<section aria-labelledby="faqh"><div class="wrap">
-<h2 id="faqh">Vragen</h2>
-<details><summary>Geldt de EAA voor mijn webshop?</summary><p>Ze geldt voor bedrijven die aan consumenten in de EU verkopen. Micro-ondernemingen die diensten leveren zijn uitgezonderd: minder dan 10 medewerkers en een jaaromzet of balanstotaal tot € 2 miljoen. Zit je daarboven, dan geldt ze vrijwel zeker. Dit is geen juridisch advies.</p></details><details><summary>Lost een toegankelijkheidswidget het op?</summary><p>Nee. Widgets veranderen hoe een pagina eruitziet, maar repareren de code eronder niet: knoppen zonder naam, toetsenbordvallen en velden zonder label blijven. Toezichthouders kijken naar wat klanten echt kunnen.</p></details><details><summary>Wat hebben jullie van ons nodig?</summary><p>Alleen de URL van je webshop. We testen de openbare site zoals een klant dat doet. Geen inloggegevens, geen toegang tot code. In de kassa stoppen we vóór de betaling.</p></details><details><summary>Lossen jullie de problemen op?</summary><p>Meestal doen je eigen ontwikkelaars of je bureau dat, met ons rapport: bij elk punt staan de plek, een screenshot en wat er moet veranderen. Daarna testen wij opnieuw.</p></details><details><summary>Is het rapport een juridisch certificaat?</summary><p>Nee. Het is een professionele test tegen WCAG 2.1 AA, de technische norm achter EN 301 549 en de EAA. Het laat zien waar je staat en wat je eerst moet aanpakken.</p></details>
+<section class="alt" aria-labelledby="cmp-h"><div class="wrap">
+<h2 id="cmp-h">Waarom geen bureau of widget?</h2>
+<p class="section-lead">Een eerlijke vergelijking van de drie gebruikelijke opties.</p>
+<div class="grid-3 cmp-grid"><div class="card cmp"><h3>Klassieke bureau-audit</h3><dl><div><dt>Prijs</dt><dd>€ 1.500-5.000 per audit</dd></div><div><dt>Doorlooptijd</dt><dd>Vaak meerdere weken</dd></div><div><dt>Lost het de code op?</dt><dd><span class="yn yn-yes"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Ja, als je ontwikkelaars het rapport uitvoeren</span></dd></div><div><dt>Wat je krijgt</dt><dd>Een uitgebreid rapport, vaak erg lang</dd></div></dl></div><div class="card cmp"><h3>Overlay-widget</h3><dl><div><dt>Prijs</dt><dd>Maandabonnement</dd></div><div><dt>Doorlooptijd</dt><dd>In een paar minuten geïnstalleerd</dd></div><div><dt>Lost het de code op?</dt><dd><span class="yn yn-no"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Nee, de code eronder blijft hetzelfde</span></dd></div><div><dt>Wat je krijgt</dt><dd>Een werkbalk bovenop je webshop</dd></div></dl></div><div class="card cmp cmp-ours"><h3>EveryoneCanShop</h3><dl><div><dt>Prijs</dt><dd>Vaste prijs, vanaf € 490</dd></div><div><dt>Doorlooptijd</dt><dd>5 werkdagen</dd></div><div><dt>Lost het de code op?</dt><dd><span class="yn yn-yes"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Ja, je ontwikkelaars krijgen een exacte verbeterlijst</span></dd></div><div><dt>Wat je krijgt</dt><dd>Geprioriteerde bevindingen met screenshots, WCAG-verwijzingen en code, gecontroleerd door een mens</dd></div></dl></div></div>
 </div></section>
 
-<section aria-labelledby="fin"><div class="wrap"><div class="final">
-<div><h2 id="fin">Weet het binnen 48 uur</h2><p>Stuur de URL van je webshop en krijg gratis de eerste drempels met screenshots.</p></div>
-<a class="btn btn-primary" href="mailto:ivan@everyonecanshop.com?subject=Gratis mini-check voor mijn webshop">Gratis mini-check aanvragen</a>
+<section id="faq" aria-labelledby="faq-h"><div class="wrap narrow">
+<h2 id="faq-h">Vragen</h2>
+<details><summary>Geldt de EAA voor mijn webshop?</summary><p>Ze geldt voor bedrijven die aan consumenten in de EU verkopen. Micro-ondernemingen die diensten leveren zijn uitgezonderd: minder dan 10 medewerkers en een jaaromzet of balanstotaal tot € 2 miljoen. Zit je daarboven, dan geldt ze vrijwel zeker. Dit is geen juridisch advies.</p></details><details><summary>Hoe testen jullie zonder toegang?</summary><p>We bezoeken je openbare webshop zoals een klant: rondkijken, een product kiezen, in de winkelwagen leggen en door de kassa tot aan de betaalstap. We gebruiken het toetsenbord, een schermlezer, zoom en geautomatiseerde checks. Niets te installeren, geen inloggegevens, geen toegang tot code.</p></details><details><summary>Zijn onze gegevens veilig?</summary><p>We zien alleen wat elke bezoeker ziet. We plaatsen nooit echte bestellingen: we stoppen vóór de betaling. We hebben geen klantgegevens, wachtwoorden of beheerderstoegang nodig. Onze eigen site gebruikt geen cookies en geen tracking.</p></details><details><summary>Lost een toegankelijkheidswidget het op?</summary><p>Nee. Widgets veranderen hoe een pagina eruitziet, maar repareren de code eronder niet: knoppen zonder naam, toetsenbordvallen en velden zonder label blijven. Toezichthouders kijken naar wat klanten echt kunnen.</p></details><details><summary>Wat hebben jullie van ons nodig?</summary><p>Alleen de URL van je webshop. Als je wilt, laat je weten welke pagina's voor jou het belangrijkst zijn.</p></details><details><summary>Lossen jullie de problemen op?</summary><p>Meestal doen je eigen ontwikkelaars of je bureau dat, met ons rapport: bij elk punt staan de plek, een screenshot en wat er moet veranderen. Daarna testen wij opnieuw.</p></details><details><summary>En als jullie niets vinden?</summary><p>Dan krijg je dat zwart op wit, met wat we getest hebben, zonder kosten. Bij echte webshops is dat zeldzaam: in de test van de ACM blokkeerde 61% van de grootste Nederlandse webshops bestellen met hulpmiddelen.</p></details><details><summary>Is het rapport een juridisch certificaat?</summary><p>Nee. Het is een professionele test tegen WCAG 2.1 AA, de technische norm achter EN 301 549 en de EAA. Het laat zien waar je staat en wat je eerst moet aanpakken.</p></details>
+</div></section>
+
+<section class="final-wrap" aria-labelledby="fin-h"><div class="wrap"><div class="final">
+<div class="final-copy">
+<h2 id="fin-h">Weet binnen 48 uur waar je staat</h2>
+<p>Stuur de URL van je webshop. Je krijgt de eerste echte drempels met screenshots en oplossingen, gratis en vrijblijvend.</p>
+<div class="final-auditor"><img src="/ivan-sm.jpg" width="48" height="48" alt=""><span>Ivan Raylyan · Jouw auditor</span></div>
+</div>
+<form class="check-form on-dark" action="mailto:ivan@everyonecanshop.com" method="get"
+ data-to="ivan@everyonecanshop.com" data-subject="Gratis mini-check voor mijn webshop" data-body="Hoi Ivan,
+
+Graag een gratis mini-check voor mijn webshop:
+{url}
+
+Bedankt!"
+ data-err="Vul het adres van je webshop in, bijvoorbeeld www.jouwwebshop.nl." data-sent="Je e-mailprogramma opent nu met een kant-en-klaar bericht. Gebeurt er niets? Mail dan naar ivan@everyonecanshop.com.">
+<input type="hidden" name="subject" value="Gratis mini-check voor mijn webshop">
+<label for="url-final">URL van je webshop</label>
+<div class="field-row">
+<input id="url-final" name="body" type="text" inputmode="url" autocomplete="url" spellcheck="false" autocapitalize="off" required placeholder="www.jouwwebshop.nl" aria-describedby="hint-final err-final">
+<button type="submit" class="btn btn-primary">Vraag mijn gratis mini-check aan<svg class="ico btn-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+<p class="form-hint" id="hint-final"><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Gratis en vrijblijvend. Geen inloggegevens, geen betaalgegevens.</p>
+<p class="form-error" id="err-final" aria-live="assertive"></p>
+<p class="form-status" role="status"></p>
+<p class="form-alt">Liever zelf mailen? <a href="mailto:ivan@everyonecanshop.com?subject=Gratis%20mini-check%20voor%20mijn%20webshop">ivan@everyonecanshop.com</a></p>
+</form>
 </div></div></section>
 </main>
+
 <footer class="site"><div class="wrap">
-<div><p><strong>EveryoneCanShop</strong></p><p>Gerund door Ivan Raylyan · Boekarest, Roemenië</p><p><a href="mailto:ivan@everyonecanshop.com">ivan@everyonecanshop.com</a></p></div>
-<div><p>Geen cookies, geen tracking.</p><p>Deze site streeft naar WCAG 2.1 AA. Een drempel gevonden? Mail ons.</p></div>
+<div class="foot-brand"><a class="logo" href="/nl/"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="1" y="1" width="30" height="30" rx="9" fill="#13212c"/><path d="M8 11h3l2.2 9h7.6l1.7-6.5H12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="24" r="1.6" fill="#ffbf47"/><circle cx="20" cy="24" r="1.6" fill="#ffbf47"/></svg><span>EveryoneCanShop</span></a><p>Gerund door Ivan Raylyan · Boekarest, Roemenië</p></div>
+<div><h2 class="foot-h">Contact</h2>
+<ul class="foot-list"><li><a href="mailto:ivan@everyonecanshop.com">ivan@everyonecanshop.com</a></li><li><a href="https://www.linkedin.com/in/ivan-raylyan-672204320" rel="noopener">LinkedIn</a></li></ul></div>
+<div class="foot-small"><p>Geen cookies, geen tracking.</p><p>Deze site streeft naar WCAG 2.1 AA en is getest met axe-core en het toetsenbord. Een drempel gevonden? Mail ons.</p></div>
 </div></footer>
+<script>
+(function(){
+  var forms=document.querySelectorAll("form.check-form");
+  for(var k=0;k<forms.length;k++){(function(f){
+    f.noValidate=true;
+    var input=f.querySelector("input[name=body]"),err=f.querySelector(".form-error"),st=f.querySelector(".form-status");
+    f.addEventListener("submit",function(e){
+      e.preventDefault();
+      var v=input.value.trim();
+      if(!/^[^\s]+\.[a-z]{2,}/i.test(v.replace(/^https?:\/\//i,""))){
+        err.textContent=f.getAttribute("data-err");input.setAttribute("aria-invalid","true");st.textContent="";input.focus();return;
+      }
+      err.textContent="";input.removeAttribute("aria-invalid");
+      var href="mailto:"+f.getAttribute("data-to")+"?subject="+encodeURIComponent(f.getAttribute("data-subject"))+"&body="+encodeURIComponent(f.getAttribute("data-body").replace("{url}",v));
+      st.textContent=f.getAttribute("data-sent");
+      window.location.href=href;
+    });
+  })(forms[k]);}
+  var links=document.querySelectorAll('a[href="#check"]'),first=document.getElementById("url-hero");
+  for(var j=0;j<links.length;j++){links[j].addEventListener("click",function(){setTimeout(function(){first.focus({preventScroll:true});},0);});}
+})();
+</script>
 </body>
 </html>

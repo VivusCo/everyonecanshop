@@ -4,7 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EveryoneCanShop · Accessibility audits for webshops (EAA, WCAG 2.1 AA)</title>
-<meta name="description" content="We test your webshop the way customers with disabilities use it and give your developers a clear, prioritized fix list. European Accessibility Act, WCAG 2.1 AA.">
+<meta name="description" content="Free mini check in 48 hours: we test your webshop the way customers with disabilities use it and send you real barriers with screenshots and fixes. European Accessibility Act, WCAG 2.1 AA.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#fbf9f4">
 <link rel="canonical" href="https://everyonecanshop.com/">
 <link rel="alternate" hreflang="en" href="https://everyonecanshop.com/">
 <link rel="alternate" hreflang="nl" href="https://everyonecanshop.com/nl/">
@@ -12,93 +14,283 @@
 <link rel="alternate" hreflang="de" href="https://everyonecanshop.com/de/">
 <link rel="alternate" hreflang="x-default" href="https://everyonecanshop.com/">
 <meta property="og:title" content="EveryoneCanShop · Accessibility audits for webshops (EAA, WCAG 2.1 AA)">
-<meta property="og:description" content="We test your webshop the way customers with disabilities use it and give your developers a clear, prioritized fix list. European Accessibility Act, WCAG 2.1 AA.">
+<meta property="og:description" content="Free mini check in 48 hours: we test your webshop the way customers with disabilities use it and send you real barriers with screenshots and fixes. European Accessibility Act, WCAG 2.1 AA.">
 <meta property="og:url" content="https://everyonecanshop.com/">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://everyonecanshop.com/ivan.jpg">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/style.css">
-<style>.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="wrap">
 <a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="1" y="1" width="30" height="30" rx="9" fill="#13212c"/><path d="M8 11h3l2.2 9h7.6l1.7-6.5H12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="24" r="1.6" fill="#ffbf47"/><circle cx="20" cy="24" r="1.6" fill="#ffbf47"/></svg><span>EveryoneCanShop</span></a>
+<nav class="primary" aria-label="Main"><ul><li><a href="#sample">Sample report</a></li><li><a href="#packages">Prices</a></li><li><a href="#about">About</a></li><li><a href="#faq">FAQ</a></li></ul></nav>
+<div class="head-right">
 <nav class="lang" aria-label="Language"><ul><li><a href="/" hreflang="en" lang="en" aria-current="page"><span aria-hidden="true">EN</span><span class="sr">English</span></a></li><li><a href="/nl/" hreflang="nl" lang="nl"><span aria-hidden="true">NL</span><span class="sr">Nederlands</span></a></li><li><a href="/fr/" hreflang="fr" lang="fr"><span aria-hidden="true">FR</span><span class="sr">Français</span></a></li><li><a href="/de/" hreflang="de" lang="de"><span aria-hidden="true">DE</span><span class="sr">Deutsch</span></a></li></ul></nav>
+<a class="btn btn-primary btn-sm head-cta" href="#check">Free mini check</a>
+</div>
 </div></header>
+
 <main id="main">
 <section class="hero" aria-labelledby="h1"><div class="wrap">
-<div>
-<span class="eyebrow">European Accessibility Act · WCAG 2.1 AA</span>
-<h1 id="h1">Can every customer reach your checkout?</h1>
-<p class="lead">We test your webshop the way customers with disabilities use it: keyboard only, with a screen reader, zoomed in. You get a clear report your developers can act on right away.</p>
-<div class="cta-row"><a class="btn btn-primary" href="mailto:ivan@everyonecanshop.com?subject=Free mini check for my shop">Get a free mini check</a><a class="btn btn-ghost" href="#packages">See packages</a></div>
-<p class="note">Just send your shop URL. Within 48 hours you get 2-3 concrete barriers with screenshots.</p>
+<div class="hero-grid">
+<div class="hero-copy">
+<p class="eyebrow">European Accessibility Act · WCAG 2.1 AA</p>
+<h1 id="h1">Find out in 48 hours if every customer can buy from your shop.</h1>
+<p class="lead">We test your webshop the way people with disabilities use it: keyboard only, with a screen reader, zoomed in. You get the real barriers with screenshots and a clear fix for each one.</p>
+<div class="form-card" id="check">
+<form class="check-form" action="mailto:ivan@everyonecanshop.com" method="get"
+ data-to="ivan@everyonecanshop.com" data-subject="Free mini check for my shop" data-body="Hello Ivan,
+
+Please run a free mini check for my shop:
+{url}
+
+Thank you!"
+ data-err="Please enter your shop address, for example www.yourshop.com." data-sent="Your email app should open now with a prepared message. If nothing happens, write to ivan@everyonecanshop.com.">
+<input type="hidden" name="subject" value="Free mini check for my shop">
+<label for="url-hero">Your shop URL</label>
+<div class="field-row">
+<input id="url-hero" name="body" type="text" inputmode="url" autocomplete="url" spellcheck="false" autocapitalize="off" required placeholder="www.yourshop.com" aria-describedby="hint-hero err-hero">
+<button type="submit" class="btn btn-primary">Get my free mini check<svg class="ico btn-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 </div>
-<div><svg viewBox="0 0 440 380" role="img" aria-labelledby="hero-title">
-<title id="hero-title">A product page where the Add to cart button has a clearly visible keyboard focus ring.</title>
-<rect x="20" y="20" width="400" height="340" rx="22" fill="#fff" stroke="#e3ded2" stroke-width="2"/>
-<rect x="44" y="44" width="160" height="190" rx="14" fill="#eef5f3"/>
-<path d="M92 200h64l-8 26h-48z" fill="#0b5f5f"/><path d="M124 196c-24-30-30-62-10-92 4 30 18 54 10 92z" fill="#4c9a7a"/>
-<path d="M124 196c20-24 36-40 46-70-20 14-38 34-46 70z" fill="#6bb391"/>
-<rect x="228" y="56" width="168" height="16" rx="8" fill="#13212c"/>
-<rect x="228" y="84" width="120" height="12" rx="6" fill="#c9c3b6"/>
-<text x="228" y="140" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="30" font-weight="800" fill="#13212c">€ 24,90</text>
-<rect x="228" y="160" width="40" height="40" rx="10" fill="#fff" stroke="#c9c3b6" stroke-width="2"/>
-<text x="248" y="186" text-anchor="middle" font-family="-apple-system,Arial,sans-serif" font-size="18" fill="#13212c">1</text>
-<rect x="276" y="152" width="128" height="56" rx="16" fill="none" stroke="#13212c" stroke-width="5"/>
-<rect x="281" y="157" width="118" height="46" rx="12" fill="none" stroke="#ffbf47" stroke-width="6"/>
-<rect x="286" y="162" width="108" height="36" rx="9" fill="#0b5f5f"/>
-<text x="340" y="186" text-anchor="middle" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#fff">Add to cart</text>
-<rect x="44" y="262" width="352" height="74" rx="14" fill="#fbf9f4" stroke="#e3ded2" stroke-width="2"/>
-<rect x="62" y="280" width="64" height="38" rx="8" fill="#fff" stroke="#13212c" stroke-width="2.5"/>
-<text x="94" y="305" text-anchor="middle" font-family="-apple-system,Arial,sans-serif" font-size="16" font-weight="800" fill="#13212c">Tab</text>
-<text x="142" y="296" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="15" font-weight="700" fill="#13212c">Keyboard focus is visible</text>
-<text x="142" y="318" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="14" fill="#3c4b57">Every customer knows where they are</text>
-</svg></div>
+<p class="form-hint" id="hint-hero"><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Free and without obligation. No logins, no payment details.</p>
+<p class="form-error" id="err-hero" aria-live="assertive"></p>
+<p class="form-status" role="status"></p>
+<p class="form-alt">Prefer to write yourself? <a href="mailto:ivan@everyonecanshop.com?subject=Free%20mini%20check%20for%20my%20shop">ivan@everyonecanshop.com</a></p>
+</form>
+</div>
+<div class="auditor">
+<img src="/ivan-sm.jpg" width="72" height="72" alt="Portrait of Ivan Raylyan">
+<div><p class="auditor-name">Ivan Raylyan <span>· Your auditor</span></p>
+<p class="auditor-line">I review every finding myself before the report reaches you.</p>
+<p class="auditor-link"><a href="#sample">See a sample report</a></p></div>
+</div>
+</div>
+<div class="hero-visual"><figure class="peek" aria-labelledby="peek-cap">
+<div class="peek-doc">
+<div class="peek-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+<p class="kicker">Mini check · example</p>
+<p class="peek-title">3 barriers on the purchase path</p>
+<ol class="peek-list"><li><span class="sev sev-high">High</span><span class="peek-text">Add to cart: keyboard focus not visible</span><span class="peek-ref">WCAG 2.4.7</span></li><li><span class="sev sev-high">High</span><span class="peek-text">Colour options: images without text</span><span class="peek-ref">WCAG 1.1.1</span></li><li><span class="sev sev-medium">Medium</span><span class="peek-text">Quantity field has no label</span><span class="peek-ref">WCAG 1.3.1</span></li></ol>
+<div class="peek-foot">
+<span><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Reviewed by Ivan Raylyan</span>
+<span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Delivered within 48 hours</span>
+</div>
+</div>
+<figcaption id="peek-cap">Example: summary of a mini check</figcaption>
+</figure></div>
+</div>
+<ul class="trust" aria-label="What you can rely on"><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v16M7 20h10M5 7h14M5 7l-2.5 6a3 3 0 0 0 5 0zM19 7l-2.5 6a3 3 0 0 0 5 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>WCAG 2.1 AA · EN 301 549 · EAA</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>No logins or code access</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8.5" r="3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 20c1-3.5 3.8-5.5 7-5.5s6 2 7 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Every report reviewed by a person</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 12.5V4.5h8l9 9-8 8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="9" r="1.3" fill="currentColor"/></svg><span>Fixed prices, from €490</span></li></ul>
 </div></section>
 
-<section class="alt" aria-labelledby="why"><div class="wrap">
-<h2 id="why">Why now</h2>
+<section class="alt" id="why" aria-labelledby="why-h"><div class="wrap">
+<h2 id="why-h">Why this matters now</h2>
 <p class="section-lead">Since 28 June 2025 the European Accessibility Act applies to webshops that sell to consumers in the EU. Regulators have started checking, and most shops still have barriers on the way to checkout.</p>
-<div class="grid-3"><div class="card"><div class="stat">9 / 10</div><p>European homepages fail automated accessibility checks. Retail ranks last of 15 sectors.</p><p class="src"><a href="https://www.digitaltrustindex.eu/">Digital Trust Index 2026</a></p></div><div class="card"><div class="stat">61%</div><p>of the largest Dutch shops tested by the regulator ACM did not let a customer using assistive technology place an order.</p><p class="src"><a href="https://www.acm.nl/nl/publicaties/acm-klant-met-beperking-kan-bij-merendeel-grote-webwinkels-niet-terecht">ACM, March 2026</a></p></div><div class="card"><div class="stat">28.06.2025</div><p>The EAA applies to e-commerce. National authorities can demand fixes and impose penalties.</p><p class="src"><a href="https://eur-lex.europa.eu/eli/dir/2019/882/oj">Directive (EU) 2019/882</a></p></div></div>
+<div class="grid-3"><div class="card stat-card"><p class="stat">9 / 10</p><p>European homepages fail automated accessibility checks. Retail ranks last of 15 sectors.</p><p class="src">Source: <a href="https://www.digitaltrustindex.eu/" rel="noopener">Digital Trust Index 2026</a></p></div><div class="card stat-card"><p class="stat">61%</p><p>of the largest Dutch shops tested by the regulator ACM did not let a customer using assistive technology place an order.</p><p class="src">Source: <a href="https://www.acm.nl/nl/publicaties/acm-klant-met-beperking-kan-bij-merendeel-grote-webwinkels-niet-terecht" rel="noopener">ACM, March 2026</a></p></div><div class="card stat-card"><p class="stat">28.06.2025</p><p>The EAA applies to e-commerce. National authorities can demand fixes and impose penalties.</p><p class="src">Source: <a href="https://eur-lex.europa.eu/eli/dir/2019/882/oj" rel="noopener">Directive (EU) 2019/882</a></p></div></div>
+<div class="costs">
+<h3 class="costs-h">What waiting costs you</h3>
+<ul><li><svg class="ico cost-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="9" r="3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 19c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5M15.5 6.2a3 3 0 0 1 0 5.6M17 14.8c1.8.5 3 1.9 3.5 4.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><h3>Customers who leave quietly</h3><p>If a button cannot be reached with the keyboard or a field has no name, a customer using assistive technology cannot finish the order. Most do not complain. They buy elsewhere.</p></div></li><li><svg class="ico cost-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5.5" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 7l8.5 6 8.5-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><h3>Letters from the regulator</h3><p>National authorities can check your shop, ask for fixes within a deadline and impose penalties. The Dutch ACM has already tested large shops and published the results.</p></div></li><li><svg class="ico cost-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><h3>Warning letters in Germany</h3><p>If you sell to German customers: missing accessibility under the BFSG can also be challenged under competition law, for example with a formal warning letter (Abmahnung).</p></div></li></ul>
+<p class="costs-note">The good news: most barriers are small code changes once you know where they are.</p>
+</div>
 </div></section>
 
-<section aria-labelledby="what"><div class="wrap">
-<h2 id="what">What we check</h2>
+<section id="sample" aria-labelledby="sample-h"><div class="wrap">
+<h2 id="sample-h">This is what you receive</h2>
+<p class="section-lead">Every finding has the place, a screenshot, who is affected and exactly how to fix it. Your developers can start right away, without having to research anything.</p>
+<div class="report">
+<div class="report-head">
+<div><p class="kicker">Accessibility report · excerpt</p><p class="report-title">Purchase path: product page</p></div>
+<span class="report-mark" aria-hidden="true"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="1" y="1" width="30" height="30" rx="9" fill="#13212c"/><path d="M8 11h3l2.2 9h7.6l1.7-6.5H12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="24" r="1.6" fill="#ffbf47"/><circle cx="20" cy="24" r="1.6" fill="#ffbf47"/></svg></span>
+</div>
+<dl class="report-meta"><div><dt>Shop</dt><dd>Dutch webshop (anonymised)</dd></div><div><dt>Standard</dt><dd>WCAG 2.1 AA / EN 301 549</dd></div><div><dt>Tested with</dt><dd>Keyboard, screen reader, 200% zoom</dd></div><div><dt>Reviewed by</dt><dd>Ivan Raylyan</dd></div></dl>
+<article class="finding" aria-labelledby="f1">
+<header class="finding-head">
+<p class="finding-num">Finding 1</p>
+<h3 id="f1">Add to cart button: keyboard focus is not visible</h3>
+<dl class="finding-meta">
+<div><dt class="sr">Severity</dt><dd><span class="sev sev-high">High</span></dd></div>
+<div><dt>WCAG</dt><dd>2.4.7 Focus Visible (AA)</dd></div>
+<div><dt>Where</dt><dd>Product page, main buy button</dd></div>
+</dl>
+</header>
+<div class="finding-body">
+<div class="finding-col">
+<h4>What we saw</h4><p>We moved through the page with the Tab key. The button receives focus, but its look does not change at all.</p>
+<figure class="shot">
+<div class="shot-frame"><img src="/sample-nofocus.jpg" width="612" height="115" alt="Product page section with a quantity field and an orange In winkelwagen (add to cart) button. The button has keyboard focus, but nothing shows it." decoding="async">
+<span class="shot-ring" aria-hidden="true"></span><span class="shot-tag" aria-hidden="true">Focus is here, but invisible</span></div>
+</figure>
+<h4>Who is affected</h4><p>Customers who use a keyboard instead of a mouse, for example because of a motor impairment or after a hand injury. They cannot see which element is active and cannot safely add the product to the cart.</p>
+</div>
+<div class="finding-col fix">
+<h4>How to fix</h4><p>Add a clearly visible focus style for keyboard users. :focus-visible leaves the look for mouse users unchanged.</p>
+<pre><code>.add-to-cart:focus-visible {
+  outline: 3px solid #13212c;
+  outline-offset: 3px;
+}</code></pre>
+</div>
+</div>
+</article><article class="finding" aria-labelledby="f2">
+<header class="finding-head">
+<p class="finding-num">Finding 2</p>
+<h3 id="f2">Colour options are images without a text alternative</h3>
+<dl class="finding-meta">
+<div><dt class="sr">Severity</dt><dd><span class="sev sev-high">High</span></dd></div>
+<div><dt>WCAG</dt><dd>1.1.1 Non-text Content (A)</dd></div>
+<div><dt>Where</dt><dd>Product page, colour selection</dd></div>
+</dl>
+</header>
+<div class="finding-body">
+<div class="finding-col">
+<h4>What we saw</h4><p>The colour swatches are images without an alt attribute.</p>
+<div class="sr-demo"><div class="mock" aria-hidden="true"><span class="sw" style="background:#5b6b3a"></span><span class="sw sw-on" style="background:#2c5d86"></span><span class="sw" style="background:#d8c6a3"></span></div>
+<dl class="sr-out">
+<div><dt>Screen reader announces</dt><dd class="bad"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>&quot;image&quot;, &quot;image&quot;, &quot;image&quot;</span></dd></div>
+<div><dt>After the fix</dt><dd class="good"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>&quot;Moss green&quot;, &quot;Ocean blue&quot;, &quot;Sand&quot;</span></dd></div>
+</dl></div>
+<h4>Who is affected</h4><p>Blind and low-vision customers using a screen reader. They hear only &quot;image&quot; three times and cannot choose a colour, so they cannot order.</p>
+</div>
+<div class="finding-col fix">
+<h4>How to fix</h4><p>Give every option image a short alt text that names the colour.</p>
+<pre><code>&lt;img src=&quot;moss.jpg&quot; alt=&quot;Moss green&quot;&gt;</code></pre>
+</div>
+</div>
+</article><article class="finding" aria-labelledby="f3">
+<header class="finding-head">
+<p class="finding-num">Finding 3</p>
+<h3 id="f3">Quantity field and its buttons have no name</h3>
+<dl class="finding-meta">
+<div><dt class="sr">Severity</dt><dd><span class="sev sev-medium">Medium</span></dd></div>
+<div><dt>WCAG</dt><dd>1.3.1 Info and Relationships (A), 4.1.2 Name, Role, Value (A)</dd></div>
+<div><dt>Where</dt><dd>Product page, quantity selector</dd></div>
+</dl>
+</header>
+<div class="finding-body">
+<div class="finding-col">
+<h4>What we saw</h4><p>The field has no label, and the minus and plus buttons only contain a symbol.</p>
+<div class="sr-demo"><div class="mock" aria-hidden="true"><span class="qty"><span>-</span><span class="qv">1</span><span>+</span></span></div>
+<dl class="sr-out">
+<div><dt>Screen reader announces</dt><dd class="bad"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>&quot;button&quot;, &quot;edit text, 1&quot;, &quot;button&quot;</span></dd></div>
+<div><dt>After the fix</dt><dd class="good"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>&quot;Decrease quantity&quot;, &quot;Quantity, 1&quot;, &quot;Increase quantity&quot;</span></dd></div>
+</dl></div>
+<h4>Who is affected</h4><p>Screen reader users. They hear an unnamed edit field and two unnamed buttons, and have to guess what they do.</p>
+</div>
+<div class="finding-col fix">
+<h4>How to fix</h4><p>Connect a label to the field and give both buttons an accessible name.</p>
+<pre><code>&lt;label for=&quot;qty&quot;&gt;Quantity&lt;/label&gt;
+&lt;button aria-label=&quot;Decrease quantity&quot;&gt;-&lt;/button&gt;
+&lt;input id=&quot;qty&quot; type=&quot;number&quot; value=&quot;1&quot;&gt;
+&lt;button aria-label=&quot;Increase quantity&quot;&gt;+&lt;/button&gt;</code></pre>
+</div>
+</div>
+</article>
+</div>
+<p class="note sample-note">Finding 1 comes from a real check of a Dutch webshop, anonymised. Findings 2 and 3 show typical issues in the same format. A full audit covers up to 8 pages and every finding is in this format.</p>
+</div></section>
+
+<section class="alt" aria-labelledby="what-h"><div class="wrap">
+<h2 id="what-h">What we check</h2>
 <p class="section-lead">We follow the path a real customer takes: find a product, choose options, add to cart, go to checkout.</p>
-<div class="grid-3"><div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M3 6h18v12H3z" fill="none" stroke="#0b5f5f" stroke-width="2" rx="2"/><path d="M6 10h2M10 10h2M14 10h2M18 10h0M7 14h10" stroke="#0b5f5f" stroke-width="2" stroke-linecap="round"/></svg></div><h3>Keyboard path to checkout</h3><p>Can every step be done without a mouse, and is it always visible where the focus is?</p></div><div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M4 9v6h4l5 4V5L8 9z" fill="none" stroke="#0b5f5f" stroke-width="2" stroke-linejoin="round"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11" fill="none" stroke="#0b5f5f" stroke-width="2" stroke-linecap="round"/></svg></div><h3>Screen reader names</h3><p>Do buttons, images, product options and fields announce what they are?</p></div><div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="8" fill="none" stroke="#0b5f5f" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16z" fill="#0b5f5f"/></svg></div><h3>Contrast and zoom</h3><p>Is text readable for people with low vision, and does the page still work at 200% zoom?</p></div><div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2" fill="none" stroke="#0b5f5f" stroke-width="2"/><path d="M8 9h8M8 13h8M8 17h4" stroke="#0b5f5f" stroke-width="2" stroke-linecap="round"/></svg></div><h3>Forms and errors</h3><p>Are fields labelled, and are errors explained in a way everyone can understand?</p></div><div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="7" y="3" width="10" height="18" rx="2" fill="none" stroke="#0b5f5f" stroke-width="2"/><path d="M11 18h2" stroke="#0b5f5f" stroke-width="2" stroke-linecap="round"/></svg></div><h3>Mobile</h3><p>Does the purchase path work on a phone, including zoom and screen orientation?</p></div><div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M7 3h7l4 4v14H7z" fill="none" stroke="#0b5f5f" stroke-width="2" stroke-linejoin="round"/><path d="M10 12l2 2 4-4" fill="none" stroke="#0b5f5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Accessibility statement</h3><p>The EAA asks you to explain how your service meets the requirements. We draft it for you.</p></div></div>
+<ul class="grid-3 plain"><li class="card check-card"><span class="icon-tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="6" width="18" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Keyboard path to checkout</h3><p>Can every step be done without a mouse, and is it always visible where the focus is?</p></li><li class="card check-card"><span class="icon-tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9v6h4l5 4V5L8 9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Screen reader names</h3><p>Do buttons, images, product options and fields announce what they are?</p></li><li class="card check-card"><span class="icon-tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg></span><h3>Contrast and zoom</h3><p>Is text readable for people with low vision, and does the page still work at 200% zoom?</p></li><li class="card check-card"><span class="icon-tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 9h8M8 13h8M8 17h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Forms and errors</h3><p>Are fields labelled, and are errors explained in a way everyone can understand?</p></li><li class="card check-card"><span class="icon-tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="7" y="3" width="10" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 18h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Mobile</h3><p>Does the purchase path work on a phone, including zoom and screen orientation?</p></li><li class="card check-card"><span class="icon-tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3h7l4 4v14H7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 13l2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Accessibility statement</h3><p>The EAA asks you to explain how your service meets the requirements. We draft it for you.</p></li></ul>
 </div></section>
 
-<section class="alt" id="packages" aria-labelledby="pk"><div class="wrap">
-<h2 id="pk">Packages</h2>
-<p class="section-lead">Start free. Pay only if the mini check shows it is worth it.</p>
-<div class="grid-4"><div class="card price-card"><h3>Mini check</h3><p class="price">Free <small></small></p><ul><li>2-3 real barriers on your purchase path</li><li>Screenshots and a short explanation</li><li>Ready within 48 hours</li><li>No access or code needed</li></ul></div><div class="card price-card featured"><span class="badge">Most chosen</span><h3>Full audit</h3><p class="price">from €490 <small>one-off</small></p><ul><li>Up to 8 key pages: home, category, product, cart, checkout</li><li>Keyboard-only and screen reader checks</li><li>Desktop and mobile</li><li>Prioritized fix list with WCAG references</li><li>Draft accessibility statement</li></ul></div><div class="card price-card"><h3>Re-test</h3><p class="price">€200 <small>one-off</small></p><ul><li>After your developers fix the issues</li><li>Every finding checked again</li><li>Updated report you can show</li></ul></div><div class="card price-card"><h3>Monitoring</h3><p class="price">€79 <small>/ month</small></p><ul><li>Monthly check of your key pages</li><li>Alert when a release breaks something</li><li>Short quarterly summary</li></ul></div></div>
+<section id="packages" aria-labelledby="pk-h"><div class="wrap">
+<h2 id="pk-h">Packages and prices</h2>
+<p class="section-lead">Start free. Pay only if the mini check shows it is worth it. Fixed prices, no hourly billing.</p>
+<div class="pk-main"><div class="card pk pk-free"><p class="badge badge-free">Start here</p><h3>Mini check</h3><p class="price">Free <small>no obligation</small></p><p class="pk-desc">See what blocks your customers before you spend anything.</p><p class="pk-time"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Delivered within 48 hours</p><ul class="ticks"><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>2-3 real barriers on your purchase path</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Screenshots, who is affected, how to fix</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Reviewed by Ivan personally</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>No logins, no code access, no payment details</span></li></ul><a class="btn btn-primary btn-block" href="#check">Get my free mini check</a></div><div class="card pk pk-rec"><p class="badge">Recommended</p><h3>Full audit</h3><p class="price">from €490 <small>one-off, fixed price</small></p><p class="pk-desc">The complete picture and a fix list your developers can work through.</p><p class="pk-time"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Delivered within 5 working days</p><ul class="ticks"><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Up to 8 key pages: home, category, product, cart, checkout</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Keyboard-only and screen reader checks</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Desktop and mobile</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Prioritised fix list with WCAG references and code examples</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Draft accessibility statement</span></li></ul><a class="btn btn-ghost btn-block" href="mailto:ivan@everyonecanshop.com?subject=Full%20audit%20for%20my%20shop">Ask for a full audit</a></div></div>
+<div class="pk-side"><div class="card pk pk-plain"><h3>Re-test</h3><p class="price">€200 <small>one-off</small></p><p class="pk-desc">Proof that the fixes work.</p><ul class="ticks"><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>After your developers fix the issues</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Every finding checked again</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Updated report you can show</span></li></ul></div><div class="card pk pk-plain"><h3>Monitoring</h3><p class="price">€79 <small>per month</small></p><p class="pk-desc">Stay accessible after every release.</p><ul class="ticks"><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Monthly check of your key pages</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Alert when a release breaks something</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Short quarterly summary</span></li></ul></div></div>
 <p class="note">Prices for business customers, excluding VAT (reverse charge within the EU).</p>
 </div></section>
 
-<section aria-labelledby="how"><div class="wrap">
-<h2 id="how">How it works</h2>
-<ol class="steps"><li><h3>Send your URL</h3><p>One email with your shop address is enough.</p></li><li><h3>Free mini check</h3><p>Within 48 hours: the most important barriers with screenshots.</p></li><li><h3>Full audit</h3><p>Within 5 working days: the complete report and fix list.</p></li><li><h3>Fix and re-test</h3><p>Your developers fix, we confirm it works.</p></li></ol>
+<section class="alt" aria-labelledby="how-h"><div class="wrap">
+<h2 id="how-h">How it works</h2>
+<ol class="steps"><li><h3>Send your URL</h3><p>Use the form or one email with your shop address. That is all we need.</p></li><li><h3>Free mini check</h3><p>Within 48 hours: the most important barriers with screenshots and fixes.</p></li><li><h3>Full audit, if you want it</h3><p>Within 5 working days: the complete report and fix list.</p></li><li><h3>Fix and re-test</h3><p>Your developers fix, we confirm it works.</p></li></ol>
 </div></section>
 
-<section class="alt" aria-labelledby="who"><div class="wrap about">
-<img src="/ivan.jpg" alt="Portrait of Ivan Raylyan" width="140" height="140">
-<div><h2 id="who">Who is behind it</h2><p>I am Ivan Raylyan, a QA engineer with 6+ years of testing compliance-heavy SaaS products in legal, regulatory and financial tech. Releases, regression, real devices, and now accessibility.</p><p>Automated tools cover a lot of ground fast. The purchase path is then tested step by step with a keyboard and screen reader checks, and I review every report before it goes out. Based in Bucharest, working with shops across the EU.</p></div>
+<section id="about" aria-labelledby="about-h"><div class="wrap">
+<div class="about">
+<div class="about-photo">
+<img src="/ivan.jpg" width="480" height="480" alt="Portrait of Ivan Raylyan" decoding="async">
+<p class="about-li"><a href="https://www.linkedin.com/in/ivan-raylyan-672204320" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.6 4.77 6V21h-4v-5.1c0-1.22-.02-2.8-1.7-2.8-1.72 0-1.98 1.33-1.98 2.7V21h-4z"/></svg><span>Ivan on LinkedIn</span></a></p>
+</div>
+<div class="about-text">
+<h2 id="about-h">Your auditor: Ivan Raylyan</h2>
+<p class="about-role">Engineering &amp; Delivery Manager · Bucharest, Romania</p>
+<p>I lead engineering and delivery across several IT projects, from product development to outsourcing. I started in QA: manual testing first, then test automation with Selenium, Cypress and Pytest.</p><p>For more than 6 years I have worked on SaaS products in compliance-heavy fields: legal, regulatory and financial tech. There, every finding needs evidence and every release has to hold up. I bring the same discipline to your shop.</p><p>AI agents are a normal part of my work: they automate the repetitive tasks. For your audit that means AI-assisted testing covers every page quickly, and I personally review every finding and every report before it reaches you.</p>
+<blockquote><p>You get the speed of automated testing and the judgement of someone who has run releases and quality for years.</p></blockquote>
+<h3 class="facts-h">In short</h3>
+<ul class="ticks facts"><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Engineering &amp; Delivery Manager</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Started in QA: manual testing, then Selenium, Cypress, Pytest</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>6+ years in compliance-heavy SaaS</span></li><li><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Works with AI agents every day</span></li></ul>
+</div>
+</div>
 </div></section>
 
-<section aria-labelledby="faqh"><div class="wrap">
-<h2 id="faqh">Questions</h2>
-<details><summary>Does the EAA apply to my shop?</summary><p>It applies to businesses that sell to consumers in the EU. Microenterprises providing services are exempt: fewer than 10 employees and an annual turnover or balance sheet total of up to €2 million. If you are above that, it most likely applies. This is not legal advice.</p></details><details><summary>Will an accessibility widget solve it?</summary><p>No. Widgets change how a page looks, but they do not fix the code underneath: unnamed buttons, keyboard traps and unlabelled fields stay. Regulators look at what customers can actually do.</p></details><details><summary>What do you need from us?</summary><p>Only your shop URL. We test the public site like a customer would. No logins, no code access. In checkout we stop before payment.</p></details><details><summary>Do you fix the issues?</summary><p>Usually your developers or agency fix them, using our report: every issue comes with the place, a screenshot and what to change. Afterwards we re-test.</p></details><details><summary>Is the report a legal certificate?</summary><p>No. It is a professional test against WCAG 2.1 AA, the technical standard behind EN 301 549 and the EAA. It shows where you stand and what to fix first.</p></details>
+<section class="alt" aria-labelledby="cmp-h"><div class="wrap">
+<h2 id="cmp-h">Why not an agency or a widget?</h2>
+<p class="section-lead">An honest comparison of the three usual options.</p>
+<div class="grid-3 cmp-grid"><div class="card cmp"><h3>Classic agency audit</h3><dl><div><dt>Price</dt><dd>€1,500-5,000 per audit</dd></div><div><dt>Time</dt><dd>Often several weeks</dd></div><div><dt>Fixes the code?</dt><dd><span class="yn yn-yes"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Yes, if your developers implement the report</span></dd></div><div><dt>What you get</dt><dd>A detailed report, often very long</dd></div></dl></div><div class="card cmp"><h3>Overlay widget</h3><dl><div><dt>Price</dt><dd>Monthly subscription</dd></div><div><dt>Time</dt><dd>Installed in minutes</dd></div><div><dt>Fixes the code?</dt><dd><span class="yn yn-no"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>No, the code underneath stays the same</span></dd></div><div><dt>What you get</dt><dd>A toolbar on top of your shop</dd></div></dl></div><div class="card cmp cmp-ours"><h3>EveryoneCanShop</h3><dl><div><dt>Price</dt><dd>Fixed price, from €490</dd></div><div><dt>Time</dt><dd>5 working days</dd></div><div><dt>Fixes the code?</dt><dd><span class="yn yn-yes"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Yes, your developers get an exact fix list</span></dd></div><div><dt>What you get</dt><dd>Prioritised findings with screenshots, WCAG references and code, reviewed by a person</dd></div></dl></div></div>
 </div></section>
 
-<section aria-labelledby="fin"><div class="wrap"><div class="final">
-<div><h2 id="fin">Find out in 48 hours</h2><p>Send your shop URL and get the first barriers with screenshots, free.</p></div>
-<a class="btn btn-primary" href="mailto:ivan@everyonecanshop.com?subject=Free mini check for my shop">Get a free mini check</a>
+<section id="faq" aria-labelledby="faq-h"><div class="wrap narrow">
+<h2 id="faq-h">Questions</h2>
+<details><summary>Does the EAA apply to my shop?</summary><p>It applies to businesses that sell to consumers in the EU. Microenterprises providing services are exempt: fewer than 10 employees and an annual turnover or balance sheet total of up to €2 million. If you are above that, it most likely applies. This is not legal advice.</p></details><details><summary>How do you test without access?</summary><p>We visit your public shop like a customer: browse, choose a product, add it to the cart and go through checkout up to the payment step. We use the keyboard, a screen reader, zoom and automated checks. Nothing to install, no logins, no code access.</p></details><details><summary>Is our data safe?</summary><p>We only see what every visitor sees. We never place real orders: we stop before payment. We do not need customer data, passwords or admin access. Our own site uses no cookies and no tracking.</p></details><details><summary>Will an accessibility widget solve it?</summary><p>No. Widgets change how a page looks, but they do not fix the code underneath: unnamed buttons, keyboard traps and unlabelled fields stay. Regulators look at what customers can actually do.</p></details><details><summary>What do you need from us?</summary><p>Only your shop URL. If you want, tell us which pages matter most to you.</p></details><details><summary>Do you fix the issues?</summary><p>Usually your developers or agency fix them, using our report: every issue comes with the place, a screenshot and what to change. Afterwards we re-test.</p></details><details><summary>What if you find nothing?</summary><p>Then you get that in writing, with what we tested, at no cost. On real shops this is rare: in the ACM test, 61% of the largest Dutch shops blocked ordering with assistive technology.</p></details><details><summary>Is the report a legal certificate?</summary><p>No. It is a professional test against WCAG 2.1 AA, the technical standard behind EN 301 549 and the EAA. It shows where you stand and what to fix first.</p></details>
+</div></section>
+
+<section class="final-wrap" aria-labelledby="fin-h"><div class="wrap"><div class="final">
+<div class="final-copy">
+<h2 id="fin-h">Know where you stand in 48 hours</h2>
+<p>Send your shop URL. You get the first real barriers with screenshots and fixes, free and without obligation.</p>
+<div class="final-auditor"><img src="/ivan-sm.jpg" width="48" height="48" alt=""><span>Ivan Raylyan · Your auditor</span></div>
+</div>
+<form class="check-form on-dark" action="mailto:ivan@everyonecanshop.com" method="get"
+ data-to="ivan@everyonecanshop.com" data-subject="Free mini check for my shop" data-body="Hello Ivan,
+
+Please run a free mini check for my shop:
+{url}
+
+Thank you!"
+ data-err="Please enter your shop address, for example www.yourshop.com." data-sent="Your email app should open now with a prepared message. If nothing happens, write to ivan@everyonecanshop.com.">
+<input type="hidden" name="subject" value="Free mini check for my shop">
+<label for="url-final">Your shop URL</label>
+<div class="field-row">
+<input id="url-final" name="body" type="text" inputmode="url" autocomplete="url" spellcheck="false" autocapitalize="off" required placeholder="www.yourshop.com" aria-describedby="hint-final err-final">
+<button type="submit" class="btn btn-primary">Get my free mini check<svg class="ico btn-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</div>
+<p class="form-hint" id="hint-final"><svg class="ico tick" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Free and without obligation. No logins, no payment details.</p>
+<p class="form-error" id="err-final" aria-live="assertive"></p>
+<p class="form-status" role="status"></p>
+<p class="form-alt">Prefer to write yourself? <a href="mailto:ivan@everyonecanshop.com?subject=Free%20mini%20check%20for%20my%20shop">ivan@everyonecanshop.com</a></p>
+</form>
 </div></div></section>
 </main>
+
 <footer class="site"><div class="wrap">
-<div><p><strong>EveryoneCanShop</strong></p><p>Run by Ivan Raylyan · Bucharest, Romania</p><p><a href="mailto:ivan@everyonecanshop.com">ivan@everyonecanshop.com</a></p></div>
-<div><p>No cookies, no tracking.</p><p>This site aims to meet WCAG 2.1 AA. Found a barrier? Email us.</p></div>
+<div class="foot-brand"><a class="logo" href="/"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="1" y="1" width="30" height="30" rx="9" fill="#13212c"/><path d="M8 11h3l2.2 9h7.6l1.7-6.5H12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="24" r="1.6" fill="#ffbf47"/><circle cx="20" cy="24" r="1.6" fill="#ffbf47"/></svg><span>EveryoneCanShop</span></a><p>Run by Ivan Raylyan · Bucharest, Romania</p></div>
+<div><h2 class="foot-h">Contact</h2>
+<ul class="foot-list"><li><a href="mailto:ivan@everyonecanshop.com">ivan@everyonecanshop.com</a></li><li><a href="https://www.linkedin.com/in/ivan-raylyan-672204320" rel="noopener">LinkedIn</a></li></ul></div>
+<div class="foot-small"><p>No cookies, no tracking.</p><p>This site aims to meet WCAG 2.1 AA and is tested with axe-core and the keyboard. Found a barrier? Email us.</p></div>
 </div></footer>
+<script>
+(function(){
+  var forms=document.querySelectorAll("form.check-form");
+  for(var k=0;k<forms.length;k++){(function(f){
+    f.noValidate=true;
+    var input=f.querySelector("input[name=body]"),err=f.querySelector(".form-error"),st=f.querySelector(".form-status");
+    f.addEventListener("submit",function(e){
+      e.preventDefault();
+      var v=input.value.trim();
+      if(!/^[^\s]+\.[a-z]{2,}/i.test(v.replace(/^https?:\/\//i,""))){
+        err.textContent=f.getAttribute("data-err");input.setAttribute("aria-invalid","true");st.textContent="";input.focus();return;
+      }
+      err.textContent="";input.removeAttribute("aria-invalid");
+      var href="mailto:"+f.getAttribute("data-to")+"?subject="+encodeURIComponent(f.getAttribute("data-subject"))+"&body="+encodeURIComponent(f.getAttribute("data-body").replace("{url}",v));
+      st.textContent=f.getAttribute("data-sent");
+      window.location.href=href;
+    });
+  })(forms[k]);}
+  var links=document.querySelectorAll('a[href="#check"]'),first=document.getElementById("url-hero");
+  for(var j=0;j<links.length;j++){links[j].addEventListener("click",function(){setTimeout(function(){first.focus({preventScroll:true});},0);});}
+})();
+</script>
 </body>
 </html>
