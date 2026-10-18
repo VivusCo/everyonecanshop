@@ -2,7 +2,8 @@ const { chromium } = require('playwright');
 const fs = require('fs'); const path = require('path');
 const axeSrc = fs.readFileSync(require.resolve('axe-core/axe.min.js'), 'utf8');
 const BASE = 'http://localhost:8765';
-const LANGS = { en: '/', nl: '/nl/', fr: '/fr/', de: '/de/' };
+// every page: home and the plain-language law guide, in all four languages
+const LANGS = { en: '/', 'en-eaa': '/eaa/', nl: '/nl/', 'nl-eaa': '/nl/eaa/', fr: '/fr/', 'fr-eaa': '/fr/eaa/', de: '/de/', 'de-eaa': '/de/eaa/' };
 const shotDir = process.argv[2];
 const shotLangs = (process.argv[3] || 'en,nl').split(',');
 (async () => {
@@ -23,7 +24,7 @@ const shotLangs = (process.argv[3] || 'en,nl').split(',');
       res.axe[w] = { violations: r.violations.map(v => ({ id: v.id, n: v.nodes.length, t: v.nodes.slice(0, 3).map(x => x.target.join(' ') + ' :: ' + (x.failureSummary || '').slice(0, 160)) })), incomplete: r.incomplete.map(v => v.id + ':' + v.nodes.length) };
       res.overflow[w] = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       await page.evaluate(() => document.querySelectorAll('details').forEach(d => d.open = false));
-      if (shotDir && shotLangs.includes(lang) && w !== 320) {
+      if (shotDir && shotLangs.includes(lang.split('-')[0]) && w !== 320) {
         await page.screenshot({ path: path.join(shotDir, `${lang}-${w}.png`), fullPage: true });
       }
       if (w === 1440) {
