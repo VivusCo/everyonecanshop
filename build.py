@@ -208,7 +208,8 @@ def page(lang):
         time = f'<p class="pk-time">{icon("clock")}{esc(p["time"])}</p>' if p["time"] else ""
         cta = ""
         if kind == "free":
-            cta = f'<a class="btn btn-primary btn-block" href="#check">{esc(p["cta"])}</a>'
+            cta = (f'<p class="pk-assure">{icon("shield")}<span>{esc(t["pk_free_note"])}</span></p>'
+                   f'<a class="btn btn-primary btn-block" href="#check">{esc(p["cta"])}</a>')
         elif kind == "rec":
             cta = f'<a class="btn btn-ghost btn-block" href="{mailto(p["subject"])}">{esc(p["cta"])}</a>'
         card = (f'<div class="card pk pk-{kind or "plain"}">{badge}<h3>{esc(p["name"])}</h3>'

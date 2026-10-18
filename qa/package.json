@@ -1,0 +1,6 @@
+{
+  "name": "everyonecanshop-qa",
+  "private": true,
+  "description": "axe-core, keyboard focus and overflow checks for the built site",
+  "dependencies": { "axe-core": "4.10.2", "playwright": "1.56.1" }
+}

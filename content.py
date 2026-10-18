@@ -139,6 +139,7 @@ T["en"] = {
     # Packages
     "pk_h": "Packages and prices",
     "pk_p": "Start free. Pay only if the mini check shows it is worth it. Fixed prices, no hourly billing.",
+    "pk_free_note": "No obligation: afterwards you decide if you want more, or not at all.",
     "badge_free": "Start here", "badge_rec": "Recommended",
     "packages": [
         {"name": "Mini check", "price": "Free", "per": "no obligation",
@@ -345,6 +346,7 @@ T["nl"] = {
 
     "pk_h": "Pakketten en prijzen",
     "pk_p": "Begin gratis. Betaal pas als de mini-check laat zien dat het de moeite waard is. Vaste prijzen, geen uurtje-factuurtje.",
+    "pk_free_note": "Vrijblijvend: daarna beslis jij of je meer wilt, of helemaal niet.",
     "badge_free": "Begin hier", "badge_rec": "Aanbevolen",
     "packages": [
         {"name": "Mini-check", "price": "Gratis", "per": "vrijblijvend",
@@ -545,6 +547,7 @@ T["fr"] = {
 
     "pk_h": "Offres et tarifs",
     "pk_p": "Commencez gratuitement. Ne payez que si le mini-audit montre que cela en vaut la peine. Prix fixes, pas de facturation à l'heure.",
+    "pk_free_note": "Sans engagement : ensuite, c'est vous qui décidez si vous voulez aller plus loin, ou non.",
     "badge_free": "Commencez ici", "badge_rec": "Recommandé",
     "packages": [
         {"name": "Mini-audit", "price": "Gratuit", "per": "sans engagement",
@@ -745,6 +748,7 @@ T["de"] = {
 
     "pk_h": "Pakete und Preise",
     "pk_p": "Starten Sie kostenlos. Zahlen Sie nur, wenn der Mini-Check zeigt, dass es sich lohnt. Festpreise, keine Abrechnung nach Stunden.",
+    "pk_free_note": "Unverbindlich: Danach entscheiden Sie, ob Sie mehr möchten oder nicht.",
     "badge_free": "Hier starten", "badge_rec": "Empfohlen",
     "packages": [
         {"name": "Mini-Check", "price": "Kostenlos", "per": "unverbindlich",
