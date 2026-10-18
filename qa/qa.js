@@ -11,8 +11,11 @@ const shotLangs = (process.argv[3] || 'en,nl').split(',');
   for (const [lang, p] of Object.entries(LANGS)) {
     const res = { axe: {}, overflow: {}, focus: null };
     for (const [w, h] of [[1440, 900], [390, 844], [320, 640]]) {
-      const page = await browser.newPage({ viewport: { width: w, height: h }, reducedMotion: 'reduce' });
+      const page = await browser.newPage({ viewport: { width: w, height: h } });
       await page.goto(BASE + p, { waitUntil: 'networkidle' });
+      // trigger reveal-on-scroll so every section is visible before scanning
+      await page.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 400) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 40)); } window.scrollTo(0, 0); });
+      await page.waitForTimeout(900);
       // open all details so their content is checked too
       await page.evaluate(() => document.querySelectorAll('details').forEach(d => d.open = true));
       await page.addScriptTag({ content: axeSrc });
@@ -25,6 +28,7 @@ const shotLangs = (process.argv[3] || 'en,nl').split(',');
       }
       if (w === 1440) {
         // keyboard: Tab through everything, check each focused element has visible outline
+        await page.emulateMedia({ reducedMotion: 'reduce' }); await page.evaluate(() => window.scrollTo(0, 0));
         const issues = []; const seen = [];
         for (let i = 0; i < 80; i++) {
           await page.keyboard.press('Tab');
