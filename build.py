@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Build the static EveryoneCanShop site into docs/ (GitHub Pages). Content lives in content.py."""
-import html, pathlib, re, shutil
+import html, json, pathlib, re, shutil
 from urllib.parse import quote
-from content import LANGS, LINKEDIN, T
+from content import EAA, LANGS, LINKEDIN, T
 
 ROOT = pathlib.Path(__file__).parent
 OUT = ROOT / "docs"
@@ -39,114 +39,148 @@ ICONS = {
     "clock": f'<circle cx="12" cy="12" r="8.5" {S}/><path d="M12 7.5V12l3 2" {S}/>',
     "shield": f'<path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z" {S}/><path d="M9 12l2 2 4-4" {S}/>',
     "lock": f'<rect x="5" y="10.5" width="14" height="10" rx="2" {S}/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" {S}/>',
-    "person": f'<circle cx="12" cy="8.5" r="3.5" {S}/><path d="M5 20c1-3.5 3.8-5.5 7-5.5s6 2 7 5.5" {S}/>',
-    "tag": f'<path d="M3.5 12.5V4.5h8l9 9-8 8z" {S}/><circle cx="8" cy="9" r="1.3" fill="currentColor"/>',
     "users": f'<circle cx="9" cy="9" r="3" {S}/><path d="M3.5 19c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5M15.5 6.2a3 3 0 0 1 0 5.6M17 14.8c1.8.5 3 1.9 3.5 4.2" {S}/>',
-    "letter": f'<rect x="3" y="5.5" width="18" height="13" rx="2" {S}/><path d="M3.5 7l8.5 6 8.5-6" {S}/>',
+    "tag": f'<path d="M3.5 12.5V4.5h8l9 9-8 8z" {S}/><circle cx="8" cy="9" r="1.3" fill="currentColor"/>',
     "scale": f'<path d="M12 4v16M7 20h10M5 7h14M5 7l-2.5 6a3 3 0 0 0 5 0zM19 7l-2.5 6a3 3 0 0 0 5 0z" {S}/>',
     "arrow": f'<path d="M5 12h14M13 6l6 6-6 6" {S}/>',
+    "down": f'<path d="M12 5v14M6 13l6 6 6-6" {S}/>',
+    "pause": '<rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/>',
+    "play": '<path d="M7 5l12 7-12 7z" fill="currentColor"/>',
+    "cart": f'<path d="M3 4h2.5l2.2 10.5h10.6l2-7.5H7" {S}/><circle cx="10" cy="19" r="1.5" fill="currentColor"/><circle cx="17" cy="19" r="1.5" fill="currentColor"/>',
     "linkedin": '<path fill="currentColor" d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.6 4.77 6V21h-4v-5.1c0-1.22-.02-2.8-1.7-2.8-1.72 0-1.98 1.33-1.98 2.7V21h-4z"/>',
 }
-TRUST_ICONS = ["scale", "lock", "person", "tag"]
-COST_ICONS = ["users", "letter", "shield"]
+TRUST_ICONS = ["scale", "lock", "users", "tag"]
 
 LOGO = ('<svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">'
         '<rect x="1" y="1" width="30" height="30" rx="9" fill="#13212c"/>'
         '<path d="M8 11h3l2.2 9h7.6l1.7-6.5H12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>'
         '<circle cx="14" cy="24" r="1.6" fill="#ffbf47"/><circle cx="20" cy="24" r="1.6" fill="#ffbf47"/></svg>')
+SWATCHES = ["#5b6b3a", "#2c5d86", "#d8c6a3"]
 
 
 def icon(name, cls="ico"):
     return svg(ICONS[name], cls)
 
 
-def sev_chip(t, sev):
-    return f'<span class="sev sev-{sev}">{esc(t["sev"][sev])}</span>'
+def sev_chip(t):
+    return f'<span class="sev sev-high">{esc(t["sev"]["high"])}</span>'
 
 
-def check_form(t, uid, dark=False):
+def check_form(t):
     """URL form. Without JS it submits as a mailto GET (subject + body fields); with JS it builds a nicer message."""
-    return f'''<form class="check-form{" on-dark" if dark else ""}" action="mailto:{EMAIL}" method="get"
+    return f'''<form class="check-form" action="mailto:{EMAIL}" method="get"
  data-to="{EMAIL}" data-subject="{esc(t["mail_subject"])}" data-body="{esc(t["mail_body"])}"
  data-err="{esc(t["form_error"])}" data-sent="{esc(t["form_sent"].format(email=EMAIL))}">
 <input type="hidden" name="subject" value="{esc(t["mail_subject"])}">
-<label for="url-{uid}">{esc(t["form_label"])}</label>
 <div class="field-row">
-<input id="url-{uid}" name="body" type="text" inputmode="url" autocomplete="url" spellcheck="false" autocapitalize="off" required placeholder="{esc(t["form_placeholder"])}" aria-describedby="hint-{uid} err-{uid}">
-<button type="submit" class="btn btn-primary">{esc(t["form_btn"])}{icon("arrow", "ico btn-ico")}</button>
+<input id="shop-url" name="body" type="text" inputmode="url" autocomplete="url" spellcheck="false" autocapitalize="off" required placeholder="{esc(t["form_placeholder"])}" aria-labelledby="check-h" aria-describedby="check-hint check-err">
+<button type="submit" class="btn btn-accent">{esc(t["form_btn"])}{icon("arrow", "ico btn-ico")}</button>
 </div>
-<p class="form-hint" id="hint-{uid}">{icon("check", "ico tick")}{esc(t["form_hint"])}</p>
-<p class="form-error" id="err-{uid}" aria-live="assertive"></p>
+<p class="form-hint" id="check-hint">{icon("lock", "ico")}{esc(t["form_hint"])}</p>
+<p class="form-error" id="check-err" aria-live="assertive"></p>
 <p class="form-status" role="status"></p>
-<p class="form-alt">{esc(t["or_email"])} <a href="{mailto(t["mail_subject"])}">{EMAIL}</a></p>
 </form>'''
 
 
-def hero_peek(t):
-    rows = "".join(
-        f'<li>{sev_chip(t, s)}<span class="peek-text">{esc(txt)}</span><span class="peek-ref">{esc(ref)}</span></li>'
-        for s, txt, ref in t["peek_rows"])
-    return f'''<figure class="peek" aria-labelledby="peek-cap">
-<div class="peek-doc">
-<div class="peek-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-<p class="kicker">{esc(t["peek_kicker"])}</p>
-<p class="peek-title">{esc(t["peek_title"])}</p>
-<ol class="peek-list">{rows}</ol>
-<div class="peek-foot">
-<span>{icon("check", "ico tick")}{esc(t["peek_reviewed"])}</span>
-<span>{icon("clock", "ico")}{esc(t["peek_time"])}</span>
-</div>
-</div>
-<figcaption id="peek-cap">{esc(t["peek_caption"])}</figcaption>
+def hero_mock(t):
+    """Illustrated fictional product page (SVG, decorative) plus real-text callouts and a Problems/Fixed toggle."""
+    good_names = t["demo_items_after"][1:4]
+    sw = "".join(f'<circle cx="{258 + i * 38}" cy="166" r="13" fill="{c}"/>' for i, c in enumerate(SWATCHES))
+    sw += '<circle cx="258" cy="166" r="17" fill="none" stroke="#13212c" stroke-width="2"/>'
+
+    def mark(n, x, y):
+        return (f'<g class="m-mark" transform="translate({x} {y})"><circle class="m-pulse" r="12"/>'
+                f'<circle class="m-dot" r="12"/><text class="m-bad" y="4.5" text-anchor="middle">{n}</text>'
+                f'<path class="m-good" d="M-5 0l3.5 3.5L5.5-4" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>')
+
+    mock = f'''<svg class="mock" viewBox="0 0 480 290" aria-hidden="true" focusable="false">
+<rect x="1" y="1" width="478" height="288" rx="16" fill="#fff" stroke="#d4cdbd" stroke-width="2"/>
+<path d="M1 17a16 16 0 0 1 16-16h446a16 16 0 0 1 16 16v17H1z" fill="#f4f0e6"/>
+<circle cx="20" cy="18" r="4.5" fill="#d4cdbd"/><circle cx="34" cy="18" r="4.5" fill="#d4cdbd"/><circle cx="48" cy="18" r="4.5" fill="#d4cdbd"/>
+<rect x="70" y="9" width="200" height="18" rx="9" fill="#fff"/><text x="82" y="22" class="m-url">{esc(t["mock_url"])}</text>
+<rect x="20" y="52" width="180" height="210" rx="12" fill="#eef3ef"/>
+<rect x="44" y="102" width="132" height="112" rx="26" fill="#c9b28a"/>
+<rect x="56" y="114" width="108" height="88" rx="18" fill="none" stroke="#f4eadb" stroke-width="2" stroke-dasharray="5 5"/>
+<text x="242" y="84" class="m-title">{esc(t["mock_product"])}</text>
+<text x="242" y="112" class="m-price">{esc(t["mock_price"])}</text>
+<text x="242" y="138" class="m-desc">{esc(t["mock_desc"])}</text>
+{sw}
+<text x="242" y="200" class="m-good m-say">“{esc(good_names[0])}”</text>
+<rect class="m-good" x="235" y="211" width="232" height="56" rx="28" fill="none" stroke="#13212c" stroke-width="4"/>
+<rect class="m-good" x="239" y="215" width="224" height="48" rx="24" fill="none" stroke="#ffbf47" stroke-width="4"/>
+<rect x="243" y="219" width="216" height="40" rx="20" fill="#d9611c"/>
+<text x="351" y="244" text-anchor="middle" class="m-btn">{esc(t["mock_btn"])}</text>
+{mark(1, 217, 134)}{mark(2, 217, 166)}{mark(3, 217, 239)}
+</svg>'''
+    lis = "".join(
+        f'<li><span class="c-num" aria-hidden="true">{i + 1}</span><span class="c-txt c-bad"><strong>{esc(b[0])}</strong> {esc(b[1])}</span>'
+        f'<span class="c-txt c-good"><strong>{esc(g[0])}</strong> {esc(g[1])}</span></li>'
+        for i, (b, g) in enumerate(zip(t["callouts_bad"], t["callouts_good"])))
+    return f'''<figure class="peek" data-peek aria-labelledby="peek-cap">
+<div class="peek-top"><figcaption id="peek-cap">{esc(t["mock_caption"])}</figcaption>
+<div class="seg js-only" role="group" aria-label="{esc(t["mock_show"])}">
+<button type="button" data-mode="bad" aria-pressed="true">{esc(t["mock_bad"])}</button>
+<button type="button" data-mode="good" aria-pressed="false">{esc(t["mock_good"])}</button>
+</div></div>
+{mock}
+<ol class="callouts">{lis}</ol>
 </figure>'''
 
 
-def finding(t, i, f):
-    n = i + 1
-    if n == 1:
-        visual = f'''<figure class="shot">
-<div class="shot-frame"><img src="/sample-nofocus.jpg" width="612" height="115" alt="{esc(f["img_alt"])}" decoding="async">
-<span class="shot-ring" aria-hidden="true"></span><span class="shot-tag" aria-hidden="true">{esc(f["marker"])}</span></div>
-</figure>'''
-    else:
-        if n == 2:
-            mock = ('<div class="mock" aria-hidden="true"><span class="sw" style="background:#5b6b3a"></span>'
-                    '<span class="sw sw-on" style="background:#2c5d86"></span><span class="sw" style="background:#d8c6a3"></span></div>')
-        else:
-            mock = ('<div class="mock" aria-hidden="true"><span class="qty"><span>-</span><span class="qv">1</span><span>+</span></span></div>')
-        visual = f'''<div class="sr-demo">{mock}
-<dl class="sr-out">
-<div><dt>{esc(t["lbl_sr"])}</dt><dd class="bad">{icon("cross", "ico")}<span>{esc(f["sr_before"])}</span></dd></div>
-<div><dt>{esc(t["lbl_after"])}</dt><dd class="good">{icon("check", "ico")}<span>{esc(f["sr_after"])}</span></dd></div>
-</dl></div>'''
-    return f'''<article class="finding" aria-labelledby="f{n}">
-<header class="finding-head">
-<p class="finding-num">{esc(t["lbl_finding"])} {n}</p>
-<h3 id="f{n}">{esc(f["title"])}</h3>
-<dl class="finding-meta">
-<div><dt class="sr">{esc(t["lbl_sev"])}</dt><dd>{sev_chip(t, f["sev"])}</dd></div>
-<div><dt>{esc(t["lbl_wcag"])}</dt><dd>{esc(f["wcag"])}</dd></div>
-<div><dt>{esc(t["lbl_where"])}</dt><dd>{esc(f["where"])}</dd></div>
-</dl>
-</header>
-<div class="finding-body">
-<div class="finding-col">
-<h4>{esc(t["lbl_saw"])}</h4><p>{esc(f["saw"])}</p>
-{visual}
-<h4>{esc(t["lbl_affected"])}</h4><p>{esc(f["affected"])}</p>
-</div>
-<div class="finding-col fix">
-<h4>{esc(t["lbl_fix"])}</h4><p>{esc(f["fix"])}</p>
-<pre><code>{esc(f["code"])}</code></pre>
+def demo(t):
+    """Scene-based screen reader story. The animated stage is decorative (aria-hidden); the same texts are in the
+    static before/after block, which is what assistive tech, no-JS and reduced-motion users get."""
+    before, after = t["demo_items_before"], t["demo_items_after"]
+    sw = "".join(f'<span class="st-sw" data-i="{i + 1}" style="background:{c}"></span>' for i, c in enumerate(SWATCHES))
+    checks = "".join(f'<li data-c="{i}">{icon("check")}<span>{esc(x)}</span></li>' for i, x in enumerate(t["demo_checks"]))
+    static = "".join(
+        f'<div class="ds-col ds-{k}"><p class="ds-h">{icon("cross" if k == "before" else "check")}{esc(t["demo_" + k])}</p>'
+        f'<p class="ds-says">{esc(t["demo_says"])}:</p><ol>{"".join(f"<li>“{esc(x)}”</li>" for x in items)}</ol>'
+        f'<p class="ds-verdict">{esc(verdict)}</p></div>'
+        for k, items, verdict in (("before", before, t["demo_question"] + " " + t["demo_leaves"] + "."),
+                                  ("after", after, t["demo_ordered"] + ".")))
+    data = esc(json.dumps({"before": before, "after": after, "chip": t["demo_chip"], "la": t["demo_after"],
+                           "pause": t["demo_pause"], "play": t["demo_play"]}, ensure_ascii=False))
+    return f'''<div class="demo" data-demo="{data}">
+<div class="demo-bar"><button type="button" class="demo-toggle">{icon("pause", "ico ico-pause")}{icon("play", "ico ico-play")}<span class="demo-toggle-t">{esc(t["demo_pause"])}</span></button></div>
+<div class="stage" aria-hidden="true" data-scene="shop">
+<div class="sc sc-shop">
+<p class="chip">{icon("voice")}<span class="chip-t">{esc(t["demo_chip"])}</span></p>
+<div class="shop">
+<div class="st-img" data-i="0"><span class="st-cushion"></span></div>
+<div class="st-info">
+<p class="st-title">{esc(t["mock_product"])}</p><p class="st-price">{esc(t["mock_price"])}</p>
+<div class="st-sws">{sw}</div>
+<span class="st-buy" data-i="4">{icon("cart")}<span class="st-buy-t">{esc(t["mock_btn"])}</span></span>
 </div>
 </div>
-</article>'''
+<div class="caption">{icon("voice")}<span class="cap-t"></span><span class="caret"></span></div>
+<div class="outcome"><span class="oc-q">{esc(t["demo_question"])}</span><span class="oc-badge oc-bad">{icon("cross")}{esc(t["demo_leaves"])}</span><span class="oc-badge oc-ok">{icon("check")}{esc(t["demo_ordered"])}</span></div>
+</div>
+<div class="sc sc-report">
+<div class="rc">
+<p class="rc-k">{LOGO}<span>{esc(t["report_title"])}</span></p>
+<p class="rc-t">{esc(t["f_title"])}</p>
+<ul class="rc-list">{checks}</ul>
+<pre class="rc-code" data-c="3"><code>alt="{esc(after[1].split(",")[0])}"</code></pre>
+</div>
+</div>
+<div class="sc sc-end">
+<p class="end-logo">{LOGO}<span>EveryoneCanShop</span></p>
+<p class="end-t">{esc(t["demo_end"])}</p>
+<p class="end-s">{esc(t["cta_note"][2])}</p>
+</div>
+</div>
+<div class="demo-static">{static}</div>
+</div>'''
 
 
 SCRIPT = r'''<script>
 (function(){
-  var forms=document.querySelectorAll("form.check-form");
-  for(var k=0;k<forms.length;k++){(function(f){
+  var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // URL form: build a friendly mailto message
+  var f=document.querySelector("form.check-form");
+  if(f){
     f.noValidate=true;
     var input=f.querySelector("input[name=body]"),err=f.querySelector(".form-error"),st=f.querySelector(".form-status");
     f.addEventListener("submit",function(e){
@@ -156,23 +190,72 @@ SCRIPT = r'''<script>
         err.textContent=f.getAttribute("data-err");input.setAttribute("aria-invalid","true");st.textContent="";input.focus();return;
       }
       err.textContent="";input.removeAttribute("aria-invalid");
-      var href="mailto:"+f.getAttribute("data-to")+"?subject="+encodeURIComponent(f.getAttribute("data-subject"))+"&body="+encodeURIComponent(f.getAttribute("data-body").replace("{url}",v));
-      st.textContent=f.getAttribute("data-sent");
-      window.location.href=href;
+      st.textContent=f.getAttribute("data-sent")+" ";var ml=document.createElement("a");ml.href="mailto:"+f.getAttribute("data-to")+"?subject="+encodeURIComponent(f.getAttribute("data-subject"))+"&body="+encodeURIComponent(f.getAttribute("data-body").replace("{url}",v));ml.textContent=f.getAttribute("data-to");st.appendChild(ml);
+      window.location.href="mailto:"+f.getAttribute("data-to")+"?subject="+encodeURIComponent(f.getAttribute("data-subject"))+"&body="+encodeURIComponent(f.getAttribute("data-body").replace("{url}",v));
     });
-  })(forms[k]);}
-  var links=document.querySelectorAll('a[href="#check"]'),first=document.getElementById("url-hero");
-  for(var j=0;j<links.length;j++){links[j].addEventListener("click",function(){setTimeout(function(){first.focus({preventScroll:true});},0);});}
+    var links=document.querySelectorAll('a[href="#check"]');
+    for(var j=0;j<links.length;j++){links[j].addEventListener("click",function(){setTimeout(function(){input.focus({preventScroll:true});},reduce?0:450);});}
+  }
+  // Hero illustration: Problems / Fixed toggle
+  var peek=document.querySelector("[data-peek]");
+  if(peek){
+    var bs=peek.querySelectorAll(".seg button");
+    for(var b=0;b<bs.length;b++){bs[b].addEventListener("click",function(){
+      for(var k=0;k<bs.length;k++){bs[k].setAttribute("aria-pressed",bs[k]===this?"true":"false");}
+      peek.classList.toggle("is-good",this.getAttribute("data-mode")==="good");
+    });}
+  }
+  // Reveal on scroll
+  var rv=document.querySelectorAll(".rv");
+  if(!reduce&&"IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{rootMargin:"0px 0px -8% 0px"});
+    for(var r=0;r<rv.length;r++){io.observe(rv[r]);}
+  }else{for(var r2=0;r2<rv.length;r2++){rv[r2].classList.add("in");}}
+  // Screen reader demo: a short story in scenes (static before/after stays for reduced motion and assistive tech)
+  var d=document.querySelector("[data-demo]");
+  if(d&&!reduce){
+    var cfg=JSON.parse(d.getAttribute("data-demo")),stage=d.querySelector(".stage"),cap=d.querySelector(".cap-t"),
+        chip=d.querySelector(".chip-t"),btn=d.querySelector(".demo-toggle"),bt=d.querySelector(".demo-toggle-t"),
+        els=d.querySelectorAll("[data-i]"),cs=d.querySelectorAll("[data-c]"),pos=0,timer=null,typer=null,playing=false,steps=[];
+    function focus(i){for(var k=0;k<els.length;k++){els[k].classList.toggle("sr-on",+els[k].getAttribute("data-i")===i);}}
+    function type(txt){clearInterval(typer);var n=0;cap.textContent="";if(!txt)return;txt="\u201c"+txt+"\u201d";
+      typer=setInterval(function(){n++;cap.textContent=txt.slice(0,n);if(n>=txt.length)clearInterval(typer);},42);}
+    function outcome(o){stage.setAttribute("data-outcome",o||"");}
+    function checks(n){for(var k=0;k<cs.length;k++){cs[k].classList.toggle("on",+cs[k].getAttribute("data-c")<n);}}
+    function scene(sc,after){stage.setAttribute("data-scene",sc);stage.classList.toggle("after",!!after);chip.textContent=after?cfg.la:cfg.chip;}
+    function pass(items){items.forEach(function(x,i){steps.push({f:function(){focus(i);type(x);},t:650+x.length*42+500});});}
+    steps.push({f:function(){scene("shop",false);focus(-1);type("");outcome("");checks(0);},t:1700});
+    pass(cfg.before);
+    steps.push({f:function(){focus(-1);outcome("q");},t:1400});
+    steps.push({f:function(){outcome("bad");},t:2000});
+    steps.push({f:function(){scene("report",false);checks(0);},t:800});
+    for(var c=1;c<=4;c++){(function(c){steps.push({f:function(){checks(c);},t:c<4?850:2400});})(c);}
+    steps.push({f:function(){scene("shop",true);focus(-1);type("");outcome("");},t:1400});
+    pass(cfg.after);
+    steps.push({f:function(){focus(-1);outcome("ok");},t:2200});
+    steps.push({f:function(){scene("end",true);},t:2800});
+    function tick(){steps[pos].f();timer=setTimeout(function(){pos=(pos+1)%steps.length;tick();},steps[pos].t);}
+    function play(){if(playing)return;playing=true;d.classList.remove("paused");bt.textContent=cfg.pause;tick();}
+    function pause(){playing=false;clearTimeout(timer);clearInterval(typer);d.classList.add("paused");bt.textContent=cfg.play;}
+    d.classList.add("animating");steps[0].f();
+    btn.addEventListener("click",function(){playing?pause():play();});
+    if("IntersectionObserver" in window){
+      var started=false,dio=new IntersectionObserver(function(es){if(es[0].isIntersecting&&!started){started=true;play();}},{threshold:0.35});
+      dio.observe(d);
+    }else{play();}
+  }
 })();
 </script>'''
 
 
 def fr_typo(doc):
-    """French typography: non-breaking space before ? ! : ; and inside amounts like '490 €'. Skips script/style."""
+    """French typography: non-breaking space before ? ! : ; and » after «, and inside amounts. Skips script/style/pre."""
     parts = re.split(r"(<script.*?</script>|<style.*?</style>|<pre.*?</pre>)", doc, flags=re.S)
     for i in range(0, len(parts), 2):
-        parts[i] = re.sub(r" ([?!:;])", "\u00a0\\1", parts[i])
+        parts[i] = re.sub(r" ([?!:;»])", "\u00a0\\1", parts[i])
+        parts[i] = re.sub(r"« ", "«\u00a0", parts[i])
         parts[i] = re.sub(r"(\d) €", "\\1\u00a0€", parts[i])
+        parts[i] = re.sub(r"(\d) (\d{3})", "\\1\u00a0\\2", parts[i])
     return "".join(parts)
 
 
@@ -184,45 +267,41 @@ def page(lang):
         f'<li><a href="{path_for(l)}" hreflang="{l}" lang="{l}"' + (' aria-current="page"' if l == lang else "") +
         f'><span aria-hidden="true">{l.upper()}</span><span class="sr">{esc(T[l]["lang_name"])}</span></a></li>' for l in LANGS)
     nav = "".join(f'<li><a href="#{a}">{esc(label)}</a></li>' for a, label in t["nav"])
-    trust = "".join(f"<li>{icon(i)}<span>{esc(x)}</span></li>" for i, x in zip(TRUST_ICONS, t["trust"]))
+    note = "".join(f"<li>{icon('check', 'ico tick')}{esc(x)}</li>" for x in t["cta_note"])
     stats = "".join(
-        f'<div class="card stat-card"><p class="stat">{esc(n)}</p><p>{esc(p)}</p>'
-        f'<p class="src">{esc(t["src_label"])} <a href="{u}" rel="noopener">{esc(s)}</a></p></div>'
-        for n, p, s, u in t["stats"])
-    costs = "".join(f'<li>{icon(i, "ico cost-ico")}<div><h3>{esc(h)}</h3><p>{esc(p)}</p></div></li>'
-                    for i, (h, p) in zip(COST_ICONS, t["costs"]))
-    meta = "".join(f"<div><dt>{esc(k)}</dt><dd>{esc(v)}</dd></div>" for k, v in t["doc_meta"])
-    findings = "".join(finding(t, i, f) for i, f in enumerate(t["findings"]))
-    checks = "".join(f'<li class="card check-card"><span class="icon-tile">{icon(i)}</span><h3>{esc(h)}</h3><p>{esc(p)}</p></li>'
+        f'<div class="stat"><p class="stat-n">{f"<small>{esc(pre)}</small> " if pre else ""}{esc(n)}</p>'
+        f'<p class="stat-t">{esc(txt)}</p><p class="stat-s">{esc(t["src_label"])} <a href="{u}" rel="noopener">{esc(s)}</a></p></div>'
+        for pre, n, txt, s, u in t["stats"])
+    trust = "".join(f"<li>{icon(i)}<span>{esc(x)}</span></li>" for i, x in zip(TRUST_ICONS, t["trust"]))
+    law = "".join(f"<li>{icon('scale', 'ico li-ico')}<span>{esc(x)}</span></li>" for x in t["law"])
+    stakes = "".join(f"<li>{icon('arrow', 'ico li-ico')}<span>{esc(x)}</span></li>" for x in t["stakes"])
+    checks = "".join(f'<li class="chk rv"><span class="icon-tile">{icon(i)}</span><div><h3>{esc(h)}</h3><p>{esc(p)}</p></div></li>'
                      for i, h, p in t["checks"])
 
     main_pk, side_pk = "", ""
     for p in t["packages"]:
         lis = "".join(f"<li>{icon('check', 'ico tick')}<span>{esc(x)}</span></li>" for x in p["items"])
         kind = p["kind"]
-        badge = ""
-        if kind == "free":
-            badge = f'<p class="badge badge-free">{esc(t["badge_free"])}</p>'
-        elif kind == "rec":
-            badge = f'<p class="badge">{esc(t["badge_rec"])}</p>'
+        badge = {"free": f'<p class="badge badge-free">{esc(t["badge_free"])}</p>',
+                 "rec": f'<p class="badge">{esc(t["badge_rec"])}</p>'}.get(kind, "")
         time = f'<p class="pk-time">{icon("clock")}{esc(p["time"])}</p>' if p["time"] else ""
+        extra = f'<p class="pk-extra">{esc(t["audit_note"])}</p>' if kind == "rec" else ""
         cta = ""
         if kind == "free":
             cta = (f'<p class="pk-assure">{icon("shield")}<span>{esc(t["pk_free_note"])}</span></p>'
-                   f'<a class="btn btn-primary btn-block" href="#check">{esc(p["cta"])}</a>')
+                   f'<a class="btn btn-accent btn-block" href="#check">{esc(p["cta"])}</a>')
         elif kind == "rec":
             cta = f'<a class="btn btn-ghost btn-block" href="{mailto(p["subject"])}">{esc(p["cta"])}</a>'
-        card = (f'<div class="card pk pk-{kind or "plain"}">{badge}<h3>{esc(p["name"])}</h3>'
+        card = (f'<div class="card pk pk-{kind or "plain"} rv">{badge}<h3>{esc(p["name"])}</h3>'
                 f'<p class="price">{esc(p["price"])} <small>{esc(p["per"])}</small></p>'
-                f'<p class="pk-desc">{esc(p["desc"])}</p>{time}<ul class="ticks">{lis}</ul>{cta}</div>')
+                f'<p class="pk-desc">{esc(p["desc"])}</p>{time}<ul class="ticks">{lis}</ul>{extra}{cta}</div>')
         if kind:
             main_pk += card
         else:
             side_pk += card
 
-    steps = "".join(f"<li><h3>{esc(h)}</h3><p>{esc(p)}</p></li>" for h, p in t["steps"])
-    who_p = "".join(f"<p>{esc(p)}</p>" for p in t["who_p"])
-    facts = "".join(f"<li>{icon('check', 'ico tick')}<span>{esc(x)}</span></li>" for x in t["who_facts"])
+    steps = "".join(f'<li class="rv"><h3>{esc(h)}</h3><p>{esc(p)}</p></li>' for h, p in t["steps"])
+    about_p = "".join(f"<p>{esc(p)}</p>" for p in t["about_p"])
 
     cols = ""
     for c in t["cmp_cols"]:
@@ -234,9 +313,10 @@ def page(lang):
             else:
                 val = esc(v)
             rows += f"<div><dt>{esc(label)}</dt><dd>{val}</dd></div>"
-        cols += f'<div class="card cmp{" cmp-ours" if c.get("ours") else ""}"><h3>{esc(c["name"])}</h3><dl>{rows}</dl></div>'
+        cols += f'<div class="card cmp{" cmp-ours" if c.get("ours") else ""} rv"><h3>{esc(c["name"])}</h3><dl>{rows}</dl></div>'
 
-    faq = "".join(f"<details><summary>{esc(q)}</summary><p>{a}</p></details>" for q, a in t["faq"])
+    faq = "".join(f'<details class="rv"><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in t["faq"])
+    code = esc(t["f_code"])
 
     doc = f'''<!doctype html>
 <html lang="{lang}">
@@ -256,6 +336,7 @@ def page(lang):
 <meta property="og:image" content="{BASE}/ivan.jpg">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/style.css">
+<script>document.documentElement.className+=" js";</script>
 </head>
 <body>
 <a class="skip" href="#main">{esc(t["skip"])}</a>
@@ -264,7 +345,7 @@ def page(lang):
 <nav class="primary" aria-label="{esc(t["nav_label"])}"><ul>{nav}</ul></nav>
 <div class="head-right">
 <nav class="lang" aria-label="{esc(t["lang_label"])}"><ul>{langnav}</ul></nav>
-<a class="btn btn-primary btn-sm head-cta" href="#check">{esc(t["header_cta"])}</a>
+<a class="btn btn-accent btn-sm head-cta" href="#check">{esc(t["header_cta"])}</a>
 </div>
 </div></header>
 
@@ -272,105 +353,96 @@ def page(lang):
 <section class="hero" aria-labelledby="h1"><div class="wrap">
 <div class="hero-grid">
 <div class="hero-copy">
-<p class="eyebrow">{esc(t["eyebrow"])}</p>
+<p class="law-chip">{icon("scale")}{esc(t["law_chip"])}</p>
 <h1 id="h1">{esc(t["h1"])}</h1>
 <p class="lead">{esc(t["lead"])}</p>
-<div class="form-card" id="check">
-{check_form(t, "hero")}
+<div class="stats">{stats}</div>
+<a class="btn btn-accent btn-lg" href="#check">{esc(t["cta"])}{icon("down", "ico btn-ico")}</a>
+<ul class="cta-note">{note}</ul>
 </div>
-<div class="auditor">
-<img src="/ivan-sm.jpg" width="72" height="72" alt="{esc(t["photo_alt"])}">
-<div><p class="auditor-kicker">{esc(t["auditor_role"])}</p>
-<p class="auditor-name">Ivan Raylyan<span>, Engineering &amp; Delivery Manager</span></p>
-<p class="auditor-line">{esc(t["auditor_line"])}</p>
-<p class="auditor-link"><a href="#sample">{esc(t["cta2"])}</a></p></div>
-</div>
-</div>
-<div class="hero-visual">{hero_peek(t)}</div>
+<div class="hero-visual">{hero_mock(t)}</div>
 </div>
 <ul class="trust" aria-label="{esc(t["trust_label"])}">{trust}</ul>
 </div></section>
 
-<section class="alt" id="why" aria-labelledby="why-h"><div class="wrap">
-<h2 id="why-h">{esc(t["why_h"])}</h2>
-<p class="section-lead">{esc(t["why_p"])}</p>
-<div class="grid-3">{stats}</div>
-<div class="costs">
-<h3 class="costs-h">{esc(t["cost_h"])}</h3>
-<ul>{costs}</ul>
-<p class="costs-note">{esc(t["cost_note"])}</p>
+<section class="alt" aria-labelledby="law-h"><div class="wrap">
+<div class="law-grid">
+<div class="law-box rv"><h2 id="law-h">{esc(t["law_h"])}</h2><ul class="li-list">{law}</ul>
+<p class="src-note">{esc(t["src_label"])} <a href="{EAA}" rel="noopener">{esc(t["law_src"])}</a></p></div>
+<div class="law-box stake rv"><h2>{esc(t["stake_h"])}</h2><ul class="li-list">{stakes}</ul>
+<a class="text-cta" href="#check">{esc(t["cta"])}{icon("arrow", "ico")}</a></div>
 </div>
 </div></section>
 
-<section id="sample" aria-labelledby="sample-h"><div class="wrap">
-<h2 id="sample-h">{esc(t["sample_h"])}</h2>
-<p class="section-lead">{esc(t["sample_p"])}</p>
-<div class="report">
-<div class="report-head">
-<div><p class="kicker">{esc(t["doc_kicker"])}</p><p class="report-title">{esc(t["doc_title"])}</p></div>
-<span class="report-mark" aria-hidden="true">{LOGO}</span>
+<section id="example" aria-labelledby="ex-h"><div class="wrap">
+<h2 id="ex-h" class="rv">{esc(t["ex_h"])}</h2>
+<p class="section-lead rv">{esc(t["ex_p"])}</p>
+<div class="report rv">
+<div class="report-head"><span class="report-mark" aria-hidden="true">{LOGO}</span><p class="report-title">{esc(t["report_title"])}</p></div>
+<div class="report-body">
+{demo(t)}
+<article class="finding" aria-labelledby="f-h">
+<div class="finding-top"><h3 id="f-h">{esc(t["f_title"])}</h3><p class="finding-meta"><span class="sr">{esc(t["lbl_sev"])}: </span>{sev_chip(t)}<span class="wcag">{esc(t["f_wcag"])}</span></p></div>
+<dl class="finding-grid">
+<div><dt>{esc(t["lbl_problem"])}</dt><dd>{esc(t["f_problem"])}</dd></div>
+<div><dt>{esc(t["lbl_who"])}</dt><dd>{esc(t["f_who"])}</dd></div>
+<div class="fix"><dt>{esc(t["lbl_fix"])}</dt><dd>{esc(t["f_fix"])}<pre><code>{code}</code></pre></dd></div>
+</dl>
+</article>
 </div>
-<dl class="report-meta">{meta}</dl>
-{findings}
 </div>
-<p class="note sample-note">{esc(t["sample_note"])}</p>
+<p class="note">{esc(t["ex_note"])}</p>
 </div></section>
 
 <section class="alt" aria-labelledby="what-h"><div class="wrap">
-<h2 id="what-h">{esc(t["what_h"])}</h2>
-<p class="section-lead">{esc(t["what_p"])}</p>
-<ul class="grid-3 plain">{checks}</ul>
+<h2 id="what-h" class="rv">{esc(t["what_h"])}</h2>
+<ul class="checks">{checks}</ul>
 </div></section>
 
 <section id="packages" aria-labelledby="pk-h"><div class="wrap">
-<h2 id="pk-h">{esc(t["pk_h"])}</h2>
-<p class="section-lead">{esc(t["pk_p"])}</p>
+<h2 id="pk-h" class="rv">{esc(t["pk_h"])}</h2>
+<p class="section-lead rv">{esc(t["pk_p"])}</p>
 <div class="pk-main">{main_pk}</div>
 <div class="pk-side">{side_pk}</div>
 <p class="note">{esc(t["pk_note"])}</p>
 </div></section>
 
 <section class="alt" aria-labelledby="how-h"><div class="wrap">
-<h2 id="how-h">{esc(t["how_h"])}</h2>
+<h2 id="how-h" class="rv">{esc(t["how_h"])}</h2>
 <ol class="steps">{steps}</ol>
 </div></section>
 
 <section id="about" aria-labelledby="about-h"><div class="wrap">
-<div class="about">
-<div class="about-photo">
+<div class="about rv">
 <img src="/ivan.jpg" width="480" height="480" alt="{esc(t["photo_alt"])}" decoding="async">
-<p class="about-li"><a href="{LINKEDIN}" rel="noopener">{icon("linkedin")}<span>{esc(t["linkedin"])}</span></a></p>
-</div>
 <div class="about-text">
-<h2 id="about-h">{esc(t["who_h"])}</h2>
-<p class="about-role">{esc(t["who_role"])}</p>
-{who_p}
-<blockquote><p>{esc(t["who_quote"])}</p></blockquote>
-<h3 class="facts-h">{esc(t["who_facts_label"])}</h3>
-<ul class="ticks facts">{facts}</ul>
+<h2 id="about-h">{esc(t["about_h"])}</h2>
+<p class="about-role"><strong>Ivan Raylyan</strong> · {esc(t["about_role"])}</p>
+{about_p}
+<p class="about-li"><a href="{LINKEDIN}" rel="noopener">{icon("linkedin")}<span>{esc(t["linkedin"])}</span></a></p>
 </div>
 </div>
 </div></section>
 
 <section class="alt" aria-labelledby="cmp-h"><div class="wrap">
-<h2 id="cmp-h">{esc(t["cmp_h"])}</h2>
-<p class="section-lead">{esc(t["cmp_p"])}</p>
-<div class="grid-3 cmp-grid">{cols}</div>
+<h2 id="cmp-h" class="rv">{esc(t["cmp_h"])}</h2>
+<div class="grid-3">{cols}</div>
 </div></section>
 
 <section id="faq" aria-labelledby="faq-h"><div class="wrap narrow">
-<h2 id="faq-h">{esc(t["faq_h"])}</h2>
+<h2 id="faq-h" class="rv">{esc(t["faq_h"])}</h2>
 {faq}
 </div></section>
 
-<section class="final-wrap" aria-labelledby="fin-h"><div class="wrap"><div class="final">
-<div class="final-copy">
-<h2 id="fin-h">{esc(t["final_h"])}</h2>
-<p>{esc(t["final_p"])}</p>
-<div class="final-auditor"><img src="/ivan-sm.jpg" width="48" height="48" alt=""><span>{esc(t["auditor_role"])}{" :" if lang == "fr" else ":"} Ivan Raylyan, Engineering &amp; Delivery Manager</span></div>
+<section id="check" class="check" aria-labelledby="check-h"><div class="wrap">
+<div class="check-box rv">
+<p class="check-kicker">{esc(t["check_kicker"])}</p>
+<h2 id="check-h">{esc(t["check_h"])}</h2>
+<p class="check-p">{esc(t["check_p"])}</p>
+{check_form(t)}
+<p class="contact">{esc(t["contact"])} <a href="{mailto(t["mail_subject"])}">{EMAIL}</a></p>
 </div>
-{check_form(t, "final", dark=True)}
-</div></div></section>
+</div></section>
 </main>
 
 <footer class="site"><div class="wrap">
@@ -394,7 +466,6 @@ def images():
     from PIL import Image
     src = Image.open(ROOT / "src/ivan.jpg").convert("RGB")
     src.save(OUT / "ivan.jpg", quality=82, optimize=True, progressive=True)
-    src.resize((144, 144), Image.LANCZOS).save(OUT / "ivan-sm.jpg", quality=85, optimize=True)
 
 
 def main():
@@ -406,9 +477,8 @@ def main():
         d.mkdir(exist_ok=True)
         (d / "index.html").write_text(page(lang))
     shutil.copy(ROOT / "src/style.css", OUT / "style.css")
-    for f in (ROOT / "src").glob("*"):
-        if f.suffix in (".svg", ".jpg", ".png"):
-            shutil.copy(f, OUT / f.name)
+    for f in (ROOT / "src").glob("*.svg"):
+        shutil.copy(f, OUT / f.name)
     images()
     (OUT / "CNAME").write_text("everyonecanshop.com")
     (OUT / ".nojekyll").write_text("")
