@@ -178,7 +178,7 @@ T["en"] = {
     "who_p": [
         "I lead engineering and delivery across several IT projects, from product development to outsourcing. I started in QA: manual testing first, then test automation with Selenium, Cypress and Pytest.",
         "For more than 6 years I have worked on SaaS products in compliance-heavy fields: legal, regulatory and financial tech. There, every finding needs evidence and every release has to hold up. We bring the same discipline to your shop.",
-        "At EveryoneCanShop we use AI agents for the repetitive work. For your audit that means AI-assisted testing covers every page quickly, we walk the purchase path step by step with the keyboard and check it with a screen reader, and I personally review every finding and every report before it goes out.",
+        "At EveryoneCanShop we use AI agents for the repetitive work. For your audit that means AI-assisted testing covers every page quickly, we walk the purchase path step by step with the keyboard, check what a screen reader announces for every button, image and field, and I personally review every finding and every report before it goes out.",
     ],
     "who_facts_label": "In short",
     "who_facts": [
@@ -383,7 +383,7 @@ T["nl"] = {
     "who_p": [
         "Ik leid engineering en delivery in meerdere IT-projecten, van productontwikkeling tot outsourcing. Ik ben begonnen in QA: eerst handmatig testen, daarna testautomatisering met Selenium, Cypress en Pytest.",
         "Al meer dan 6 jaar werk ik aan SaaS-producten in sectoren waar compliance centraal staat: legal, regulatory en financial tech. Daar moet elke bevinding onderbouwd zijn en moet elke release kloppen. Diezelfde discipline brengen we mee naar jouw webshop.",
-        "Bij EveryoneCanShop zetten we AI-agents in voor het terugkerende werk. Voor jouw audit betekent dat: AI-ondersteund testen dekt snel elke pagina af, we lopen de bestelroute stap voor stap door met het toetsenbord en controleren hem met een schermlezer, en ik controleer persoonlijk elke bevinding en elk rapport voordat het de deur uitgaat.",
+        "Bij EveryoneCanShop zetten we AI-agents in voor het terugkerende werk. Voor jouw audit betekent dat: AI-ondersteund testen dekt snel elke pagina af, we lopen de bestelroute stap voor stap door met het toetsenbord, controleren wat een schermlezer bij elke knop, afbeelding en elk veld voorleest, en ik controleer persoonlijk elke bevinding en elk rapport voordat het de deur uitgaat.",
     ],
     "who_facts_label": "In het kort",
     "who_facts": [
@@ -584,7 +584,7 @@ T["fr"] = {
     "who_p": [
         "Je dirige l'ingénierie et la livraison de plusieurs projets informatiques, du développement produit à l'externalisation. J'ai commencé dans la QA : d'abord les tests manuels, puis l'automatisation des tests avec Selenium, Cypress et Pytest.",
         "Depuis plus de 6 ans, je travaille sur des produits SaaS dans des domaines très réglementés : juridique, conformité réglementaire et technologies financières. Là, chaque constat doit être prouvé et chaque mise en production doit tenir. Nous appliquons la même rigueur à votre boutique.",
-        "Chez EveryoneCanShop, nous confions les tâches répétitives à des agents d'IA. Pour votre audit, cela signifie que des tests assistés par l'IA couvrent rapidement chaque page, que nous parcourons le parcours d'achat étape par étape au clavier et avec un lecteur d'écran, et que je vérifie personnellement chaque constat et chaque rapport avant son envoi.",
+        "Chez EveryoneCanShop, nous confions les tâches répétitives à des agents d'IA. Pour votre audit, cela signifie que des tests assistés par l'IA couvrent rapidement chaque page, que nous parcourons le parcours d'achat étape par étape au clavier, que nous vérifions ce qu'un lecteur d'écran annonce pour chaque bouton, image et champ, et que je vérifie personnellement chaque constat et chaque rapport avant son envoi.",
     ],
     "who_facts_label": "En bref",
     "who_facts": [
@@ -785,7 +785,7 @@ T["de"] = {
     "who_p": [
         "Ich leite Engineering und Delivery in mehreren IT-Projekten, von Produktentwicklung bis Outsourcing. Angefangen habe ich in der Qualitätssicherung: zuerst manuelles Testen, dann Testautomatisierung mit Selenium, Cypress und Pytest.",
         "Seit über 6 Jahren arbeite ich an SaaS-Produkten in Bereichen mit hohen Compliance-Anforderungen: Legal, Regulatory und Financial Tech. Dort muss jeder Befund belegt sein und jedes Release halten. Dieselbe Sorgfalt bringen wir in Ihren Shop.",
-        "Bei EveryoneCanShop übernehmen KI-Agenten die wiederkehrenden Aufgaben. Für Ihr Audit heißt das: KI-gestützte Tests decken schnell jede Seite ab, wir gehen den Kaufprozess Schritt für Schritt mit der Tastatur und mit Screenreader durch, und ich prüfe persönlich jeden Befund und jeden Bericht, bevor er rausgeht.",
+        "Bei EveryoneCanShop übernehmen KI-Agenten die wiederkehrenden Aufgaben. Für Ihr Audit heißt das: KI-gestützte Tests decken schnell jede Seite ab, wir gehen den Kaufprozess Schritt für Schritt mit der Tastatur durch, prüfen, was ein Screenreader bei jeder Schaltfläche, jedem Bild und jedem Feld ansagt, und ich prüfe persönlich jeden Befund und jeden Bericht, bevor er rausgeht.",
     ],
     "who_facts_label": "Kurz gesagt",
     "who_facts": [
