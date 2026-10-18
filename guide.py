@@ -30,7 +30,7 @@ G["en"] = {
     "who_yes_h": "Yes, if",
     "who_yes": "you sell to consumers in the EU through a website or an app.",
     "who_no_h": "No, if",
-    "who_no": "you are a microenterprise: fewer than 10 employees and a yearly turnover (or balance sheet total) of at most €2 million.",
+    "who_no": "you are a very small business: fewer than 10 employees and a yearly turnover (or balance sheet total) of at most €2 million.",
     "s_mean_h": "What does “accessible” mean for a webshop?",
     "s_mean_p": "In everyday terms, every customer must be able to:",
     "mean": [
@@ -90,7 +90,7 @@ G["nl"] = {
     "who_yes_h": "Ja, als",
     "who_yes": "je via een website of app aan consumenten in de EU verkoopt.",
     "who_no_h": "Nee, als",
-    "who_no": "je een micro-onderneming bent: minder dan 10 medewerkers en een jaaromzet (of balanstotaal) van maximaal € 2 miljoen.",
+    "who_no": "je een heel klein bedrijf bent: minder dan 10 medewerkers en een jaaromzet (of balanstotaal) van maximaal € 2 miljoen.",
     "s_mean_h": "Wat betekent “toegankelijk” voor een webshop?",
     "s_mean_p": "In gewone woorden: elke klant moet",
     "mean": [
@@ -150,7 +150,7 @@ G["fr"] = {
     "who_yes_h": "Oui, si",
     "who_yes": "vous vendez aux consommateurs de l'UE via un site ou une appli.",
     "who_no_h": "Non, si",
-    "who_no": "vous êtes une microentreprise : moins de 10 salariés et un chiffre d'affaires annuel (ou un total de bilan) d'au plus 2 millions d'euros.",
+    "who_no": "vous êtes une très petite entreprise : moins de 10 salariés et un chiffre d'affaires annuel (ou un total de bilan) d'au plus 2 millions d'euros.",
     "s_mean_h": "Que veut dire « accessible » pour une boutique en ligne ?",
     "s_mean_p": "Concrètement, chaque client doit pouvoir :",
     "mean": [
