@@ -3,13 +3,15 @@
 Only the verified facts supplied by the founder are used here. No other legal claims. No em dash.
 """
 
-from content import EAA, EU_DISABILITY, BFSG_37
+from content import EAA, EU_DISABILITY, BFSG_37, ACM
 
-ACM = "https://www.acm.nl/nl/publicaties/acm-klant-met-beperking-kan-bij-merendeel-grote-webwinkels-niet-terecht"
+CARREFOUR = "https://informations.handicap.fr/a-accessibilite-web-carrefour-condamne-par-la-justice-39309.php"
 
 G = {}
 
 G["en"] = {
+    "crumb_short": "The law",
+    "crumb_label": "Breadcrumb",
     "title": "The European Accessibility Act in plain language · EveryoneCanShop",
     "description": "What the European Accessibility Act means for your webshop, in plain words: since when, who must comply, what accessible means, who checks and what to do now.",
     "crumb": "Home",
@@ -28,25 +30,25 @@ G["en"] = {
     "who_yes_h": "Yes, if",
     "who_yes": "you sell to consumers in the EU through a website or an app.",
     "who_no_h": "No, if",
-    "who_no": "you are a microenterprise: fewer than 10 employees and an annual turnover or balance sheet total of at most €2 million.",
+    "who_no": "you are a microenterprise: fewer than 10 employees and a yearly turnover (or balance sheet total) of at most €2 million.",
     "s_mean_h": "What does “accessible” mean for a webshop?",
     "s_mean_p": "In everyday terms, every customer must be able to:",
     "mean": [
         ("contrast", "See or hear it", "Text is readable and images have a short text description."),
-        ("keyboard", "Use it", "Everything works with a keyboard or other assistive tools, not only with a mouse."),
+        ("keyboard", "Use it", "Everything works with a keyboard, not only with a mouse."),
         ("form", "Understand it", "Clear labels, clear error messages, no surprises."),
-        ("voice", "Use it with assistive technology", "Screen readers and similar tools can read every button, image and field."),
+        ("voice", "Hear it read aloud", "A screen reader is software that reads the page aloud. It can read every button, image and field."),
     ],
     "statement_h": "And one page to publish",
     "statement_p": "Your shop must also explain how it meets the requirements. This page is called an accessibility statement.",
     "measure_h": "How is this measured?",
-    "measure_p": "With the European standard EN 301 549. For websites it uses WCAG 2.1 level AA: the international checklist for accessible websites. You don't need to know it by heart. Checking it is our job.",
+    "measure_p": "With the European standard EN 301 549. For websites it uses WCAG 2.1 at level AA, the level the law requires. WCAG is the international checklist for accessible websites. You don't need to know it by heart. Checking it is our job.",
     "s_check_h": "Who checks, and what can happen?",
-    "s_check_p": "Each EU country enforces the law through its own national law and authority. Three examples:",
+    "s_check_p": "Each EU country has its own law and its own authority that checks webshops. Three examples:",
     "countries": [
         ("Germany", "The law is called the BFSG. Fines can go up to €100,000 per violation.", "BFSG § 37", BFSG_37),
-        ("Netherlands", "The ACM supervises webshops. In March 2026 it tested about 100 of the largest Dutch webshops. At 61% of them, a customer using assistive technology could not place an order.", "ACM, March 2026", ACM),
-        ("France", "In 2026 a court ordered Carrefour to make its website and app accessible.", "", ""),
+        ("Netherlands", "The ACM, the Dutch consumer authority, checks webshops. In March 2026 it tested about 100 of the largest Dutch webshops. At 61% of them, a customer with a disability could not place an order.", "ACM, March 2026", ACM),
+        ("France", "In June 2026 a French court ordered Carrefour to make its website and app accessible within six months.", "Tribunal judiciaire de Caen, June 2026 (French)", CARREFOUR),
     ],
     "s_now_h": "What should I do now?",
     "now": [
@@ -63,10 +65,13 @@ G["en"] = {
         ("Council of the EU: disability in the EU, facts and figures", EU_DISABILITY),
         ("BFSG § 37 (Germany)", BFSG_37),
         ("ACM: customers with a disability cannot order at most large webshops (Dutch)", ACM),
+        ("Carrefour ordered by a court to make its website accessible (French)", CARREFOUR),
     ],
 }
 
 G["nl"] = {
+    "crumb_short": "De wet",
+    "crumb_label": "Kruimelpad",
     "title": "De European Accessibility Act in gewone taal · EveryoneCanShop",
     "description": "Wat de European Accessibility Act betekent voor je webshop, in gewone taal: sinds wanneer, voor wie, wat toegankelijk betekent, wie controleert en wat je nu doet.",
     "crumb": "Home",
@@ -85,25 +90,25 @@ G["nl"] = {
     "who_yes_h": "Ja, als",
     "who_yes": "je via een website of app aan consumenten in de EU verkoopt.",
     "who_no_h": "Nee, als",
-    "who_no": "je een micro-onderneming bent: minder dan 10 medewerkers en een jaaromzet of balanstotaal van maximaal € 2 miljoen.",
+    "who_no": "je een micro-onderneming bent: minder dan 10 medewerkers en een jaaromzet (of balanstotaal) van maximaal € 2 miljoen.",
     "s_mean_h": "Wat betekent “toegankelijk” voor een webshop?",
     "s_mean_p": "In gewone woorden: elke klant moet",
     "mean": [
         ("contrast", "Het kunnen zien of horen", "Tekst is leesbaar en afbeeldingen hebben een korte beschrijving in tekst."),
-        ("keyboard", "Het kunnen bedienen", "Alles werkt met een toetsenbord of andere hulpmiddelen, niet alleen met een muis."),
+        ("keyboard", "Het kunnen bedienen", "Alles werkt met een toetsenbord, niet alleen met een muis."),
         ("form", "Het kunnen begrijpen", "Duidelijke namen, duidelijke foutmeldingen, geen verrassingen."),
-        ("voice", "Het kunnen gebruiken met hulpmiddelen", "Schermlezers en vergelijkbare hulpmiddelen kunnen elke knop, afbeelding en elk veld voorlezen."),
+        ("voice", "Het kunnen laten voorlezen", "Een schermlezer is software die de pagina voorleest. Die kan elke knop, afbeelding en elk veld voorlezen."),
     ],
     "statement_h": "En één pagina om te publiceren",
     "statement_p": "Je webshop moet ook uitleggen hoe hij aan de eisen voldoet. Die pagina heet een toegankelijkheidsverklaring.",
     "measure_h": "Hoe wordt dit gemeten?",
-    "measure_p": "Met de Europese norm EN 301 549. Voor websites gebruikt die WCAG 2.1 niveau AA: de internationale checklist voor toegankelijke websites. Die hoef je niet uit je hoofd te kennen. Het controleren is ons werk.",
+    "measure_p": "Met de Europese norm EN 301 549. Voor websites gebruikt die WCAG 2.1 op niveau AA, het niveau dat de wet vraagt. WCAG is de internationale checklist voor toegankelijke websites. Die hoef je niet uit je hoofd te kennen. Het controleren is ons werk.",
     "s_check_h": "Wie controleert, en wat kan er gebeuren?",
-    "s_check_p": "Elk EU-land handhaaft de wet met een eigen nationale wet en toezichthouder. Drie voorbeelden:",
+    "s_check_p": "Elk EU-land heeft een eigen wet en een eigen toezichthouder die webshops controleert. Drie voorbeelden:",
     "countries": [
         ("Duitsland", "De wet heet daar BFSG. Boetes kunnen oplopen tot € 100.000 per overtreding.", "BFSG § 37", BFSG_37),
-        ("Nederland", "De ACM houdt toezicht op webshops. In maart 2026 testte de ACM ongeveer 100 van de grootste Nederlandse webshops. Bij 61% kon een klant met hulpmiddelen geen bestelling plaatsen.", "ACM, maart 2026", ACM),
-        ("Frankrijk", "In 2026 verplichtte een rechter Carrefour om zijn website en app toegankelijk te maken.", "", ""),
+        ("Nederland", "De ACM, de Nederlandse toezichthouder voor consumenten, controleert webshops. In maart 2026 testte de ACM ongeveer 100 van de grootste Nederlandse webshops. Bij 61% kon een klant met een beperking geen bestelling plaatsen.", "ACM, maart 2026", ACM),
+        ("Frankrijk", "In juni 2026 verplichtte een Franse rechter Carrefour om zijn website en app binnen zes maanden toegankelijk te maken.", "Rechtbank van Caen, juni 2026 (Frans)", CARREFOUR),
     ],
     "s_now_h": "Wat doe ik nu?",
     "now": [
@@ -120,10 +125,13 @@ G["nl"] = {
         ("Raad van de EU: beperking in de EU, feiten en cijfers (Engels)", EU_DISABILITY),
         ("BFSG § 37 (Duitsland, Duits)", BFSG_37),
         ("ACM: klant met beperking kan bij merendeel grote webwinkels niet terecht", ACM),
+        ("Carrefour door rechter verplicht zijn website toegankelijk te maken (Frans)", CARREFOUR),
     ],
 }
 
 G["fr"] = {
+    "crumb_short": "La loi",
+    "crumb_label": "Fil d'Ariane",
     "title": "L'Acte européen sur l'accessibilité en langage simple · EveryoneCanShop",
     "description": "Ce que l'Acte européen sur l'accessibilité signifie pour votre boutique en ligne, en mots simples : depuis quand, qui est concerné, ce que veut dire accessible, qui contrôle et que faire maintenant.",
     "crumb": "Accueil",
@@ -142,25 +150,25 @@ G["fr"] = {
     "who_yes_h": "Oui, si",
     "who_yes": "vous vendez aux consommateurs de l'UE via un site ou une appli.",
     "who_no_h": "Non, si",
-    "who_no": "vous êtes une microentreprise : moins de 10 salariés et un chiffre d'affaires annuel ou un total de bilan d'au plus 2 millions d'euros.",
+    "who_no": "vous êtes une microentreprise : moins de 10 salariés et un chiffre d'affaires annuel (ou un total de bilan) d'au plus 2 millions d'euros.",
     "s_mean_h": "Que veut dire « accessible » pour une boutique en ligne ?",
     "s_mean_p": "Concrètement, chaque client doit pouvoir :",
     "mean": [
         ("contrast", "Voir ou entendre le contenu", "Le texte est lisible et les images ont une courte description en texte."),
-        ("keyboard", "Tout utiliser", "Tout fonctionne au clavier ou avec d'autres aides, pas seulement à la souris."),
+        ("keyboard", "Tout utiliser", "Tout fonctionne au clavier, pas seulement à la souris."),
         ("form", "Comprendre", "Des noms clairs, des messages d'erreur clairs, pas de surprises."),
-        ("voice", "Utiliser des aides techniques", "Les lecteurs d'écran et outils similaires peuvent lire chaque bouton, image et champ."),
+        ("voice", "L'entendre à voix haute", "Un lecteur d'écran est un logiciel qui lit la page à voix haute. Il peut lire chaque bouton, image et champ."),
     ],
     "statement_h": "Et une page à publier",
     "statement_p": "Votre boutique doit aussi expliquer comment elle respecte les exigences. Cette page s'appelle une déclaration d'accessibilité.",
     "measure_h": "Comment est-ce mesuré ?",
-    "measure_p": "Avec la norme européenne EN 301 549. Pour les sites web, elle utilise WCAG 2.1 niveau AA : la liste de contrôle internationale pour des sites accessibles. Inutile de la connaître par cœur. La vérifier, c'est notre travail.",
+    "measure_p": "Avec la norme européenne EN 301 549. Pour les sites web, elle utilise WCAG 2.1 au niveau AA, le niveau exigé par la loi. WCAG est la liste de contrôle internationale pour des sites accessibles. Inutile de la connaître par cœur. La vérifier, c'est notre travail.",
     "s_check_h": "Qui contrôle, et que peut-il se passer ?",
-    "s_check_p": "Chaque pays de l'UE applique la loi avec sa propre loi nationale et sa propre autorité. Trois exemples :",
+    "s_check_p": "Chaque pays de l'UE a sa propre loi et sa propre autorité qui contrôle les boutiques. Trois exemples :",
     "countries": [
         ("Allemagne", "La loi s'appelle BFSG. Les amendes peuvent atteindre 100 000 € par infraction.", "BFSG § 37", BFSG_37),
-        ("Pays-Bas", "L'ACM contrôle les boutiques en ligne. En mars 2026, elle a testé environ 100 des plus grandes boutiques néerlandaises. Dans 61 % d'entre elles, un client utilisant une aide technique ne pouvait pas passer commande.", "ACM, mars 2026", ACM),
-        ("France", "En 2026, un tribunal a ordonné à Carrefour de rendre son site et son appli accessibles.", "", ""),
+        ("Pays-Bas", "L'ACM, l'autorité néerlandaise des consommateurs, contrôle les boutiques en ligne. En mars 2026, elle a testé environ 100 des plus grandes boutiques néerlandaises. Dans 61 % d'entre elles, un client en situation de handicap ne pouvait pas passer commande.", "ACM, mars 2026", ACM),
+        ("France", "En juin 2026, un tribunal a ordonné à Carrefour de rendre son site et son appli accessibles sous six mois.", "Tribunal judiciaire de Caen, juin 2026", CARREFOUR),
     ],
     "s_now_h": "Que faire maintenant ?",
     "now": [
@@ -177,10 +185,13 @@ G["fr"] = {
         ("Conseil de l'UE : le handicap dans l'UE, faits et chiffres (en anglais)", EU_DISABILITY),
         ("BFSG § 37 (Allemagne, en allemand)", BFSG_37),
         ("ACM : la plupart des grandes boutiques inaccessibles aux clients handicapés (en néerlandais)", ACM),
+        ("Accessibilité web : Carrefour condamné par la justice (handicap.fr)", CARREFOUR),
     ],
 }
 
 G["de"] = {
+    "crumb_short": "Das Gesetz",
+    "crumb_label": "Brotkrümelnavigation",
     "title": "Das Barrierefreiheitsgesetz (BFSG) einfach erklärt · EveryoneCanShop",
     "description": "Was der European Accessibility Act und das BFSG für Ihren Onlineshop bedeuten, in einfachen Worten: seit wann, für wen, was barrierefrei heißt, wer prüft und was jetzt zu tun ist.",
     "crumb": "Startseite",
@@ -199,25 +210,25 @@ G["de"] = {
     "who_yes_h": "Ja, wenn",
     "who_yes": "Sie über eine Website oder App an Verbraucher in der EU verkaufen.",
     "who_no_h": "Nein, wenn",
-    "who_no": "Sie ein Kleinstunternehmen sind: weniger als 10 Beschäftigte und ein Jahresumsatz oder eine Jahresbilanzsumme von höchstens 2 Mio. €.",
+    "who_no": "Sie ein Kleinstunternehmen sind: weniger als 10 Beschäftigte und ein Jahresumsatz (oder eine Bilanzsumme) von höchstens 2 Mio. €.",
     "s_mean_h": "Was heißt „barrierefrei“ für einen Onlineshop?",
     "s_mean_p": "Im Alltag heißt das: Jeder Kunde muss",
     "mean": [
         ("contrast", "Inhalte sehen oder hören können", "Text ist lesbar und Bilder haben eine kurze Beschreibung in Textform."),
-        ("keyboard", "Alles bedienen können", "Alles funktioniert per Tastatur oder mit anderen Hilfsmitteln, nicht nur mit der Maus."),
+        ("keyboard", "Alles bedienen können", "Alles funktioniert per Tastatur, nicht nur mit der Maus."),
         ("form", "Alles verstehen können", "Klare Bezeichnungen, klare Fehlermeldungen, keine Überraschungen."),
-        ("voice", "Hilfsmittel nutzen können", "Screenreader und ähnliche Hilfsmittel können jede Schaltfläche, jedes Bild und jedes Feld vorlesen."),
+        ("voice", "Es vorlesen lassen können", "Ein Screenreader ist eine Software, die die Seite vorliest. Er kann jede Schaltfläche, jedes Bild und jedes Feld vorlesen."),
     ],
     "statement_h": "Und eine Seite zum Veröffentlichen",
     "statement_p": "Ihr Shop muss außerdem erklären, wie er die Anforderungen erfüllt. Diese Seite heißt Erklärung zur Barrierefreiheit.",
     "measure_h": "Wie wird das gemessen?",
-    "measure_p": "Mit der europäischen Norm EN 301 549. Für Websites nutzt sie WCAG 2.1 Stufe AA: die internationale Checkliste für barrierefreie Websites. Die müssen Sie nicht auswendig kennen. Das Prüfen ist unsere Aufgabe.",
+    "measure_p": "Mit der europäischen Norm EN 301 549. Für Websites nutzt sie WCAG 2.1 auf Stufe AA, der Stufe, die das Gesetz verlangt. WCAG ist die internationale Checkliste für barrierefreie Websites. Die müssen Sie nicht auswendig kennen. Das Prüfen ist unsere Aufgabe.",
     "s_check_h": "Wer prüft, und was kann passieren?",
-    "s_check_p": "Jedes EU-Land setzt das Gesetz mit eigenem nationalem Recht und eigenen Behörden durch. Drei Beispiele:",
+    "s_check_p": "Jedes EU-Land hat ein eigenes Gesetz und eine eigene Behörde, die Onlineshops prüft. Drei Beispiele:",
     "countries": [
         ("Deutschland", "Das Gesetz heißt BFSG. Bußgelder können bis zu 100.000 € pro Verstoß betragen.", "BFSG § 37", BFSG_37),
-        ("Niederlande", "Die Behörde ACM beaufsichtigt Onlineshops. Im März 2026 testete sie etwa 100 der größten niederländischen Onlineshops. Bei 61 % konnte ein Kunde mit Hilfsmitteln keine Bestellung aufgeben.", "ACM, März 2026", ACM),
-        ("Frankreich", "2026 verpflichtete ein Gericht Carrefour, seine Website und App barrierefrei zu machen.", "", ""),
+        ("Niederlande", "Die ACM, die niederländische Verbraucherbehörde, prüft Onlineshops. Im März 2026 testete sie etwa 100 der größten niederländischen Onlineshops. Bei 61 % konnte ein Kunde mit Behinderung keine Bestellung aufgeben.", "ACM, März 2026", ACM),
+        ("Frankreich", "Im Juni 2026 verpflichtete ein französisches Gericht Carrefour, seine Website und App innerhalb von sechs Monaten barrierefrei zu machen.", "Gericht in Caen, Juni 2026 (Französisch)", CARREFOUR),
     ],
     "s_now_h": "Was sollte ich jetzt tun?",
     "now": [
@@ -234,5 +245,6 @@ G["de"] = {
         ("Rat der EU: Behinderung in der EU, Fakten und Zahlen (Englisch)", EU_DISABILITY),
         ("BFSG § 37", BFSG_37),
         ("ACM: Kunden mit Behinderung können bei den meisten großen Onlineshops nicht bestellen (Niederländisch)", ACM),
+        ("Carrefour gerichtlich zur Barrierefreiheit verpflichtet (Französisch)", CARREFOUR),
     ],
 }

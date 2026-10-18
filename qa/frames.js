@@ -19,7 +19,7 @@ const url = 'http://localhost:8765' + (lang === 'en' ? '/' : `/${lang}/`);
   const report = page.locator('.report');
   await report.scrollIntoViewIfNeeded();
   // timeline (ms after the demo starts), see the steps in build.py
-  const shots = [[1200, '1-intro'], [5300, '2-before-swatch'], [10900, '3-customer-leaves'], [14600, '4-report'], [21600, '5-after-colour'], [27100, '6-order-placed'], [29700, '7-end']];
+  const shots = [[1200, '1-intro'], [5300, '2-before-swatch'], [10900, '3-customer-leaves'], [14600, '4-report'], [21600, '5-after-colour'], [27100, '6-order-placed'], [30400, '7-end']];
   let t0 = Date.now();
   for (const [at, name] of shots) {
     const wait = at - (Date.now() - t0); if (wait > 0) await page.waitForTimeout(wait);

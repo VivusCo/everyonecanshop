@@ -72,6 +72,13 @@ def icon(name, cls="ico"):
     return svg(ICONS[name], cls)
 
 
+def picture(name, alt, cls=""):
+    """Illustration from src/ill (800x800): webp with jpg fallback, lazy (all are below the fold)."""
+    c = f' class="{cls}"' if cls else ""
+    return (f'<picture{c}><source srcset="/ill/{name}.webp" type="image/webp">'
+            f'<img src="/ill/{name}.jpg" width="800" height="800" alt="{esc(alt)}" loading="lazy" decoding="async"></picture>')
+
+
 def people(cls="people"):
     """'1 in 4' graphic: four people, one highlighted (decorative)."""
     return f'<span class="{cls}" aria-hidden="true">' + "".join(
@@ -262,7 +269,7 @@ def demo(t):
 
 
 def stat_block(t):
-    """Two verified numbers. Large amounts count up on first view (visual only; the real value is in the DOM)."""
+    """Verified numbers. Large amounts count up on first view (visual only; the real value is in the DOM)."""
     out = ""
     for i, (n, txt, src, url) in enumerate(t["stats"]):
         digits = re.sub(r"\D", "", n)
@@ -270,6 +277,12 @@ def stat_block(t):
             tpl = re.sub(r"[\d.,\u00a0 ]*\d", "{n}", n, count=1)
             num = f'<span class="sr">{esc(n)}</span><span class="count" aria-hidden="true" data-to="{digits}" data-tpl="{esc(tpl)}">{esc(n)}</span>'
             art = f'<span class="stat-art" aria-hidden="true">{icon("scale")}</span>'
+        elif "%" in n:
+            num = esc(n)
+            pct = int(digits)
+            art = (f'<span class="stat-art" aria-hidden="true"><svg class="ring" viewBox="0 0 36 36" width="40" height="40">'
+                   f'<circle cx="18" cy="18" r="15.9" pathLength="100" class="ring-bg"/>'
+                   f'<circle cx="18" cy="18" r="15.9" pathLength="100" class="ring-fg" stroke-dasharray="{pct} 100"/></svg></span>')
         else:
             num = esc(n)
             art = people("people stat-art")
@@ -341,6 +354,7 @@ def page_home(lang):
                      for i, h, p in t["checks"])
     steps = "".join(f'<li class="rv"><h3>{esc(h)}</h3><p>{esc(p)}</p></li>' for h, p in t["steps"])
     about_p = "".join(f"<p>{esc(p)}</p>" for p in t["about_p"])
+    stuck = "".join(f'<li class="stuck-card lift rv">{picture(k, alt)}<p>{esc(x)}</p></li>' for k, alt, x in t["stuck"])
     faq = "".join(f'<details class="rv"><summary>{esc(q)}</summary><div class="faq-a"><p>{esc(a)}</p></div></details>' for q, a in t["faq"])
 
     doc = head(lang, t["title"], t["description"], "") + header(lang, t, "") + f'''
@@ -366,7 +380,13 @@ def page_home(lang):
 <p class="why-line rv">{esc(t["why_line"])}</p>
 </div></section>
 
-<section id="eaa" class="alt" aria-labelledby="eaa-h"><div class="wrap">
+<section class="stuck-sec alt" aria-labelledby="stuck-h"><div class="wrap">
+<h2 id="stuck-h" class="rv">{esc(t["stuck_h"])}</h2>
+<p class="section-lead rv">{esc(t["stuck_p"])}</p>
+<ul class="stuck">{stuck}</ul>
+</div></section>
+
+<section id="eaa" aria-labelledby="eaa-h"><div class="wrap">
 <h2 id="eaa-h" class="rv">{esc(t["eaa_h"])}</h2>
 <p class="section-lead rv">{esc(t["eaa_p"])}</p>
 <ol class="timeline">{timeline}</ol>
@@ -374,7 +394,7 @@ def page_home(lang):
 <p class="guide-link rv"><a class="btn btn-ghost" href="{path_for(lang, "eaa")}">{icon("book")}{esc(t["eaa_link"])}{icon("arrow", "ico btn-ico")}</a></p>
 </div></section>
 
-<section id="example" aria-labelledby="ex-h"><div class="wrap">
+<section id="example" class="alt" aria-labelledby="ex-h"><div class="wrap">
 <h2 id="ex-h" class="rv">{esc(t["ex_h"])}</h2>
 <p class="section-lead rv">{esc(t["demo_intro"])}</p>
 <div class="report rv">
@@ -392,34 +412,34 @@ def page_home(lang):
 <p class="note center">{esc(t["ex_note"])}</p>
 </div></section>
 
-<section class="alt" aria-labelledby="what-h"><div class="wrap">
+<section aria-labelledby="what-h"><div class="wrap">
 <h2 id="what-h" class="rv">{esc(t["what_h"])}</h2>
 <ul class="checks">{checks}</ul>
 </div></section>
 
-<section aria-labelledby="cmp-h"><div class="wrap">
+<section class="alt" aria-labelledby="cmp-h"><div class="wrap">
 <h2 id="cmp-h" class="rv">{esc(t["cmp_h"])}</h2>
 {compare(t)}
 </div></section>
 
-<section id="packages" class="alt" aria-labelledby="pk-h"><div class="wrap">
+<section id="packages" aria-labelledby="pk-h"><div class="wrap">
 <h2 id="pk-h" class="rv">{esc(t["pk_h"])}</h2>
 <p class="section-lead rv">{esc(t["pk_p"])}</p>
 {packages(t)}
 <p class="note">{esc(t["pk_note"])}</p>
 </div></section>
 
-<section aria-labelledby="how-h"><div class="wrap">
+<section class="alt" aria-labelledby="how-h"><div class="wrap">
 <h2 id="how-h" class="rv">{esc(t["how_h"])}</h2>
 <ol class="steps">{steps}</ol>
 </div></section>
 
-<section id="faq" class="alt" aria-labelledby="faq-h"><div class="wrap narrow">
+<section id="faq" aria-labelledby="faq-h"><div class="wrap narrow">
 <h2 id="faq-h" class="rv">{esc(t["faq_h"])}</h2>
 <div class="faq">{faq}</div>
 </div></section>
 
-<section id="about" aria-labelledby="about-h"><div class="wrap">
+<section id="about" class="alt" aria-labelledby="about-h"><div class="wrap">
 <div class="about rv">
 <img src="/ivan.jpg" width="480" height="480" alt="{esc(t["photo_alt"])}" decoding="async" loading="lazy">
 <div class="about-text">
@@ -433,11 +453,16 @@ def page_home(lang):
 
 <section id="check" class="check" aria-labelledby="check-h"><div class="wrap">
 <div class="check-box rv">
+<div class="check-grid">
+<div class="check-main">
 <p class="check-kicker">{esc(t["check_kicker"])}</p>
 <h2 id="check-h">{esc(t["check_h"])}</h2>
 <p class="check-p">{esc(t["check_p"])}</p>
 {check_form(t)}
 <p class="contact">{esc(t["contact"])} <a href="{mailto(t["mail_subject"])}">{EMAIL}</a></p>
+</div>
+{picture("owner", t["owner_alt"], "check-ill")}
+</div>
 </div>
 </div></section>
 </main>
@@ -462,7 +487,7 @@ def page_guide(lang):
     doc = head(lang, g["title"], g["description"], "eaa") + header(lang, t, "eaa") + f'''
 <main id="main" class="guide">
 <section class="g-hero" aria-labelledby="h1"><div class="wrap narrow">
-<nav class="crumb" aria-label="Breadcrumb"><ol><li><a href="{home}">{esc(g["crumb"])}</a></li><li aria-current="page">{esc(g["h1"])}</li></ol></nav>
+<nav class="crumb" aria-label="{esc(g["crumb_label"])}"><ol><li><a href="{home}">{esc(g["crumb"])}</a></li><li aria-current="page"><span class="crumb-full">{esc(g["h1"])}</span><span class="crumb-short">{esc(g["crumb_short"])}</span></li></ol></nav>
 <h1 id="h1">{esc(g["h1"])}</h1>
 <p class="lead">{esc(g["intro"])}</p>
 <p class="g-note">{icon("info")}<span>{esc(g["not_legal"])}</span></p>
@@ -646,6 +671,7 @@ def images():
     from PIL import Image
     src = Image.open(ROOT / "src/ivan.jpg").convert("RGB")
     src.save(OUT / "ivan.jpg", quality=82, optimize=True, progressive=True)
+    shutil.copytree(ROOT / "src/ill", OUT / "ill")
 
 
 def main():

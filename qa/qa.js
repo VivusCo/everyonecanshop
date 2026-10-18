@@ -24,6 +24,9 @@ const shotLangs = (process.argv[3] || 'en,nl').split(',');
       res.axe[w] = { violations: r.violations.map(v => ({ id: v.id, n: v.nodes.length, t: v.nodes.slice(0, 3).map(x => x.target.join(' ') + ' :: ' + (x.failureSummary || '').slice(0, 160)) })), incomplete: r.incomplete.map(v => v.id + ':' + v.nodes.length) };
       res.overflow[w] = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       await page.evaluate(() => document.querySelectorAll('details').forEach(d => d.open = false));
+      // let the close transition finish and lazy images load before the screenshot
+      await page.evaluate(async () => { await Promise.all([...document.images].map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; }))); });
+      await page.waitForTimeout(600);
       if (shotDir && shotLangs.includes(lang.split('-')[0]) && w !== 320) {
         await page.screenshot({ path: path.join(shotDir, `${lang}-${w}.png`), fullPage: true });
       }
